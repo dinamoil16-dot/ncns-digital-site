@@ -1,0 +1,34 @@
+[
+  {
+    "path": "consumer.webp",
+    "bytes": 188656,
+    "sha256": "184b626834ffafb43255fcd3e27a71302c8bae3b8011c6c605cbd1ff4d6b56c0",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "path": "fonts/Newsreader.woff2",
+    "bytes": 214892,
+    "sha256": "32eade6fe932373f3d168a3339c56d79d3caffb22e3cf46d53fcaf69e5591b43"
+  },
+  {
+    "path": "industrial.webp",
+    "bytes": 147526,
+    "sha256": "1cc0618ec411ef1ba195c435407abc959c7a6c483bce489dac7a3166f01dc7cb",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "path": "marine.webp",
+    "bytes": 200888,
+    "sha256": "387046cc8961db16468ab2763d28f616330cf2a86657f837c4b35a24f6a72164",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  }
+]

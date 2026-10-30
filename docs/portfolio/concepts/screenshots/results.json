@@ -1,0 +1,119 @@
+[
+  {
+    "concept": "asterwake",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 486232
+  },
+  {
+    "concept": "asterwake",
+    "viewport": [
+      390,
+      844
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 486232
+  },
+  {
+    "concept": "asterwake",
+    "viewport": [
+      360,
+      780
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 486232
+  },
+  {
+    "concept": "kern9",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 217678
+  },
+  {
+    "concept": "kern9",
+    "viewport": [
+      390,
+      844
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 217678
+  },
+  {
+    "concept": "kern9",
+    "viewport": [
+      360,
+      780
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 217678
+  },
+  {
+    "concept": "auven",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 474000
+  },
+  {
+    "concept": "auven",
+    "viewport": [
+      390,
+      844
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 474000
+  },
+  {
+    "concept": "auven",
+    "viewport": [
+      360,
+      780
+    ],
+    "js_errors": [],
+    "failed_resources": [],
+    "bad_http": [],
+    "overflow": false,
+    "stage": "visual board only, all proposed action controls disabled",
+    "resource_bytes": 474000
+  }
+]
