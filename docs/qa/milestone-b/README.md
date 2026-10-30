@@ -71,3 +71,9 @@ Requires Python Playwright, Pillow, `/usr/bin/chromium` and FFmpeg for video enc
 ## Review boundary and next step
 
 The contact channel, backend, live integrations, analytics, deployment and domain remain intentionally unconfigured. Selected Work contains no cases. Owner approval of this complete website is the next step; portfolio concepts belong to Milestone C afterward. Keep the new PR draft and targeting main. Do not merge or deploy.
+
+### Draft PR creation status
+
+Implementation and evidence are pushed in `codex/milestone-b-complete-site-motion`. Creating the requested draft PR with `gh pr create --base main --draft --body-file docs/qa/milestone-b/PR.md` was blocked by `Post https://api.github.com/graphql: Forbidden`. No PR creation is claimed. The ready description is [PR.md](PR.md).
+
+The environment configuration draft already includes `api.github.com`, but the running environment's enforced effective allowlist does not include it. Apply that network setting in environment settings, then retry the draft-creation command. This is an environment/API prerequisite, not a site-deployment step. The branch is ready for review; do not merge or deploy.
