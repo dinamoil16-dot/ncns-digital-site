@@ -1,0 +1,5 @@
+# NCNS Digital — instructions for Codex
+
+Read `spec/CODEX_TASK.md` fully before making changes. Use owner-provided `assets/ncns-original-logo.webp` without redrawing or changing the letters. Match the owner-approved black/silver/ice-blue cinematic + premium-minimal direction in `reference/design-direction.md`. The reference is a screenshot of a speculative UI, **not a deployable website or evidence of customers**.
+
+Work in ordered milestones: (A) polished responsive hero, header, services, animated atmosphere; (B) complete site; (C) portfolio concepts; (D) live deployment and domain. Do not jump to B-D before the user approves A. Keep implementation clean, accessible, performant, keyboard-friendly, and reduced-motion-aware. Run real Chromium screenshots at 1440, 390, and 360 before any PR. Reject fake reviews, metrics, client lists, and misleading form submission. Do not modify the `NCNS-Bro` repository; this project belongs in its own repository.
