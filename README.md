@@ -32,4 +32,6 @@ The latest Chromium checks passed at 1440, 768, 390 and 360px. See [the visual r
 
 The exact owner-approved reference is committed at `reference/approved-concept.webp`, copied byte-for-byte from the supplied ZIP. See [reference provenance](reference/README.md) and [the side-by-side comparison](docs/qa/issue-1-rework/approved-vs-actual-focus.webp). The site uses independent scenery and HTML components, not the full mockup as a background.
 
+The latest [emblem integration review](docs/qa/issue-1-rework/emblem-polish.md) includes close-up comparisons and actual desktop/mobile Chromium animation recordings.
+
 PR #2 remains draft pending owner visual approval. No portfolio development, merge or deployment is authorized at this stage.

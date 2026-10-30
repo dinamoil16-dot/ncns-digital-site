@@ -7,7 +7,7 @@
     "failed_requests": [],
     "interactions": "passed",
     "layout_shift_score": 0.0005587042663323046,
-    "resource_bytes": 677343
+    "resource_bytes": 680084
   },
   {
     "width": 768,
@@ -17,7 +17,7 @@
     "failed_requests": [],
     "interactions": "passed",
     "layout_shift_score": 0.00010594120732060186,
-    "resource_bytes": 366815
+    "resource_bytes": 369556
   },
   {
     "width": 390,
@@ -27,7 +27,7 @@
     "failed_requests": [],
     "interactions": "passed",
     "layout_shift_score": 0.0007568781655587212,
-    "resource_bytes": 366815
+    "resource_bytes": 369556
   },
   {
     "width": 360,
@@ -37,6 +37,6 @@
     "failed_requests": [],
     "interactions": "passed",
     "layout_shift_score": 0.0008042363254458163,
-    "resource_bytes": 366815
+    "resource_bytes": 369556
   }
 ]

@@ -27,9 +27,6 @@
 .hero-orbit{isolation:auto}.emblem-wrap{background:radial-gradient(circle,#02060acc 0 48%,#02060a80 61%,transparent 66%)}
 
 @media(min-width:1201px) and (max-width:1599px){.hero-orbit{top:12px}}
-.hero-reflection{position:absolute;top:540px;right:8.5%;width:550px;height:100px;pointer-events:none;overflow:hidden;opacity:.12;mask-image:linear-gradient(#000,transparent 90%);filter:blur(3px)}
-.hero-reflection img{width:100%;height:auto;display:block;transform:scaleY(-1);mix-blend-mode:screen}
-@media(max-width:1200px),(min-width:1600px){.hero-reflection{display:none}}
 @media(min-width:521px) and (max-width:800px){.hero{height:1000px}.hero-orbit{top:475px;width:440px;height:440px;right:calc(50% - 220px)}.hero-scene{top:280px}}
 /* Refined against the exact owner-supplied reference, rather than the description. */
 @media(min-width:801px){
@@ -48,3 +45,26 @@
 @media(min-width:1201px) and (max-width:1599px){.hero{height:604px}.hero-copy h1{margin-top:7px;margin-bottom:14px}.hero-copy h1>span:not(:first-child){letter-spacing:-.09em}.capability-list{transform:translateY(-10px)}}
 
 .hero-foreground img{display:block;width:100%;height:100%;object-fit:fill}.hero-bottom::before{content:"";position:absolute;inset:-12px -24px -15px;z-index:-1;pointer-events:none;background:linear-gradient(transparent,#020509a6);border-radius:8px}
+
+/* Owner review: integrate the unchanged artwork; no second full CSS rim. */
+.hero-orbit{mix-blend-mode:screen;mask-image:linear-gradient(#000 0 77%,#000e6 85%,#00066 94%,transparent 100%)}
+.emblem-wrap{background:none;mask-image:radial-gradient(circle closest-side,#000 0 94%,#000e6 97%,transparent 100%)}
+.emblem-wrap::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,#0009,transparent 26%,#0002 47%,#000a 68%,#0005 88%,#0009);mask-image:radial-gradient(circle closest-side,transparent 0 85%,#000 89% 97%,transparent 100%);pointer-events:none}
+.orbit-ring{inset:4.1%;border:0;box-shadow:none}
+.orbit-ring::before{display:none}
+.orbit-ring::after{inset:-1px;background:conic-gradient(from 285deg,transparent 0 86%,#deefff12 90%,#d9efff70 93%,transparent 97%);mask:radial-gradient(closest-side,transparent calc(100% - 1.4px),#000 calc(100% - .6px));opacity:.65}
+.orbit-glow{inset:4.5%;box-shadow:none;background:conic-gradient(from 195deg,transparent 0 15%,#bddfff20 28%,#e3f2ff29 33%,transparent 46% 100%);mask-image:radial-gradient(circle closest-side,transparent 0 88%,#000 94%,transparent 100%);filter:blur(3px);animation:integrationBreath 9s ease-in-out infinite}
+.emblem-contact-haze{position:absolute;inset:70% -4% 0;background:radial-gradient(ellipse at 55% 60%,#a7c8df20,transparent 65%);filter:blur(10px);pointer-events:none;z-index:4}
+.hero-reflection{position:absolute;top:497px;right:8%;width:38%;height:76px;overflow:hidden;pointer-events:none;opacity:.16;z-index:1;mask-image:radial-gradient(ellipse,#000 0,transparent 70%);transform:skewX(-17deg)}
+.hero-reflection i{display:block;position:absolute;left:8%;right:6%;height:2px;top:23%;background:linear-gradient(90deg,transparent,#bbdcf840 27%,#d7ebf5b3 55%,transparent 80%);filter:blur(2px);animation:lakeSpecular 8s ease-in-out infinite alternate}
+.hero-reflection i:nth-child(2){left:18%;right:0;top:48%;height:1px;opacity:.5;animation-delay:-3s}
+.hero-reflection i:nth-child(3){left:0;right:23%;top:72%;opacity:.3;animation-delay:-5s}
+@keyframes integrationBreath{50%{opacity:.45}}
+@keyframes lakeSpecular{to{transform:translateX(6%) scaleX(.83);opacity:.35}}
+@media(min-width:1600px){.hero-reflection{top:568px}}
+@media(max-width:1200px) and (min-width:801px){.hero-reflection{top:460px}}
+@media(max-width:800px){.hero-reflection{display:none}.orbit-glow{animation:none;filter:none}.emblem-contact-haze{filter:none;opacity:.5}.hero-orbit{mask-image:linear-gradient(#000 0 80%,#000e6 89%,#00066 96%,transparent 100%)}}
+/* Mobile scenery crosses the lettering: shade the backdrop softly, not the artwork. */
+@media(max-width:800px){.hero-inner::before{content:"";position:absolute;top:425px;left:50%;width:480px;height:480px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse closest-side,#020509f0 0 39%,#020509c7 56%,#02050955 74%,transparent 97%);pointer-events:none;z-index:1}}
+@media(min-width:521px) and (max-width:800px){.hero-inner::before{top:475px;width:440px;height:440px}}
+@media(max-width:520px){.hero-inner::before{top:397px;width:340px;height:340px}}

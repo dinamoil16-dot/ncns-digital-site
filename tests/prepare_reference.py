@@ -41,3 +41,35 @@ for x, label, im in zip([16, width + 32], ['APPROVED - HERO / SERVICES', 'ACTUAL
     focus.paste(im, (x, 60))
 focus.save(qa / 'approved-vs-actual-focus.webp', quality=92, method=6)
 print('Saved original reference, QA copy, full-reference / 1440 viewport comparison, and hero/services focus comparison.')
+# Keep the emblem review crops reproducible from real, identically scoped captures.
+emblem = qa / 'emblem'
+if (emblem / 'before-1440.png').exists():
+    box = (700, 12, 1280, 590)
+    for name, source in [('before-closeup.png', emblem / 'before-1440.png'), ('after-closeup.png', qa / 'after-1440.png')]:
+        with Image.open(source) as shot:
+            shot.crop(box).save(emblem / name)
+    canvas = Image.new('RGB', (1208, 650), '#080d13')
+    draw = ImageDraw.Draw(canvas)
+    for x, label, name in [(16, 'BEFORE - OPAQUE DISC', 'before-closeup.png'), (612, 'AFTER - SCENE INTEGRATION', 'after-closeup.png')]:
+        draw.text((x, 18), label, fill='#eaf2fc', font=ImageFont.load_default(size=18))
+        with Image.open(emblem / name) as shot:
+            canvas.paste(shot, (x, 58))
+    canvas.save(emblem / 'before-after-closeup.webp', quality=94, method=6)
+    scale = reference.width / 1440
+    target_crop = reference.crop(tuple(round(value * scale) for value in box)).resize((580, 578), Image.Resampling.LANCZOS)
+    canvas = Image.new('RGB', (1208, 650), '#080d13')
+    draw = ImageDraw.Draw(canvas)
+    for x, label in [(16, 'APPROVED REFERENCE'), (612, 'UPDATED CHROMIUM - 1440 PX')]:
+        draw.text((x, 18), label, fill='#eaf2fc', font=ImageFont.load_default(size=18))
+    canvas.paste(target_crop, (16, 58))
+    with Image.open(emblem / 'after-closeup.png') as shot:
+        canvas.paste(shot, (612, 58))
+    canvas.save(emblem / 'reference-actual-closeup.webp', quality=94, method=6)
+if (qa / 'before-1440.png').exists():
+    canvas = Image.new('RGB', (1968, 660), '#080d13')
+    draw = ImageDraw.Draw(canvas)
+    for x, label, name in [(16, 'REJECTED IMPLEMENTATION - BEFORE', 'before-1440.png'), (992, 'FINAL REWORK - ACTUAL CHROMIUM', 'after-1440.png')]:
+        draw.text((x, 16), label, fill='#eaf2fc', font=ImageFont.load_default(size=18))
+        with Image.open(qa / name) as shot:
+            canvas.paste(shot.convert('RGB').resize((960, 600), Image.Resampling.LANCZOS), (x, 48))
+    canvas.save(qa / 'before-vs-after.webp', quality=92, method=6)

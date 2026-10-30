@@ -2,6 +2,8 @@
 
 Status: the exact reference is committed, side-by-side review and a further visual revision are complete, and the redesigned milestone A is awaiting **owner visual approval**. PR #2 must remain draft. No merge, deployment, domain change or portfolio development was performed.
 
+The latest targeted owner-feedback pass is documented in [emblem-polish.md](emblem-polish.md), including before/after close-ups and real desktop/mobile browser recordings. It supersedes the earlier rim/reflection implementation described below.
+
 ## Exact reference and comparison
 
 The owner supplied `NCNS-approved-reference-for-Codex.zip`. Its optimized `approved-concept.webp` is copied **byte-for-byte** into [the reference directory](../../../reference/approved-concept.webp) and [alongside this QA report](approved-target.webp): 1223 × 1286, 220,720 bytes, SHA-256 `e78ad3ca39a7de6e72c1f2baf29984195dd98c32e7c18b210ace5f940544b4fa`. The missing-file blocker is resolved. The full mockup is not used as the application's background.
@@ -49,7 +51,7 @@ The final real Chromium run passed at **1440, 768, 390 and 360 × 900**:
 - Halo animation time advances. Desktop scene depth responds; mobile depth is disabled. Reduced motion removes halo animation and transforms.
 - Blocking both fonts leaves readable non-overflowing fallbacks at 1440 and 360px. Content stays visible with JavaScript disabled.
 
-[Final run results](results.json): approximately **677 KB desktop / 367 KB mobile**, with observed layout shift below **0.001** at all four sizes. The desktop-only alpha foreground adds approximately 222 KB. These are local smoke-run observations, not a production performance benchmark, complete accessibility audit or evidence of visual approval.
+[Final run results](results.json): approximately **680 KB desktop / 370 KB mobile**, with observed layout shift below **0.001** at all four sizes. The desktop-only alpha foreground adds approximately 222 KB. These are local smoke-run observations, not a production performance benchmark, complete accessibility audit or evidence of visual approval.
 
 ## Artifacts and reproduction
 
