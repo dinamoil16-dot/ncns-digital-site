@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  document.documentElement.classList.add('js');
   const $ = (id) => document.getElementById(id);
   const menu = $('menuToggle');
   const nav = $('primaryNavigation');
@@ -60,7 +61,7 @@
       $('heroOrbit').style.transform = '';
     }
   });
-  if (window.matchMedia('(pointer:fine)').matches) {
+  if (window.matchMedia('(min-width: 801px) and (pointer: fine)').matches) {
     document.querySelectorAll('.service-card').forEach(card => {
       card.addEventListener('pointermove', event => {
         if (motionPreference.matches) return;
@@ -89,15 +90,30 @@
     });
   }, {passive:true});
   const orbit = $('heroOrbit');
-  if(motionOK && window.matchMedia('(pointer:fine)').matches) {
-    orbit.addEventListener('pointermove',e=>{
-      if (motionPreference.matches) return;
-      const r=orbit.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      orbit.style.transform='perspective(900px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg)';
+  const hero = document.querySelector('.hero');
+  const depthAllowed = window.matchMedia('(min-width: 801px) and (pointer: fine)');
+  let depthFrame = 0;
+  const resetDepth = () => {
+    cancelAnimationFrame(depthFrame);
+    orbit.style.transform = '';
+    hero.style.removeProperty('--scene-x');
+    hero.style.removeProperty('--scene-y');
+  };
+  hero.addEventListener('pointermove', event => {
+    if (motionPreference.matches || !depthAllowed.matches) return;
+    cancelAnimationFrame(depthFrame);
+    depthFrame = requestAnimationFrame(() => {
+      const rect = hero.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      orbit.style.transform = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
+      hero.style.setProperty('--scene-x', `${x * -5}px`);
+      hero.style.setProperty('--scene-y', `${y * -3}px`);
     });
-    orbit.addEventListener('pointerleave',()=>orbit.style.transform='');
-  }
+  });
+  hero.addEventListener('pointerleave', resetDepth);
+  depthAllowed.addEventListener('change', resetDepth);
+  motionPreference.addEventListener('change', resetDepth);
   $('briefForm').addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const type=$('projectType').value,details=$('projectDetails').value.trim();

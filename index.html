@@ -7,9 +7,8 @@
   <meta name="description" content="NCNS Digital — premium web experiences, brand identity and AI automation for ambitious businesses worldwide." />
   <title>NCNS Digital — Digital Solutions That Work</title>
   <link rel="icon" type="image/webp" href="./assets/ncns-original-logo.webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" href="./assets/fonts/Michroma-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/scenery/obsidian-lake-1942.webp" as="image" media="(min-width: 801px)" fetchpriority="high" />
   <link rel="stylesheet" href="./styles.css" />
   <script defer src="./main.js"></script>
 </head>
@@ -17,48 +16,53 @@
   <a class="skip-link" href="#mainContent">Skip to content</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <header class="site-nav" id="top">
-    <a class="wordmark" href="#top" aria-label="NCNS Digital home"><span>NCNS</span><small>D I G I T A L</small></a>
+    <a class="brand" href="#home" aria-label="NCNS Digital home"><img src="./assets/ncns-original-logo.webp" width="480" height="480" alt="NCNS Digital" /></a>
     <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNavigation" aria-label="Open navigation"><span></span><span></span></button>
     <nav class="nav-links" id="primaryNavigation" aria-label="Primary navigation">
-      <a href="#services">Services</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#process">Process</a>
-      <a href="#contact" class="nav-contact">START A PROJECT <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></a>
+      <a href="#home" aria-current="page">Home</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#contact" class="nav-contact">GET A PROPOSAL <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
     </nav>
   </header>
   <main id="mainContent" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="heroTitle">
-      <div class="hero-sky" aria-hidden="true"></div>
+      <picture class="hero-scene" aria-hidden="true">
+        <source media="(max-width: 800px)" srcset="./assets/scenery/obsidian-lake-1280.webp" />
+        <img src="./assets/scenery/obsidian-lake-1942.webp" width="1942" height="809" alt="" fetchpriority="high" decoding="async" />
+      </picture>
+      <div class="scene-shade" aria-hidden="true"></div>
       <div class="hero-mist" aria-hidden="true"></div>
-      <div class="hero-landscape" aria-hidden="true"><div class="ridge back"></div><div class="ridge front"></div><div class="water"><div class="water-reflection"></div></div></div>
+      <div class="water-glint" aria-hidden="true"></div>
       <div class="hero-inner container">
         <div class="hero-copy">
-          <span class="eyebrow"><span class="status-dot"></span> AI &amp; DIGITAL AGENCY — WORLDWIDE</span>
-          <h1 id="heroTitle"><span>DIGITAL</span><span class="silver">SOLUTIONS</span><span>THAT WORK<span class="period">.</span></span></h1>
-          <p>Premium websites, distinctive brands and practical AI automation. Built to make businesses stand out and work smarter.</p>
-          <div class="hero-actions"><a class="button primary" href="#contact">START A PROJECT <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></a><a class="button outline" href="#experience">EXPLORE OUR APPROACH <span aria-hidden="true">↓</span></a></div>
+          <span class="eyebrow">AI &amp; DIGITAL AGENCY</span>
+          <h1 id="heroTitle"><span>DIGITAL</span><span class="silver">SOLUTIONS</span><span>THAT WORK</span></h1>
+          <p>We build websites, brands and AI automation<br class="desktop-break" /> that help businesses grow and operate smarter.</p>
+          <div class="hero-actions"><a class="button primary" href="#contact">GET A PROPOSAL <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="button outline" href="#work">VIEW WORK <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
         </div>
-        <div class="hero-orbit" aria-label="NCNS Digital metallic brand emblem with animated halo" id="heroOrbit">
-          <div class="orbital-field" aria-hidden="true"></div>
-          <div class="orbit-ring outer" aria-hidden="true"></div><div class="orbit-ring inner" aria-hidden="true"></div>
-          <div class="emblem-wrap"><img src="./assets/ncns-original-logo.webp" alt="NCNS Digital — AI & Digital Agency" /></div>
-          <span class="orbit-label">STRATEGY&nbsp; / &nbsp; DESIGN&nbsp; / &nbsp; TECHNOLOGY</span>
+        <div class="hero-orbit" id="heroOrbit">
+          <div class="orbit-glow" aria-hidden="true"></div>
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <div class="emblem-wrap"><img src="./assets/ncns-original-logo.webp" width="480" height="480" alt="Original NCNS Digital metallic emblem" decoding="async" /></div>
         </div>
+        <div class="hero-reflection" aria-hidden="true"><img src="./assets/ncns-original-logo.webp" width="480" height="480" alt="" /></div>
+        <div class="hero-index" aria-hidden="true"><span>01</span><p>WEB<br />BRAND<br />AI<br />AUTOMATION</p></div>
       </div>
-      <div class="hero-bottom container"><span>INDEPENDENT STUDIO <i></i> GLOBAL MINDSET</span><a href="#services">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-bottom container"><div class="capability-list"><span>Websites<small>DIGITAL PRODUCTS</small></span><span>Branding<small>IDENTITY &amp; CONTENT</small></span><span>AI<small>USEFUL AUTOMATION</small></span></div><span class="hero-signature">INDEPENDENT STUDIO<br />DIGITAL / WORLDWIDE</span></div>
     </section>
     <section id="services" class="services section container" aria-labelledby="servicesTitle">
-      <div class="section-heading reveal"><div><span class="eyebrow blue">01 / OUR EXPERTISE</span><h2 id="servicesTitle">Everything you need.<br /><em>Nothing you don't.</em></h2></div><p>Creative thinking meets practical engineering. Each solution starts with the business problem, not the buzzwords.</p></div>
+      <div class="section-heading reveal"><div><span class="eyebrow blue">SERVICES</span><h2 id="servicesTitle">Everything your business needs<br />to grow in the digital world.</h2></div><p>From considered websites to practical AI systems and complete brand identity. Thoughtful digital solutions, built around your business.</p><a class="button outline" href="#contact">LET’S TALK <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
       <div class="service-grid">
-        <a href="#contact" class="service-card reveal"><div class="service-top"><span>01 / DEVELOPMENT</span><span class="service-icon">▱</span></div><div class="service-art web-art" aria-hidden="true"><i></i><i></i><i></i></div><h3>Websites &amp;<br />Digital Products</h3><p>High-performance websites, interactive experiences and tools built around conversion.</p><span class="service-link">LET'S BUILD <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></span></a>
-        <a href="#contact" class="service-card reveal"><div class="service-top"><span>02 / CREATIVE</span><span class="service-icon">◇</span></div><div class="service-art brand-art" aria-hidden="true"><i></i><i></i></div><h3>Branding &amp;<br />Digital Identity</h3><p>Memorable visual systems, social experiences and confident brand presentation.</p><span class="service-link">DISCUSS A BRAND <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></span></a>
-        <a href="#contact" class="service-card reveal"><div class="service-top"><span>03 / INTELLIGENCE</span><span class="service-icon">⌘</span></div><div class="service-art ai-art" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h3>AI &amp;<br />Automation</h3><p>AI agents, lead workflows and operational automations that remove repetitive work.</p><span class="service-link">EXPLORE AI <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></span></a>
+        <a href="#contact" class="service-card reveal service-web"><div class="service-image" role="img" aria-label="Illustrative premium laptop with a cinematic website mockup"></div><div class="service-content"><span class="service-number">01</span><h3>Websites<br />&amp; Web Apps</h3><p>Modern websites, landing pages and web applications built around your goals.</p><span class="service-link">DISCUSS A WEBSITE <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span></div></a>
+        <a href="#contact" class="service-card reveal service-brand"><div class="service-image" role="img" aria-label="Illustrative black embossed stationery and metallic print finishes"></div><div class="service-content"><span class="service-number">02</span><h3>Branding<br />&amp; Content</h3><p>Visual identity, social media content and marketing assets that make your brand distinct.</p><span class="service-link">DISCUSS A BRAND <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span></div></a>
+        <a href="#contact" class="service-card reveal service-ai"><div class="service-image" role="img" aria-label="Illustrative glass technical module with precision circuitry"></div><div class="service-content"><span class="service-number">03</span><h3>AI &amp; Automation</h3><p>Practical AI agents and workflows designed to simplify repetitive business tasks.</p><span class="service-link">EXPLORE AUTOMATION <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span></div></a>
       </div>
     </section>
-    <section id="experience" class="experience section" aria-labelledby="experienceTitle"><div class="container experience-layout"><div class="experience-copy reveal"><span class="eyebrow blue">02 / CAPABILITIES IN MOTION</span><h2 id="experienceTitle">Made to <em>move.</em><br />Built to <em>matter.</em></h2><p>Our own site should demonstrate the qualities we design for clients: precision, personality, responsiveness and thoughtful motion.</p><p class="muted">Explore the interactive system. This is a visual demonstration of a workflow, not a connected business integration.</p></div>
+    <section id="work" class="work section container"><div class="section-heading reveal"><div><span class="eyebrow blue">SELECTED WORK</span><h2>Original concepts.<br /><em>Coming into focus.</em></h2></div><p>We're assembling original working demos here. Every concept will be labelled clearly until verified client projects are available.</p></div><div class="work-placeholder reveal"><div><span class="eyebrow">CONCEPTS / NOT YET RELEASED</span><h3>Work in progress.</h3><p>Coming next: interactive website builds, design systems and AI workflow demonstrations — each with a live walkthrough.</p></div><div class="placeholder-orbit" aria-hidden="true"><span>NCNS</span></div></div></section>
+    <section id="process" class="process section"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow blue">OUR PROCESS</span><h2>From first idea<br />to <em>working product.</em></h2></div><p>Clear milestones, collaborative decisions and execution that stays focused on real business needs.</p></div><div class="process-grid"><div class="process-item reveal"><b>01</b><h3>Understand</h3><p>Goals, context, customer needs.</p></div><div class="process-item reveal"><b>02</b><h3>Define</h3><p>Strategy, scope, direction.</p></div><div class="process-item reveal"><b>03</b><h3>Create</h3><p>Design, build and refine.</p></div><div class="process-item reveal"><b>04</b><h3>Launch</h3><p>Test, deliver and improve.</p></div></div></div></section>
+    <section id="about" class="experience section" aria-labelledby="experienceTitle"><div class="container experience-layout" id="experience"><div class="experience-copy reveal"><span class="eyebrow blue">ABOUT / INTERACTIVE DEMO</span><h2 id="experienceTitle">Made to <em>move.</em><br />Built to <em>matter.</em></h2><p>Our own site should demonstrate the qualities we design for clients: precision, personality, responsiveness and thoughtful motion.</p><p class="muted">Explore the interactive system. This is a visual demonstration of a workflow, not a connected business integration.</p></div>
       <div class="workflow reveal"><div class="workflow-title"><span>NCNS / EXPERIENCE LAB</span><span class="live-indicator">INTERACTIVE DEMO</span></div><div class="workflow-track" id="workflowSteps"><button type="button" data-step="0" class="active"><span>01</span> Discovery</button><button type="button" data-step="1"><span>02</span> Design</button><button type="button" data-step="2"><span>03</span> Build</button><button type="button" data-step="3"><span>04</span> Grow</button></div><div class="workflow-view"><span class="workflow-count" id="workflowCount">01 / 04</span><div class="workflow-glyph" id="workflowGlyph" aria-hidden="true">◎</div><h3 id="workflowHeading">Start with the real problem.</h3><p id="workflowDescription">We learn what matters to your customers and what a better digital experience should achieve.</p></div><div class="workflow-bottom"><span>SELECT A STAGE ABOVE</span><button type="button" id="nextStep">NEXT STAGE ↗</button></div></div></div></section>
-    <section id="work" class="work section container"><div class="section-heading reveal"><div><span class="eyebrow blue">03 / SELECTED WORK</span><h2>Proof over <em>promises.</em></h2></div><p>We're assembling original working demos here. Every concept will be labelled clearly until verified client projects are available.</p></div><div class="work-placeholder reveal"><div><span class="eyebrow">PORTFOLIO / IN PRODUCTION</span><h3>Real interactions.<br />Real functionality.</h3><p>Coming next: interactive website builds, design systems and AI workflow demonstrations — each with a live walkthrough.</p></div><div class="placeholder-orbit" aria-hidden="true"><span>NCNS</span></div></div></section>
-    <section id="process" class="process section"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow blue">04 / OUR PROCESS</span><h2>From first idea<br />to <em>working product.</em></h2></div><p>Clear milestones, collaborative decisions and execution that stays focused on real business needs.</p></div><div class="process-grid"><div class="process-item reveal"><b>01</b><h3>Understand</h3><p>Goals, context, customer needs.</p></div><div class="process-item reveal"><b>02</b><h3>Define</h3><p>Strategy, scope, direction.</p></div><div class="process-item reveal"><b>03</b><h3>Create</h3><p>Design, build and refine.</p></div><div class="process-item reveal"><b>04</b><h3>Launch</h3><p>Test, deliver and improve.</p></div></div></div></section>
     <section id="contact" class="contact section container"><span class="eyebrow blue reveal">05 / LET'S CREATE SOMETHING</span><div class="contact-layout"><div class="reveal"><h2>Your next move<br /><em>starts here.</em></h2><p>Tell us what you're building. We'll turn your idea into a concise project brief — ready to send once a verified contact channel is connected.</p><small>Demo only: brief stays in your browser and is not submitted.</small></div><form class="brief reveal" id="briefForm"><label for="projectType">What do you need?</label><select id="projectType"><option>Website / digital product</option><option>Branding / social identity</option><option>AI automation</option><option>Something else</option></select><label for="projectDetails">Describe your project</label><textarea id="projectDetails" maxlength="1200" rows="4" placeholder="Tell us your goals, timeline and what matters most…"></textarea><button class="button primary" type="submit">COPY PROJECT BRIEF <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10"/></svg></button><div class="form-status" id="formStatus" role="status" aria-live="polite"></div></form></div></section>
   </main>
-  <footer class="footer container"><a class="wordmark" href="#top"><span>NCNS</span><small>D I G I T A L</small></a><div><span>AI &amp; DIGITAL AGENCY</span><span>INDEPENDENT / WORLDWIDE</span></div><span>© 2026 NCNS DIGITAL</span></footer>
+  <footer class="footer container"><a class="brand" href="#home" aria-label="NCNS Digital home"><img src="./assets/ncns-original-logo.webp" width="480" height="480" alt="NCNS Digital" loading="lazy" /></a><div><span>AI &amp; DIGITAL AGENCY</span><span>INDEPENDENT / WORLDWIDE</span></div><span>© 2026 NCNS DIGITAL</span></footer>
 </body>
 </html>
