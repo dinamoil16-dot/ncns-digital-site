@@ -1,17 +1,35 @@
 (() => {
   'use strict';
+  document.documentElement.classList.add('js');
   const $ = (id) => document.getElementById(id);
   const menu = $('menuToggle');
   const nav = $('primaryNavigation');
-  menu.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+  const setMenu = (open, restoreFocus = false) => {
+    nav.classList.toggle('open', open);
     menu.setAttribute('aria-expanded', String(open));
     menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    if (restoreFocus) menu.focus();
+  };
+  menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+      setMenu(false, true);
+    }
   });
-  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menu.setAttribute('aria-expanded','false');
-  }));
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.site-nav')) setMenu(false);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      setMenu(false);
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({preventScroll: true});
+    });
+  });
+  const mobileNav = window.matchMedia('(max-width: 800px)');
+  mobileNav.addEventListener('change', () => setMenu(false));
   const stages = [
     ['01 / 04', '◎', 'Start with the real problem.', 'We learn what matters to your customers and what a better digital experience should achieve.'],
     ['02 / 04', '◇', 'Give the idea its own identity.', 'We translate the strategy into a distinct interface and clear user journey.'],
@@ -35,7 +53,24 @@
   stageButtons.forEach((b,i) => b.addEventListener('click', () => setStage(i)));
   $('nextStep').addEventListener('click', () => setStage((stage+1)%stages.length));
   setStage(0);
-  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const motionOK = !motionPreference.matches;
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      $('heroOrbit').style.transform = '';
+    }
+  });
+  if (window.matchMedia('(min-width: 801px) and (pointer: fine)').matches) {
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('pointermove', event => {
+        if (motionPreference.matches) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--pointer-x', `${event.clientX - rect.left}px`);
+        card.style.setProperty('--pointer-y', `${event.clientY - rect.top}px`);
+      });
+    });
+  }
   if (motionOK && window.IntersectionObserver) {
     const io = new IntersectionObserver(entries => entries.forEach(e => {
       if(e.isIntersecting) {e.target.classList.add('visible');io.unobserve(e.target);}
@@ -55,14 +90,30 @@
     });
   }, {passive:true});
   const orbit = $('heroOrbit');
-  if(motionOK && window.matchMedia('(pointer:fine)').matches) {
-    orbit.addEventListener('pointermove',e=>{
-      const r=orbit.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      orbit.style.transform='perspective(900px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg)';
+  const hero = document.querySelector('.hero');
+  const depthAllowed = window.matchMedia('(min-width: 801px) and (pointer: fine)');
+  let depthFrame = 0;
+  const resetDepth = () => {
+    cancelAnimationFrame(depthFrame);
+    orbit.style.transform = '';
+    hero.style.removeProperty('--scene-x');
+    hero.style.removeProperty('--scene-y');
+  };
+  hero.addEventListener('pointermove', event => {
+    if (motionPreference.matches || !depthAllowed.matches) return;
+    cancelAnimationFrame(depthFrame);
+    depthFrame = requestAnimationFrame(() => {
+      const rect = hero.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      orbit.style.transform = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
+      hero.style.setProperty('--scene-x', `${x * -5}px`);
+      hero.style.setProperty('--scene-y', `${y * -3}px`);
     });
-    orbit.addEventListener('pointerleave',()=>orbit.style.transform='');
-  }
+  });
+  hero.addEventListener('pointerleave', resetDepth);
+  depthAllowed.addEventListener('change', resetDepth);
+  motionPreference.addEventListener('change', resetDepth);
   $('briefForm').addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const type=$('projectType').value,details=$('projectDetails').value.trim();

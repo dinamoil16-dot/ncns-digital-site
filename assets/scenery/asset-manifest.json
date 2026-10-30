@@ -1,0 +1,57 @@
+[
+  {
+    "path": "assets/fonts/Manrope-Variable.woff2",
+    "bytes": 53900,
+    "sha256": "ffc279f5f9aa5bb27b89f32798732b0732302257b3a18bdebf215afb3fb9f0ab"
+  },
+  {
+    "path": "assets/fonts/Michroma-Regular.woff2",
+    "bytes": 26404,
+    "sha256": "b17a4e0acc671b01fa39810d0f95b0b002a62ee13c0f06a573d55b1f0026d523"
+  },
+  {
+    "path": "assets/ncns-original-logo.webp",
+    "bytes": 13388,
+    "sha256": "75b0a8357126199bae258710941d5b7dccdeb4492607e7a123787a59a327fd01",
+    "dimensions": [
+      480,
+      480
+    ]
+  },
+  {
+    "path": "assets/scenery/foreground-rocks.webp",
+    "bytes": 222946,
+    "sha256": "23c0fb2846340c43cb934ea19ebc77e5e6fecfa0db3b3c5aa0cb39c47e607716",
+    "dimensions": [
+      1942,
+      809
+    ]
+  },
+  {
+    "path": "assets/scenery/obsidian-lake-1280.webp",
+    "bytes": 88272,
+    "sha256": "20bfd17b3f8792cdd9bd08fc51cee1ae4535d0199ae40a64205fa459be24081c",
+    "dimensions": [
+      1280,
+      533
+    ]
+  },
+  {
+    "path": "assets/scenery/obsidian-lake-1942.webp",
+    "bytes": 175554,
+    "sha256": "3ff6b1189011ba0c95af72ec63152d290b5d327391c8a2c1330c74cf0926bce8",
+    "dimensions": [
+      1942,
+      809
+    ]
+  },
+  {
+    "path": "assets/scenery/service-studio.webp",
+    "bytes": 153988,
+    "sha256": "32882acad921c6bc182a7e71277fe4942720fa8856be9a643451cd91433c37c7",
+    "dimensions": [
+      2172,
+      724
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "source": "actual Chromium CDP screencast; original frame timestamps preserved",
+  "viewport": [
+    390,
+    900
+  ],
+  "frames": 262,
+  "captured_seconds": 8.702493906021118,
+  "halo_elapsed_ms": 8682.988,
+  "js_errors": [],
+  "reduced_motion": false
+}

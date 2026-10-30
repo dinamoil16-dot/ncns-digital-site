@@ -22,7 +22,16 @@ Open `index.html` in Chrome/Edge, or serve this directory with `python -m http.s
 - Contact email, domain, analytics, deployments and backend integrations are intentionally unconfigured.
 - Real-world device visual QA, accessibility audit and Core Web Vitals remain open before publishing.
 
-## Validation at handoff
-- JavaScript passed `node --check` and HTML parsed with Python's HTML parser; CSS brace count matched.
-- Automated Chromium preview could **not** be completed in the current restricted browser environment (navigation blocked; inline content timed out). Therefore **desktop/mobile rendering, interaction success and performance are NOT verified**. Codex must run browser QA and fix issues before any launch.
-Original owner logo is preserved as a losslessly recognizable WEBP asset extracted from the previous authorized NCNS site; this static project will be refined with Codex after first visual review.
+## Milestone A visual rework (issue #3)
+
+The rejected CSS scenery and geometric service illustrations have been replaced with local generated photographic assets. The original NCNS emblem is unchanged. Typography uses locally packaged, licensed Michroma and Manrope; there are no external font requests or frontend build dependencies.
+
+Serve the repository with `python3 -m http.server 8000 --bind 127.0.0.1`. Run `node --check main.js` and `python3 tests/browser_smoke.py` (Python Playwright and `/usr/bin/chromium` required). The app itself only needs a static file server.
+
+The latest Chromium checks passed at 1440, 768, 390 and 360px. See [the visual review, screenshots and limitations](docs/qa/issue-1-rework/visual-comparison.md). Automated checks do not establish owner visual approval.
+
+The exact owner-approved reference is committed at `reference/approved-concept.webp`, copied byte-for-byte from the supplied ZIP. See [reference provenance](reference/README.md) and [the side-by-side comparison](docs/qa/issue-1-rework/approved-vs-actual-focus.webp). The site uses independent scenery and HTML components, not the full mockup as a background.
+
+The latest [emblem integration review](docs/qa/issue-1-rework/emblem-polish.md) includes close-up comparisons and actual desktop/mobile Chromium animation recordings.
+
+PR #2 remains draft pending owner visual approval. No portfolio development, merge or deployment is authorized at this stage.
