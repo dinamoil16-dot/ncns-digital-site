@@ -1,37 +1,36 @@
-# NCNS Digital — approved cinematic direction (starter)
+# NCNS Digital
 
-This is a **working static starter** built around the October 30, 2026 approved combined visual concept (Cinematic Luxury + Premium Minimalism).
+Independent static agency website in the approved Cinematic Luxury × Premium Minimalism direction. Milestone A was approved and merged in PR #2; its squash commit `87e8de3` is the visual baseline. Milestone B completes the agency sections and local interactive tools for owner review.
 
 ## Run locally
 
-Open `index.html` in Chrome/Edge, or serve this directory with `python -m http.server 8000`.
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
 
-## Files
-- `index.html` — semantic front-end prototype (not yet final production page)
-- `styles.css` — original layout, atmospheric backdrop, responsive and reduced-motion styles
-- `main.js` — real client-side interactions: navigation, workflow stage selector, reveal, progress bar, cursor parallax, copyable brief
-- `assets/ncns-original-logo.webp` — owner-supplied authentic approved brand mark. **Do not redraw or replace without approval.**
-- `reference/design-direction.md` — visual inspiration only; never use the whole screenshot as the website, because it contains baked-in UI and placeholder copy.
-- `spec/CODEX_TASK.md` — engineering brief for Codex.
+No frontend installation or build is needed. All fonts and imagery are local. The original `assets/ncns-original-logo.webp` is unchanged. `styles.css` retains the approved opening-frame design; `milestone-b.css` extends the site below it and adds restrained, accessible interactions.
 
-## Status and integrity
-- This is an initial implementation, **not a launched site or finished product**.
-- Portfolio contains no invented client case studies or fake numbers. Additional real demo projects will be added separately after the site direction is approved.
-- Brief builder only copies text locally; no personal information is transmitted.
-- Do not use fake client logos, reviews, '50+ projects', 'global clients', or claimed conversion increases without evidence.
-- Contact email, domain, analytics, deployments and backend integrations are intentionally unconfigured.
-- Real-world device visual QA, accessibility audit and Core Web Vitals remain open before publishing.
+## Current experience
 
-## Milestone A visual rework (issue #3)
+- Original cinematic hero and three service images, with a single composite halo and shallow scenery depth. Pointer movement does not transform the logo lettering.
+- Detailed websites, branding and AI/workflow capabilities; native accessible detail panels.
+- Three-step local requirements builder, honest copyable draft, clipboard fallback and transfer to an editable project brief.
+- Keyboard-accessible Discover → Design → Build → Improve timeline, standalone About, explicit coming-next work section and complete footer navigation.
+- Reduced-motion support, paused motion in hidden tabs, useful content/navigation without JavaScript and local font fallbacks.
 
-The rejected CSS scenery and geometric service illustrations have been replaced with local generated photographic assets. The original NCNS emblem is unchanged. Typography uses locally packaged, licensed Michroma and Manrope; there are no external font requests or frontend build dependencies.
+The builder assembles user choices locally. It is not an AI service or price quotation. The contact section only copies a brief; it sends no enquiry, email, payment or booking. No analytics, tracking, backend, portfolio cases or deployment are enabled.
 
-Serve the repository with `python3 -m http.server 8000 --bind 127.0.0.1`. Run `node --check main.js` and `python3 tests/browser_smoke.py` (Python Playwright and `/usr/bin/chromium` required). The app itself only needs a static file server.
+## Validation and review
 
-The latest Chromium checks passed at 1440, 768, 390 and 360px. See [the visual review, screenshots and limitations](docs/qa/issue-1-rework/visual-comparison.md). Automated checks do not establish owner visual approval.
+```sh
+node --check main.js
+python3 tests/milestone_b_browser.py
+python3 tests/record_milestone_b.py
+python3 tests/record_milestone_b.py --mobile
+```
 
-The exact owner-approved reference is committed at `reference/approved-concept.webp`, copied byte-for-byte from the supplied ZIP. See [reference provenance](reference/README.md) and [the side-by-side comparison](docs/qa/issue-1-rework/approved-vs-actual-focus.webp). The site uses independent scenery and HTML components, not the full mockup as a background.
+QA tools require Python Playwright, Pillow, system Chromium (`/usr/bin/chromium`) and FFmpeg for recordings. The server must be running. `python3 tests/browser_smoke.py` remains a compatibility entry point for the current acceptance suite.
 
-The latest [emblem integration review](docs/qa/issue-1-rework/emblem-polish.md) includes close-up comparisons and actual desktop/mobile Chromium animation recordings.
+[Milestone B QA, screenshots, videos and limitations](docs/qa/milestone-b/README.md) · [Exact approved reference](reference/README.md) · [Asset provenance and licenses](assets/scenery/README.md)
 
-PR #2 remains draft pending owner visual approval. No portfolio development, merge or deployment is authorized at this stage.
+Historical Milestone A evidence remains under `docs/qa/issue-1-rework/`. Milestone B requires a new draft PR targeting main and owner visual approval before any merge or publication. Portfolio cases are a separate later milestone.

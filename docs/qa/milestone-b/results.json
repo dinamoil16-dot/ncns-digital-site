@@ -1,0 +1,84 @@
+{
+  "viewports": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "js_errors": [],
+      "failed_requests": [],
+      "bad_http": [],
+      "data_submissions": [],
+      "overflow": false,
+      "functional_and_motion_checks": "passed",
+      "bytes": 696502,
+      "layout_shift": 0.0005587042663323046
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "js_errors": [],
+      "failed_requests": [],
+      "bad_http": [],
+      "data_submissions": [],
+      "overflow": false,
+      "functional_and_motion_checks": "passed",
+      "bytes": 696502,
+      "layout_shift": 0.0011660187349965176
+    },
+    {
+      "viewport": [
+        768,
+        900
+      ],
+      "js_errors": [],
+      "failed_requests": [],
+      "bad_http": [],
+      "data_submissions": [],
+      "overflow": false,
+      "functional_and_motion_checks": "passed",
+      "bytes": 385974,
+      "layout_shift": 0.00010594120732060186
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "js_errors": [],
+      "failed_requests": [],
+      "bad_http": [],
+      "data_submissions": [],
+      "overflow": false,
+      "functional_and_motion_checks": "passed",
+      "bytes": 385974,
+      "layout_shift": 0.0006489629155846362
+    },
+    {
+      "viewport": [
+        360,
+        780
+      ],
+      "js_errors": [],
+      "failed_requests": [],
+      "bad_http": [],
+      "data_submissions": [],
+      "overflow": false,
+      "functional_and_motion_checks": "passed",
+      "bytes": 385974,
+      "layout_shift": 0.0007659798412502739
+    }
+  ],
+  "no_js_and_font_fallback": "passed at 1440 and 390",
+  "normal_first_load_reveals": "passed for new sections",
+  "hero_comparison": {
+    "hero_crop": [
+      1440,
+      604
+    ],
+    "changed_pixels_above_2_255": 0,
+    "total_pixels": 869760
+  }
+}
