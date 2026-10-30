@@ -1,0 +1,24 @@
+{
+  "desktop-preview": {
+    "seconds": 19.86,
+    "capture_seconds": 19.85854721069336,
+    "bytes": 2214125,
+    "distinct_decoded_frames": 169,
+    "stream": {
+      "codec_name": "vp9",
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "mobile-preview": {
+    "seconds": 19.98,
+    "capture_seconds": 19.979167222976685,
+    "bytes": 1160210,
+    "distinct_decoded_frames": 200,
+    "stream": {
+      "codec_name": "vp9",
+      "width": 390,
+      "height": 844
+    }
+  }
+}

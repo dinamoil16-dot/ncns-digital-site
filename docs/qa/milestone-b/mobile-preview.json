@@ -1,0 +1,22 @@
+{
+  "encoded_seconds": 19.98,
+  "source": "real Chromium CDP frames with original timestamps",
+  "viewport": [
+    390,
+    844
+  ],
+  "frames": 201,
+  "capture_seconds": 19.979167222976685,
+  "halo_elapsed_ms": 19949.224,
+  "reduced_motion": false,
+  "js_errors": [],
+  "data_submissions": [],
+  "sequence": [
+    "normal-motion hero",
+    "scenery depth and service hover (desktop)",
+    "native scrolling",
+    "requirements builder",
+    "copy result",
+    "transfer to editable offline brief"
+  ]
+}
