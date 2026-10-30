@@ -2,7 +2,7 @@
 
 This is the first implementation under **Milestone C2 / Issue #8** and the owner-approved [Growth Partner Strategy](../../docs/NCNS-GROWTH-PARTNER-STRATEGY.md).
 
-It is an independently authored **business operations interface** in a dedicated \`/work/growth-os/\` path, **not another agency website or a static mockup**. The approved main NCNS Digital homepage remains unchanged.
+It is an independently authored **business operations interface** in a dedicated `/work/growth-os/` path, **not another agency website or a static mockup**. The approved main NCNS Digital homepage remains unchanged.
 
 ## What works right now
 - Switch reporting windows (this month / previous month / quarter) and acquisition sources; real client-side sums and funnel percentages recompute.
@@ -17,21 +17,21 @@ All leads, names, spend, sales and results are fictional. These UI workflows are
 ## How to review locally
 At the repository root:
 
-\`\`\`sh
+```sh
 python3 -m http.server 8000 --bind 127.0.0.1
-\`\`\`
+```
 
 Visit: **http://127.0.0.1:8000/work/growth-os/**
 
 No package install or bundler is needed for the browser app. The root-level emblem uses the existing original NCNS asset.
 
 ## Functional and responsive smoke checks
-\`\`\`sh
+```sh
 node --check work/growth-os/app.js
 python3 tests/growth_os_browser.py
-\`\`\`
+```
 
-The Playwright test generates 1440, 390 and 360px full-page evidence under \`docs/qa/milestone-c2/growth-os/\`. Requires system Chromium and Python Playwright. These checks still need to be **executed and reviewed** in a real Chromium environment; do not claim the screenshots or test pass before running them.
+The Playwright test generates 1440, 390 and 360px full-page evidence under `docs/qa/milestone-c2/growth-os/`. Requires system Chromium and Python Playwright. These checks still need to be **executed and reviewed** in a real Chromium environment; do not claim the screenshots or test pass before running them.
 
 ## What the owner should review
 1. Visual quality and clear "business pays for this" story — the app should feel more substantial than a screenshot of a website.
