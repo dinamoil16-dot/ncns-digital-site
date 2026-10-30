@@ -60,3 +60,7 @@ Final Chromium validation covers 1440×1000, 390×844 and 360×780 for all three
 Measured board subresources are approximately 486 KB Asterwake, 218 KB Kern/9 and 474 KB Auven on fresh local navigations (HTML excluded). These are proposal measurements, not production performance claims. The future demos should add responsive images, a small local JS module and measured LCP/CLS budgets after direction approval.
 
 **Owner decision needed:** approve or revise the visual direction(s) before any functional demo development. No agency-site edit, merge, deployment, domain, backend, payment, analytics or real integration is included in C1.
+
+### Draft PR status
+
+The branch is pushed as `codex/milestone-c1-portfolio-design`. The requested `gh pr create --draft --base main` attempt returned `Post https://api.github.com/graphql: Forbidden`; no PR creation is claimed. Per Issue #6's fallback, the branch and [ready PR description](PR.md) are available for the owner/assistant to open the draft PR. All design-review artifacts are committed; this does not authorise complete demo development.
