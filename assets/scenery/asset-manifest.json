@@ -19,6 +19,15 @@
     ]
   },
   {
+    "path": "assets/scenery/foreground-rocks.webp",
+    "bytes": 222946,
+    "sha256": "23c0fb2846340c43cb934ea19ebc77e5e6fecfa0db3b3c5aa0cb39c47e607716",
+    "dimensions": [
+      1942,
+      809
+    ]
+  },
+  {
     "path": "assets/scenery/obsidian-lake-1280.webp",
     "bytes": 88272,
     "sha256": "20bfd17b3f8792cdd9bd08fc51cee1ae4535d0199ae40a64205fa459be24081c",

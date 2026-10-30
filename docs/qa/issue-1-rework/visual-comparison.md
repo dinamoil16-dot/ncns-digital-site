@@ -1,51 +1,57 @@
-# Issue #3 — visual rework for draft PR #2
+# Issue #3 — exact-reference visual review for draft PR #2
 
-Status: **redesigned implementation submitted for owner review; the exact reference-file/comparison gate is still incomplete**. No merge, deployment, domain change or portfolio development was performed.
+Status: the exact reference is committed, side-by-side review and a further visual revision are complete, and the redesigned milestone A is awaiting **owner visual approval**. PR #2 must remain draft. No merge, deployment, domain change or portfolio development was performed.
 
-## Reference and comparison limitation
+## Exact reference and comparison
 
-The owner-attached full-page approved concept was visually inspected in the conversation, alongside the rejected desktop screenshots. Its original downloadable file was not mounted in the workspace. Consequently `reference/approved-concept.webp`, a QA copy of that target and the genuine **approved-reference / actual-browser** collage cannot yet be committed. No regenerated image has been mislabelled as the approved reference.
+The owner supplied `NCNS-approved-reference-for-Codex.zip`. Its optimized `approved-concept.webp` is copied **byte-for-byte** into [the reference directory](../../../reference/approved-concept.webp) and [alongside this QA report](approved-target.webp): 1223 × 1286, 220,720 bytes, SHA-256 `e78ad3ca39a7de6e72c1f2baf29984195dd98c32e7c18b210ace5f940544b4fa`. The missing-file blocker is resolved. The full mockup is not used as the application's background.
 
-Provide the original attachment as a downloadable PNG/WebP file; `python3 tests/prepare_reference.py /path/to/original.png` will preserve its full composition, encode the exact source at quality 92, save it alongside this report, and generate the required two-column collage. That collage must then receive an actual visual review. This missing gate prevents claiming full compliance with issue #3.
+- [Full approved reference beside the actual 1440×900 Chromium viewport](approved-vs-actual.webp). Each column is independently scaled to the same width; the approved image retains its full composition, while the actual image is explicitly the 900px viewport.
+- [Hero/services scope comparison](approved-vs-actual-focus.webp): both columns at the same width, cropped only to the authorized hero/services scope. The actual right column comes from the full-page Chromium screenshot at 1440px width, without rearranging the page or hiding elements.
+- [Actual 1440×900 screenshot](after-1440.png), [full page](screenshot-1440.png), and [pre-reference-review implementation](pre-reference-review-1440.png).
 
-Available comparison: [rejected implementation versus rework](before-vs-after.webp). This is explicitly **before / after**, not approved / actual.
+![Approved reference left; actual Chromium hero and services right](approved-vs-actual-focus.webp)
 
-![Rejected implementation and redesigned browser rendering](before-vs-after.webp)
+## Differences identified and corrected from the side-by-side
 
-## Comparison against the visible approved attachment
+The first comparison showed a dim narrow rim, a floating lower emblem edge, undersized supporting text and service labels, slightly wide SOLUTIONS / THAT WORK lettering, and a hero boundary below the target's corresponding boundary. The further revision:
 
-| Area | Approved direction | Rework and remaining deviations |
-| --- | --- | --- |
-| Hero composition | Thin architectural heading on the left; giant original circular emblem on the right | Rebuilt with live Michroma typography, a 550px independent emblem on a 610px desktop hero, restrained CTAs and dark negative space. Mobile stacks the hierarchy. Exact pixel overlay remains pending the source file. |
-| Header | Slender black header, small real emblem, quiet links and outlined CTA | Original owner asset replaces the generic wordmark. Home, Services, Work, Process, About and Contact resolve to real sections. Proposal CTA leads to the honest offline brief, not an invented booking backend. |
-| Mountain / lake / planet | Detailed black rock, wet water reflections, haze and a muted planetary rim | Polygon ridges and striped CSS water removed entirely. A locally hosted generated photographic environment supplies the terrain, lake and planet; independent mist, water glint and parallax add depth. This is a new illustrative scene, not the exact scene from the reference. |
-| Emblem and lighting | Original metallic lettering, silver/ice-blue circular edge integrated with the scene | Original logo bytes unchanged. Narrow halo sweep, soft pulse, shallow desktop depth and a subtle reflected duplicate; no generated lettering. The source emblem is 480px, so it is softer than a bespoke high-resolution render. It remains a composited emblem, not a physically simulated 3D object. |
-| Services | Three horizontal panels: laptop, black stationery, glass technical module | Replaced all geometric placeholders with an optimized local photographic atlas; live headings, descriptions and actionable links remain separate. Artwork composition differs from the approved image and contains no fabricated customer identity. |
-| Spacing / colour | Dense cinematic first screen and compact services; near-black, silver, pale blue | Hero height and compact horizontal cards bring services directly below the scene. Saturated effects removed; palette remains near-black, chrome and restrained blue. |
-| Claims / later sections | Mockup contains illustrative metrics and projects | Unsupported metrics replaced with capability labels. Existing Selected Work remains an explicit unreleased-concept placeholder. Existing Process and interactive demo retained; no new portfolio projects or fake proof. |
+1. Added a restrained stationary chrome highlight and luminous silver edge around the original emblem, retaining the real moving halo sweep and slow pulse.
+2. Added an independently generated transparent wet-rock foreground that occludes the lower emblem edge and frames the lake. This is a separate local image layer, not a flattened website. A dark local backing keeps capability labels readable over the rocks.
+3. Increased desktop supporting copy, CTA text, service numbers, headings and descriptions to better match the reference's hierarchy. Tightened spacing in the two wider title lines and adjusted their vertical placement.
+4. Matched the 1440px hero boundary more closely (604px high), retaining the already-revised lake horizon and tall central mountain.
+5. Kept the new foreground out of mobile network requests with responsive source selection. Mobile retains its tested stacked hierarchy and disables expensive depth effects.
 
-## Visual iteration performed
+The final comparison and desktop/mobile screenshots were visually reviewed after these changes; functional tests alone are not the basis for this visual review.
 
-[First new rendering](first-pass-1440.png) was reviewed against the visible attached concept and the rejected implementation. Its waterline was too high and bright rock texture competed with body copy. The scene was reframed to lower the lake horizon while keeping the central peak tall; a local left-side shade protects typography. The unnecessary logo isolation and broad background disc were reduced, the emblem lifted slightly and a faint reflection added. The original small header mark is clipped only at its square black corners, preserving the circular emblem. Compare that first rendering with [the revised 1440×900 rendering](after-1440.png).
+## Final comparison and deliberate deviations
 
-Desktop, 390px and 360px screenshots were visually inspected. Mobile retains a complete emblem, readable headline and both CTAs; cards stack vertically. Heavy desktop parallax and moving haze are disabled on mobile. The halo uses a slower sweep; reduced motion disables animations and transforms entirely.
+| Area | Result and remaining difference |
+| --- | --- |
+| Hero layout / spacing | Live architectural title and CTAs left; giant original emblem right; compact services directly below. The reference's basic layout and hierarchy are reproduced with independent elements. Title font geometry is close but not identical to the rendered mockup lettering. |
+| Emblem scale / metallic lighting | Original owner logo file is unchanged. Chrome rim, optical highlight, animated sweep, haze, foreground overlap and a faint reflected duplicate create depth. The original source is 480px, so it remains softer than the mockup's bespoke high-resolution emblem. Its inner black glass does not reproduce every scratch or reflection in the reference. |
+| Mountain / water / planet | Realistic textured local illustrative environment, central peak, reflected lake, subdued planet and separate foreground replace all polygon mountains and striped CSS water. The generated geology, planet and water texture differ from the exact mockup; this is an independently rebuilt scene, not a copy cut from the reference. |
+| Type / colour | Local licensed Michroma and Manrope; near-black, chrome/silver and restrained ice-blue. Desktop copy and service hierarchy were revised from the actual comparison. No remote font dependency. |
+| Services | Three horizontal photographic cards: laptop, embossed black stationery, translucent circuitry module. Live actionable text remains separate. Generated products, embossing and circuit details differ from the reference's illustrative artwork. No invented client identity or deliverable is claimed. |
+| Header / CTAs | Original small emblem and working Home, Services, Work, Process, About, Contact links. Proposal leads to the explicitly offline brief; an unconfigured booking service and language/globe control are not invented. |
+| Statistics / later sections | Unsupported project counts, industries and global-client claims are replaced with capability labels. Existing Selected Work remains an explicit unreleased-concept placeholder. Process and the existing interactive demo are retained; no portfolio projects were developed. |
 
 ## Browser validation
 
-Run `python3 -m http.server 8000 --bind 127.0.0.1` from the repository root, then `python3 tests/browser_smoke.py` in another shell. Requires Python Playwright and system Chromium. No frontend dependency installation or build step.
+From the repository root, serve with `python3 -m http.server 8000 --bind 127.0.0.1`, then run `python3 tests/browser_smoke.py`. Requires Python Playwright, Pillow for the screenshot crop, and system Chromium. The application itself requires only a static server, with no frontend install or build.
 
-The final Chromium run passed at **1440, 768, 390 and 360 × 900**:
+The final real Chromium run passed at **1440, 768, 390 and 360 × 900**:
 
 - HTTP 200; zero failed requests, HTTP resource errors, uncaught JavaScript errors or horizontal overflow.
-- Original header and hero logos, scenery and locally licensed fonts load.
-- Mobile menu toggles, Escape restores focus, anchor targets receive focus, all three services lead to the brief section.
-- Workflow controls and offline brief copy fallback retain their functionality.
-- Halo animation clock advances; desktop scene depth responds; mobile depth is disabled; reduced motion removes halo animation and transforms.
-- Blocking both local fonts still leaves usable, non-overflowing fallback typography at 1440 and 360px. Content remains visible with JavaScript disabled.
+- Original header/hero logo, responsive scenery and local licensed fonts load.
+- Mobile menu toggles, Escape restores focus, anchor targets receive focus, and all three service links lead to the brief.
+- Existing workflow controls and offline brief copy fallback work.
+- Halo animation time advances. Desktop scene depth responds; mobile depth is disabled. Reduced motion removes halo animation and transforms.
+- Blocking both fonts leaves readable non-overflowing fallbacks at 1440 and 360px. Content stays visible with JavaScript disabled.
 
-[Machine-readable results](results.json) include resource bytes and observed layout shift during this local smoke run: roughly **452 KB desktop / 365 KB mobile**, layout shift below **0.001** across the four sizes. These are local browser observations, not a production performance benchmark or a complete accessibility audit. No business backend is connected.
+[Final run results](results.json): approximately **677 KB desktop / 367 KB mobile**, with observed layout shift below **0.001** at all four sizes. The desktop-only alpha foreground adds approximately 222 KB. These are local smoke-run observations, not a production performance benchmark, complete accessibility audit or evidence of visual approval.
 
-## Screenshots
+## Artifacts and reproduction
 
 | Width | Initial viewport | Full page |
 | --- | --- | --- |
@@ -54,6 +60,8 @@ The final Chromium run passed at **1440, 768, 390 and 360 × 900**:
 | 390 | [Mobile](hero-390.png) | [Full page](screenshot-390.png) |
 | 360 | [Small mobile](hero-360.png) | [Full page](screenshot-360.png) |
 
-[Fallback desktop](fallback-1440.png) · [Fallback mobile](fallback-360.png) · [Asset provenance, dimensions and sizes](../../../assets/scenery/README.md)
+[Fallback desktop](fallback-1440.png) · [Fallback mobile](fallback-360.png) · [Asset provenance and sizes](../../../assets/scenery/README.md)
 
-**Owner approval is still required.** Keep PR #2 draft. Finish the original-reference/collage gate before treating this visual review as complete; do not merge or publish the site.
+After the browser run, `python3 tests/prepare_reference.py reference/approved-concept.webp` reproduces both approved-versus-actual comparisons without re-encoding the original reference.
+
+**Owner review requested:** review hero composition, original emblem integration, scenery and the three services against the side-by-side. Leave PR #2 draft until the owner approves. Do not merge, deploy or proceed to portfolio work.

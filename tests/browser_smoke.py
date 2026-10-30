@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from PIL import Image
 from playwright.sync_api import sync_playwright
 out=Path(__file__).resolve().parents[1] / 'docs/qa/issue-1-rework'
 out.mkdir(parents=True, exist_ok=True)
@@ -76,7 +77,11 @@ with sync_playwright() as p:
   assert not failed,failed
   assert not bad_responses,bad_responses
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-  if width==1440: page.screenshot(path=str(out/'after-1440.png'))
+  if width==1440:
+   page.screenshot(path=str(out/'after-1440.png'))
+   services_end=page.locator('#services').evaluate('(e)=>e.getBoundingClientRect().bottom+scrollY')
+   with Image.open(out/'screenshot-1440.png') as full_screenshot:
+    full_screenshot.crop((0,0,1440,round(services_end))).save(out/'hero-services-1440.png')
   results.append({'width':width,'http':response.status,'horizontal_overflow':overflow,'js_errors':errors,'failed_requests':failed,'interactions':'passed','layout_shift_score':page.evaluate('window.layoutShiftScore'),'resource_bytes':page.evaluate('performance.getEntriesByType("resource").reduce((sum,r)=>sum+r.transferSize,0)')})
   context.close()
  # Font fallback remains usable without depending on any remote font service.

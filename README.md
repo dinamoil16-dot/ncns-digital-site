@@ -30,6 +30,6 @@ Serve the repository with `python3 -m http.server 8000 --bind 127.0.0.1`. Run `n
 
 The latest Chromium checks passed at 1440, 768, 390 and 360px. See [the visual review, screenshots and limitations](docs/qa/issue-1-rework/visual-comparison.md). Automated checks do not establish owner visual approval.
 
-The exact approved screenshot is visible in the owner's conversation, but its downloadable source file was unavailable to the execution workspace. Its exact committed WebP and approved-versus-actual collage remain blocked; see [reference provenance](reference/README.md). Do not substitute generated scenery for that reference.
+The exact owner-approved reference is committed at `reference/approved-concept.webp`, copied byte-for-byte from the supplied ZIP. See [reference provenance](reference/README.md) and [the side-by-side comparison](docs/qa/issue-1-rework/approved-vs-actual-focus.webp). The site uses independent scenery and HTML components, not the full mockup as a background.
 
-PR #2 must remain draft pending the missing reference gate and owner approval. No portfolio development, merge or deployment is authorized at this stage.
+PR #2 remains draft pending owner visual approval. No portfolio development, merge or deployment is authorized at this stage.
