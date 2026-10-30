@@ -3,15 +3,32 @@
   const $ = (id) => document.getElementById(id);
   const menu = $('menuToggle');
   const nav = $('primaryNavigation');
-  menu.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+  const setMenu = (open, restoreFocus = false) => {
+    nav.classList.toggle('open', open);
     menu.setAttribute('aria-expanded', String(open));
     menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    if (restoreFocus) menu.focus();
+  };
+  menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+      setMenu(false, true);
+    }
   });
-  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menu.setAttribute('aria-expanded','false');
-  }));
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.site-nav')) setMenu(false);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      setMenu(false);
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({preventScroll: true});
+    });
+  });
+  const mobileNav = window.matchMedia('(max-width: 800px)');
+  mobileNav.addEventListener('change', () => setMenu(false));
   const stages = [
     ['01 / 04', '◎', 'Start with the real problem.', 'We learn what matters to your customers and what a better digital experience should achieve.'],
     ['02 / 04', '◇', 'Give the idea its own identity.', 'We translate the strategy into a distinct interface and clear user journey.'],
@@ -35,7 +52,24 @@
   stageButtons.forEach((b,i) => b.addEventListener('click', () => setStage(i)));
   $('nextStep').addEventListener('click', () => setStage((stage+1)%stages.length));
   setStage(0);
-  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const motionOK = !motionPreference.matches;
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      $('heroOrbit').style.transform = '';
+    }
+  });
+  if (window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('pointermove', event => {
+        if (motionPreference.matches) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--pointer-x', `${event.clientX - rect.left}px`);
+        card.style.setProperty('--pointer-y', `${event.clientY - rect.top}px`);
+      });
+    });
+  }
   if (motionOK && window.IntersectionObserver) {
     const io = new IntersectionObserver(entries => entries.forEach(e => {
       if(e.isIntersecting) {e.target.classList.add('visible');io.unobserve(e.target);}
@@ -57,6 +91,7 @@
   const orbit = $('heroOrbit');
   if(motionOK && window.matchMedia('(pointer:fine)').matches) {
     orbit.addEventListener('pointermove',e=>{
+      if (motionPreference.matches) return;
       const r=orbit.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
       orbit.style.transform='perspective(900px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg)';
