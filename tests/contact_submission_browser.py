@@ -63,14 +63,15 @@ try:
             assert page.locator("#submitEnquiry").is_enabled()
             assert config["formEndpoint"] == "https://formspree.io/f/mjyyagao"
             assert config["formEnabled"] is True
-            assert config["formDeliveryVerified"] is False
+            assert config["formDeliveryVerified"] is True
+            assert config["formReplyVerified"] is False
             assert page.locator("#emailContact").get_attribute("href") == "mailto:ncns.digital@gmail.com"
             assert page.locator("#instagramContact").get_attribute("href") == "https://www.instagram.com/ncns.digital/"
             assert page.locator("#whatsappContact").get_attribute("href") == "https://wa.me/79063231457"
             assert not page.evaluate("document.documentElement.scrollWidth > innerWidth")
             assert "processed by Formspree" in page.locator("#sendStatus").inner_text()
             assert page.locator("#copyBrief").is_enabled()
-            results.append({"width": width, "owner_endpoint_enabled": True, "inbox_delivery_unverified": True, "no_overflow": True})
+            results.append({"width": width, "owner_endpoint_enabled": True, "inbox_delivery_verified_via_one_time_live_probe": True, "reply_flow_unverified": True, "no_overflow": True})
             context.close()
 
         # Realistic configured path with a mocked provider, inspected multipart fields.
