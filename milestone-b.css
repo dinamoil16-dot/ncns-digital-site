@@ -31,3 +31,21 @@
 .contact-channels .channel-icon-link>span[hidden]{display:none!important}
 @media(max-width:520px){.contact-channels{gap:13px}.contact-channels .channel-icon-link{width:52px;height:52px;flex-basis:52px}}
 @media(prefers-reduced-motion:reduce){.contact-channels .channel-icon-link{transition:none!important}.contact-channels .channel-icon-link:hover{transform:none}}
+
+
+/* Real inquiry workflow: clear, compact fields without changing the approved hero. */
+.brief .brief-form-intro{font-size:12px;line-height:1.75;color:#a9bfd2;margin:0 0 20px;max-width:470px}
+.brief-contact-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.brief-contact-fields>div{min-width:0}
+.brief .brief-contact-fields input{width:100%;min-width:0;margin-bottom:18px}
+.brief .brief-consent{display:flex;align-items:flex-start;gap:12px;margin:15px 0 13px;font-size:11px;line-height:1.65;color:#b5c7d7;font-weight:400;letter-spacing:0}
+.brief .brief-consent input{width:18px;height:18px;flex:0 0 18px;margin:1px 0 0;accent-color:#b5d9ef;cursor:pointer}
+.brief .brief-consent span{display:block}
+.brief .brief-consent a{color:#d0e9fa;text-underline-offset:3px}
+.brief .submit-request{width:100%;justify-content:space-between;min-height:51px;margin-top:16px}
+.brief .submit-request:disabled{cursor:not-allowed;opacity:.6}
+.brief .form-send-status{min-height:24px;margin:12px 0 18px}
+.brief .form-send-status[data-state="success"]{color:#b8dfcc}
+.brief .form-send-status[data-state="error"]{color:#f1c3b8}
+.brief .field-trap{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:520px){.brief-contact-fields{grid-template-columns:1fr;gap:0}.brief .submit-request{min-height:53px}}
