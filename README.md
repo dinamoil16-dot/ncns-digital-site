@@ -7,7 +7,7 @@ An independent, international-facing AI and digital agency website. The owner ap
 ## Hosting and delivery
 
 - Hosting: **Cloudflare Pages**, project `ncns-digital-site`; secondary URL https://ncns-digital-site.pages.dev/
-- GitHub: `dinamoil16-dot/ncns-digital-site`. The original Pages production branch is `codex/issue-13-client-ready`, pending owner-controlled transition to `main`. Do **not** assume production follows `main` until Pages settings are changed.
+- GitHub: `dinamoil16-dot/ncns-digital-site`. PR #14 has been merged into stable `main` (squash commit `0be2f474`). **Cloudflare Pages remains configured to deploy `codex/issue-13-client-ready` until the owner changes its Production branch to `main`.** Do **not** assume production follows `main` until Pages settings are changed.
 - Build command: `python3 scripts/build_pages.py`, output directory `dist`, no framework.
 - `scripts/prepare_site.py` generates the safe public allowlist, canonical metadata `https://ncns.digital/`, `robots.txt`, `sitemap.xml` and a branded `404.html`; source docs, CI files and internal tests must never be included in the deployment directory.
 - Cloudflare Pages automatically deploys selected production-branch commits when Git integration is enabled. Review the build result after each intended deployment.
@@ -42,7 +42,7 @@ Browser tests use mock Formspree responses and never send a real enquiry. `tests
 ## Remaining owner tasks
 
 1. Confirm the individual/legal entity and business jurisdiction responsible for the site, and align the live privacy disclosure, form processor retention and contractual terms with applicable law. Privacy contact: `ncns.digital@gmail.com`.
-2. After GitHub PR #14 is integrated into `main`, change Cloudflare Pages **production branch** to `main`, verify deployment and monitor its status. Keep tests before releases. GitHub merger alone does not switch the Pages branch.
+2. GitHub PR #14 is already integrated into `main`. Now change Cloudflare Pages **production branch** to `main`, verify deployment and monitor its status. Keep tests before releases. GitHub merger alone does not switch the Pages branch.
 3. Configure Google Search Console for Domain property `ncns.digital` via Cloudflare DNS TXT verification. Submit `https://ncns.digital/sitemap.xml`, inspect `https://ncns.digital/` and `https://ncns.digital/solutions/`.
 4. Check actual mobile Safari, Android and Firefox; confirm delivery/replies; optionally redirect `www.ncns.digital` and `ncns-digital-site.pages.dev` to the canonical host.
 
