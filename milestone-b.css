@@ -22,46 +22,12 @@
 .solution-preview{display:block;width:100%;height:auto;border:1px solid #526679;margin-block:24px}
 
 
-/* Contact channels — premium clickable agency contact cards (no external icon font). */
-.contact-channels{
-  display:grid;grid-template-columns:minmax(0,1fr);gap:11px;
-  margin:25px 0 19px;padding:18px 0;
-  border-top:1px solid #58728b65;border-bottom:1px solid #58728b65;
-}
-.contact-channels .channel-card{
-  display:flex;align-items:center;gap:17px;min-width:0;min-height:82px;padding:14px 19px;
-  text-decoration:none;color:#e9f4ff;
-  background:linear-gradient(105deg,rgba(28,46,62,.84),rgba(5,12,19,.94) 75%);
-  border:1px solid rgba(144,178,204,.33);
-  box-shadow:inset 0 1px rgba(217,235,249,.06),0 10px 32px rgba(0,0,0,.16);
-  transition:border-color .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease;
-}
-.contact-channels .channel-card:hover{
-  transform:translateY(-2px);
-  background:linear-gradient(105deg,rgba(32,57,77,.98),rgba(7,16,27,.94) 75%);
-  border-color:rgba(191,220,241,.78);
-  box-shadow:0 14px 35px rgba(0,0,0,.3),inset 0 1px rgba(217,235,249,.15);
-}
-.contact-channels .channel-card:focus-visible{outline:2px solid #cce8ff;outline-offset:4px}
-.contact-channels .channel-icon{
-  display:grid;place-items:center;flex:0 0 47px;width:47px;height:47px;
-  border:1px solid rgba(197,223,243,.4);background:rgba(198,225,249,.07);
-  color:#e9f4ff;box-shadow:inset 0 0 18px rgba(151,190,224,.11);
-}
-.contact-channels .channel-icon-svg{width:23px;height:23px}
-.contact-channels .channel-copy{display:flex;flex:1;flex-direction:column;min-width:0;gap:7px;overflow-wrap:anywhere}
-.contact-channels .channel-copy strong{display:block;font-size:9px;letter-spacing:.15em;line-height:1.45;color:#91b3cc;font-weight:650}
-.contact-channels .channel-copy > span{font-size:13px;line-height:1.35;color:#ecf4fb}
-.contact-channels .channel-copy > span[hidden]{display:none}
-.contact-channels .channel-arrow{width:17px;height:17px;flex:0 0 17px;color:#a4c7de;opacity:.7;transition:transform .25s ease,opacity .25s ease}
-.contact-channels .channel-card:hover .channel-arrow{transform:translate(3px,-3px);opacity:1}
-.contact-channels .channel-card-instagram .channel-icon{background:linear-gradient(145deg,rgba(182,207,240,.13),rgba(115,135,173,.04))}
-.contact-channels .channel-card-whatsapp .channel-icon{background:linear-gradient(145deg,rgba(159,218,208,.13),rgba(125,170,167,.03));color:#c9ebdf}
-@media(max-width:520px){
-  .contact-channels{gap:9px;margin-block:18px}
-  .contact-channels .channel-card{min-height:74px;padding:13px 12px;gap:11px}
-  .contact-channels .channel-icon{width:43px;height:43px;flex-basis:43px}
-  .contact-channels .channel-copy strong{font-size:8px;letter-spacing:.12em}
-  .contact-channels .channel-copy > span{font-size:12px}
-}
-@media(prefers-reduced-motion:reduce){.contact-channels .channel-card,.contact-channels .channel-arrow{transition:none!important}.contact-channels .channel-card:hover{transform:none}.contact-channels .channel-card:hover .channel-arrow{transform:none}}
+/* Contacts: icon-only links, intentionally understated and easy to tap. */
+.contact-channels{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:20px 0;padding:20px 0;border-block:1px solid rgba(142,169,194,.35)}
+.contact-channels .channel-icon-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 54px;width:54px;height:54px;padding:0;color:#e9f3fb;border:1px solid rgba(171,202,226,.43);background:rgba(28,44,56,.3);border-radius:50%;text-decoration:none;transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease}
+.contact-channels .channel-icon-link:hover{transform:translateY(-2px);background:rgba(62,84,101,.37);border-color:#d2e5f2;box-shadow:0 0 20px rgba(122,173,212,.16)}
+.contact-channels .channel-icon-link:focus-visible{outline:2px solid #e0efff;outline-offset:4px}
+.contact-channels .channel-icon-svg{width:26px;height:26px;display:block}
+.contact-channels .channel-icon-link>span[hidden]{display:none!important}
+@media(max-width:520px){.contact-channels{gap:13px}.contact-channels .channel-icon-link{width:52px;height:52px;flex-basis:52px}}
+@media(prefers-reduced-motion:reduce){.contact-channels .channel-icon-link{transition:none!important}.contact-channels .channel-icon-link:hover{transform:none}}
