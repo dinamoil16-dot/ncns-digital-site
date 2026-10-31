@@ -1,0 +1,60 @@
+{
+  "demo": true,
+  "syntheticData": true,
+  "period": "current",
+  "channel": "all",
+  "metrics": {
+    "leads": 288,
+    "qualified": 86,
+    "won": 20,
+    "revenue": 31800,
+    "spend": 7600
+  },
+  "scenario": {
+    "qualificationRate": 30,
+    "closeRate": 23,
+    "averageRevenue": 1590,
+    "grossMarginPercent": 40,
+    "formula": "288 sample leads × 30% qualification × 23% close × $1,590 average revenue = $31,596. Estimated contribution = revenue × 40% gross margin − $7,600 acquisition spend."
+  },
+  "sampleOpenOpportunities": [
+    {
+      "id": "DEMO-101",
+      "stage": "New",
+      "followUpCompleted": true,
+      "policy": "Allowed"
+    },
+    {
+      "id": "DEMO-102",
+      "stage": "Qualification",
+      "followUpCompleted": false,
+      "policy": "Allowed"
+    },
+    {
+      "id": "DEMO-103",
+      "stage": "Proposal",
+      "followUpCompleted": false,
+      "policy": "Allowed"
+    },
+    {
+      "id": "DEMO-104",
+      "stage": "Qualification",
+      "followUpCompleted": false,
+      "policy": "Opted out"
+    },
+    {
+      "id": "DEMO-105",
+      "stage": "Won",
+      "followUpCompleted": true,
+      "policy": "Allowed"
+    }
+  ],
+  "recommendedActions": [
+    "BUILD — Review lead-source quality and improve qualification fields before buying more traffic.",
+    "OPERATE — Audit quote turnaround and stage-level loss reasons; add a manager-reviewed follow-up queue.",
+    "OPERATE — Resolve 1 permitted due/overdue fictional follow-up task(s); honor all opt-outs.",
+    "GROW — Test one targeted landing-page or channel hypothesis, with a real baseline and a defined success metric.",
+    "GROW — Review gross margin and actual customer acquisition cost before concluding whether extra sales are profitable."
+  ],
+  "disclaimer": "Illustrative fictional data and modeled assumptions, not actual customers, revenue results or net profit."
+}

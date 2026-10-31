@@ -30,13 +30,22 @@
   const pct = v => (v*100).toFixed(1)+"%";
   const $ = id => document.getElementById(id);
   const state = {period:"current",channel:"all"};
-  const opportunities = [
+  const initialOpportunities = [
     {id:"DEMO-101",name:"Sample Atelier A",source:"Organic search",stage:"New",due:-2,done:false,policy:"Allowed"},
     {id:"DEMO-102",name:"Sample Engineering B",source:"Paid campaigns",stage:"Qualification",due:0,done:false,policy:"Allowed"},
     {id:"DEMO-103",name:"Sample Services C",source:"Referrals",stage:"Proposal",due:2,done:false,policy:"Allowed"},
     {id:"DEMO-104",name:"Sample Supply D",source:"B2B outreach",stage:"Qualification",due:-1,done:false,policy:"Opted out"},
     {id:"DEMO-105",name:"Sample Studio E",source:"Organic search",stage:"Won",due:0,done:true,policy:"Allowed"}
   ];
+  let opportunities=initialOpportunities.map(x=>({...x}));
+  let flowStage=0;
+  function renderFlow(){
+    const d=selected();$("flowLeads").textContent=number.format(d.leads);$("flowQualified").textContent=number.format(d.qualified);$("flowWon").textContent=number.format(d.won);
+    const details=["ACQUIRE — "+(state.channel==="all"?"All sample channels":labels[state.channel])+": "+d.leads+" enquiries. Before connecting real sources, agree attribution and permission rules.","QUALIFY — "+d.qualified+" of "+d.leads+" sample enquiries meet the fictional definition ("+pct(percent(d.qualified,d.leads))+"). A real team must agree the qualification criteria.","SELL — "+d.won+" won / "+d.qualified+" qualified ("+pct(percent(d.won,d.qualified))+"). Inspect the separate operator queue for permitted next actions; no messages are sent.","IMPROVE — Export an action plan with assumptions and next experiments. Sample sales revenue is not net profit, and a forecast is not a result."];
+    $("flowDetail").textContent=details[flowStage];
+    const target=$("flowTarget");target.href=["#overview","#overview","#pipeline","#plan"][flowStage];target.textContent=["Inspect acquisition","Inspect qualification","Open operator queue","Open action plan"][flowStage];
+    document.querySelectorAll("[data-flow]").forEach((b,i)=>b.setAttribute("aria-pressed",String(i===flowStage)));
+  }
   function selected() {
     const values=state.channel==="all" ? Object.values(DATA[state.period]) : [DATA[state.period][state.channel]];
     return values.reduce((a,x)=>({leads:a.leads+x.leads,qualified:a.qualified+x.qualified,won:a.won+x.won,revenue:a.revenue+x.revenue,spend:a.spend+x.spend}),{leads:0,qualified:0,won:0,revenue:0,spend:0});
@@ -57,7 +66,7 @@
       fill.style.width=String(percent(a[1],d.leads)*100)+"%";
       track.appendChild(fill);row.append(label,track,total);bar.appendChild(row);
     });
-    renderInsights(d);renderScenario();renderActions();
+    renderInsights(d);renderScenario();renderActions();renderFlow();
   }
   function dueCount(){return opportunities.filter(x=>!x.done && x.due<=0 && x.policy==="Allowed" && x.stage!=="Won" && x.stage!=="Lost").length;}
   function renderInsights(d){
@@ -87,7 +96,7 @@
       const stage=make("td");
       const selector=document.createElement("select");selector.setAttribute("aria-label","Stage for "+item.name);
       ["New","Qualification","Proposal","Won","Lost"].forEach(s=>{const opt=document.createElement("option");opt.value=s;opt.textContent=s;selector.appendChild(opt);});
-      selector.value=item.stage;selector.addEventListener("change",()=>{item.stage=selector.value; if(item.stage==="Won"||item.stage==="Lost")item.done=true;renderPipeline();renderInsights(selected());renderActions();});
+      selector.value=item.stage;selector.addEventListener("change",()=>{item.stage=selector.value; if(item.stage==="Won"||item.stage==="Lost")item.done=true;else item.done=false;renderPipeline();document.querySelector('[aria-label="Stage for '+item.name+'"]').focus();$("pipelineStatus").textContent=item.name+": "+item.stage;renderInsights(selected());renderActions();});
       stage.appendChild(selector);
       const due=make("td");
       const active=!item.done && item.stage!=="Won" && item.stage!=="Lost";
@@ -95,7 +104,7 @@
       due.appendChild(make("span","due"+(active&&item.due<0?" overdue":""),msg));
       if(active&&item.policy==="Allowed"){
         const done=make("button","tiny-button","Mark completed");done.type="button";done.setAttribute("aria-label","Mark follow-up completed for "+item.name);
-        done.addEventListener("click",()=>{item.done=true;renderPipeline();renderInsights(selected());renderActions();});due.appendChild(done);
+        done.addEventListener("click",()=>{item.done=true;renderPipeline();$("resetPipeline").focus();$("pipelineStatus").textContent="Local follow-up marked completed. No message sent.";renderInsights(selected());renderActions();});due.appendChild(done);
       }
       const policy=make("td");policy.appendChild(make("span","policy"+(item.policy!=="Allowed"?" optout":""),item.policy==="Allowed"?"Contact permitted (sample)":"Do not contact"));
       tr.append(name,channel,stage,due,policy);table.appendChild(tr);
@@ -146,6 +155,14 @@
     ].join("\n");
   }
   function setupControls() {
+    document.body.classList.add("enhanced");
+    document.querySelectorAll("[data-flow]").forEach(b=>b.addEventListener("click",()=>{flowStage=Number(b.dataset.flow);renderFlow();}));
+    const motion=window.matchMedia("(prefers-reduced-motion: reduce)");
+    let paused=motion.matches;
+    const updateMotion=()=>{document.body.classList.toggle("flow-paused",paused);$("pauseFlow").textContent=paused?"Resume flow motion":"Pause flow motion";$("pauseFlow").setAttribute("aria-pressed",String(paused));};
+    motion.addEventListener("change",()=>{paused=motion.matches;updateMotion();});
+    $("pauseFlow").addEventListener("click",()=>{paused=!paused;updateMotion();});updateMotion();
+    $("resetPipeline").addEventListener("click",()=>{opportunities=initialOpportunities.map(x=>({...x}));renderPipeline();renderInsights(selected());renderActions();$("pipelineStatus").textContent="Fictional queue reset. No data sent.";});
     $("period").addEventListener("change",e=>{state.period=e.target.value;renderMetrics();});
     $("channel").addEventListener("change",e=>{state.channel=e.target.value;renderMetrics();});
     ["qualifiedRate","closeRate","dealValue","marginRate"].forEach(id=>$(id).addEventListener("input",renderScenario));
