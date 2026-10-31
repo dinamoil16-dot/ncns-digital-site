@@ -28,7 +28,11 @@ try:
    assert page.locator('.pillar-nav a').count()==5
    assert page.locator('a[href*="growth-os"], a[href*="/work/"], img[src*="previews/"]').count()==0
    assert page.locator('#instagramContact').get_attribute('href')=='https://www.instagram.com/ncns.digital/'
-   assert page.locator('#emailBrief').is_hidden() and page.locator('#whatsappContact').is_hidden()
+   assert page.locator('#emailBrief').is_visible() and page.locator('#whatsappContact').is_visible()
+   assert page.locator('#whatsappContact').get_attribute('href')=='https://wa.me/79063231457'
+   assert page.locator('#emailPending').inner_text().strip()=='ncns.digital@gmail.com'
+   assert page.locator('#emailBrief').get_attribute('href').startswith('mailto:ncns.digital@gmail.com')
+   assert 'delivery has not been verified' in page.locator('#contactDelivery').inner_text()
    assert page.locator('#motionToggle').is_disabled()
    page.keyboard.press('Tab');assert page.locator('.skip-link').evaluate('e=>e===document.activeElement');page.keyboard.press('Enter');assert page.evaluate('document.activeElement.id')=='mainContent'
    if width<=800:
@@ -67,7 +71,7 @@ try:
      path=href.split('#')[0];assert page.request.get(path).ok,href
      if '#' in href and path==page.url.split('#')[0]:assert page.locator('[id="'+href.split('#',1)[1]+'"]').count(),href
    assert not errors and not bad and not external,(errors,bad,external)
-   results.append({'width':width,'passed':True,'service_families':12,'pillars':5,'js_errors':errors,'failed_resources':bad,'external_or_write_requests':external,'overflow':False,'runtime':'standalone agency; no portfolio overlay','email_delivery':'unverified / no recipient configured'})
+   results.append({'width':width,'passed':True,'service_families':12,'pillars':5,'js_errors':errors,'failed_resources':bad,'external_or_write_requests':external,'overflow':False,'runtime':'standalone agency; no portfolio overlay','email_delivery':'recipient configured / delivery unverified'})
    context.close()
   # Clipboard success and failure, malformed hash, direct family URL, no-JS native disclosure.
   page=browser.new_page();page.add_init_script("Object.defineProperty(navigator,'clipboard',{value:{writeText:async text=>window.qaCopied=text},configurable:true})")
