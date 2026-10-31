@@ -11,7 +11,7 @@ if not valid_host or not origin or u.scheme!='https' or not u.hostname or u.user
 out=a.output.resolve()
 if out==ROOT or ROOT.is_relative_to(out) or out.is_relative_to(ROOT) or out.exists():p.error('Use a new output directory, outside the source repository, not an existing directory.')
 out.mkdir(parents=True)
-for name in ['index.html','404.html','styles.css','milestone-b.css','agency.css','main.js','contact.js','contact-config.json','privacy.html','terms.html','solutions','assets']:
+for name in ['index.html','404.html','_headers','styles.css','milestone-b.css','agency.css','main.js','contact.js','contact-config.json','privacy.html','terms.html','solutions','assets']:
  src=ROOT/name;dst=out/name
  if src.is_dir():shutil.copytree(src,dst)
  else:shutil.copy2(src,dst)
