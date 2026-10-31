@@ -9,7 +9,7 @@ import threading
 import shutil
 import json
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -89,7 +89,7 @@ try:
         assert not sent
         fields(page)
         page.locator("#submitEnquiry").click()
-        assert "Request accepted" in page.locator("#sendStatus").inner_text(timeout=10000)
+        expect(page.locator("#sendStatus")).to_contain_text("Request accepted", timeout=10000)
         assert page.locator("#submitEnquiry").is_disabled()
         assert len(sent) == 1
         for expected in ["test@example.com", "Example Company", "Need a quote request portal", "Spreadsheets and email", "contact_permission"]:
@@ -113,11 +113,11 @@ try:
         page.goto(origin, wait_until="networkidle")
         fields(page)
         page.locator("#submitEnquiry").click()
-        assert "Too many requests" in page.locator("#sendStatus").inner_text(timeout=10000)
+        expect(page.locator("#sendStatus")).to_contain_text("Too many requests", timeout=10000)
         assert page.locator("#submitEnquiry").is_enabled()
         assert "Need a quote" in page.locator("#projectDetails").input_value()
         page.locator("#submitEnquiry").click()
-        assert "Request accepted" in page.locator("#sendStatus").inner_text(timeout=10000)
+        expect(page.locator("#sendStatus")).to_contain_text("Request accepted", timeout=10000)
         assert len(counter) == 2
         context.close()
         results.append({"status": "mocked_429_then_200", "retries": len(counter)})
