@@ -24,6 +24,6 @@ for path,url in [('index.html',origin+'/'),('solutions/index.html',origin+'/solu
   schema=json.loads(match.group(1));schema.update(url=origin+'/',logo=origin+'/assets/ncns-original-logo.webp')
   s=s[:match.start(1)]+json.dumps(schema,separators=(',',':'))+s[match.end(1):]
  f.write_text(s)
-(out/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n# NCNS-MAIN-VERIFY-20261031\n')
+(out/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n')
 (out/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>'+origin+'/</loc></url><url><loc>'+origin+'/solutions/</loc></url></urlset>\n')
 print(json.dumps({'artifact':str(out),'canonicalOrigin':origin,'status':'prepared locally; NOT deployed','contactDeliveryVerified':json.loads((ROOT/'contact-config.json').read_text()).get('deliveryVerified',False)},indent=2))
