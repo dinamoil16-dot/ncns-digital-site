@@ -5,7 +5,8 @@
   if(!link || !status)return;
   fetch("./contact-config.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("Configuration unavailable");return r.json();}).then(config=>{
     const channels=[["instagramUrl","instagramContact","instagramPending","www.instagram.com"],["whatsappUrl","whatsappContact","whatsappPending","wa.me"]];
-    if(config.ownerApproved===true)channels.forEach(([key,id,pending,host])=>{
+    channels.forEach(([key,id,pending,host])=>{
+      if(config.ownerApproved!==true && config[key==="instagramUrl"?"instagramApproved":"whatsappApproved"]!==true)return;
       try{const url=new URL(config[key]);if(url.protocol!=="https:" || url.hostname!==host || url.username || url.password || url.port || url.pathname==="/")return;
         document.getElementById(id).href=url.href;document.getElementById(id).hidden=false;document.getElementById(pending).hidden=true;
       }catch(_){} });
@@ -18,9 +19,9 @@
     };
     document.getElementById("briefForm").addEventListener("input",update);link.addEventListener("click",e=>{
       if(!document.getElementById("projectDetails").value.trim()){e.preventDefault();status.textContent="Describe your business need and desired outcome first.";document.getElementById("projectDetails").focus();return;}
-      update();status.textContent="Opening your email application. Review and send there. This website cannot confirm sending or delivery; keep a copy if no email app opens.";
+      update();status.textContent="Opening your email application. Review and send there. This website cannot confirm sending or delivery; copy the brief if no email app opens.";
     });update();
     document.querySelector(".contact-note").textContent="Prepare your brief here, then open your email application to review and send it to "+email+". Copy remains available if no email application is configured.";
-    status.textContent=config.deliveryVerified===true?"Owner-configured email draft. Sending happens in your email application; this page does not submit a message.":"Owner-configured recipient; end-to-end delivery has not been verified. Launch remains blocked.";
-  }).catch(()=>{status.textContent="Contact configuration could not be loaded. Copy your brief locally; no message has been sent.";});
+    status.textContent=config.deliveryVerified===true?"Open an email draft to review and send in your email application. This page does not submit a message.":"This email recipient is available, but delivery has not been verified. You can still copy your brief.";
+  }).catch(()=>{status.textContent="The email contact option is unavailable. Copy your brief or use Instagram; no message has been sent.";});
 })();

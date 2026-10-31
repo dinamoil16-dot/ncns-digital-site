@@ -1,16 +1,45 @@
-# Review-first staging and launch runbook
+# Agency release preparation — no portfolio prerequisite
 
-No hosting provider, canonical domain, budget or public contact values have been approved here. No deployment has happened. Exact values stay **UNSET**, not fictional URLs.
+No merge, publishing, hosting purchase or DNS edit is performed by this runbook or its preparation script. Owner reviews the finished main website first. Growth OS and other demos stay deferred in their own branches.
 
-1. Review PR #9 and the separate Issue #13 conversion PR. Approve the runtime and conversion design before integration. Keep other five full demos deferred.
-2. Owner selects a static host, account owner, staging hostname, canonical production origin and spending limit. This repository is plain HTML/CSS/JS: build command **none**, publish directory repository root. Preserve directory indexes (`/solutions/`, `/work/growth-os/`), relative assets and true 404 responses; do not apply a blanket SPA rewrite. Exclude `.git`, tests, internal docs/QA and setup artifacts from production output, while retaining public runtime/assets/config/privacy. Use a reviewed publish allowlist.
-3. Hosting credentials belong in the provider's protected settings, never in git or `contact-config.json`. Configure TLS, least-privilege deployment access and rollback to the previous immutable artifact. Disable automatic production deploy-on-push until owner authorizes release.
-4. After host selection, use its exact CNAME/A/AAAA targets for the chosen domain; do not invent DNS records. Confirm DNS propagation, HTTPS certificate and one canonical redirect (www vs apex), then set actual canonical/og:url and an absolute OG image. Generate `sitemap.xml` only for public pages and `robots.txt` with the real sitemap origin. Keep staging noindex and access-restricted as supported; verify production noindex removal deliberately.
-5. Configure the owner's email, Instagram and WhatsApp Business URLs. Use a controlled independent-device enquiry; owner confirms inbox receipt and a return reply. Record timestamp, channel and outcome privately; never commit private test messages. Mark delivery verified only after evidence. Test mailto on mobile and desktop, copy fallback when no mail app exists, and account links. Do not claim the website sends messages.
-6. Confirm NCNS legal/operating identity, public contact, hosting access-log handling, retention and deletion request workflow; update disclosure proportionately. No analytics is required for launch. Any later analytics requires an explicit privacy review and configuration.
-7. Run Chromium QA plus Firefox and real iOS/Safari smoke tests; verify reduced motion, keyboard, 360px and tablet, disabled JS, blocked clipboard, failed config request, all demo exports, no secrets, no forms writing unexpectedly. Measure on modest hardware before claiming performance targets.
-8. Produce an owner-review staging URL **only after authorization**. Check from a separate browser/device that the exact public path loads, then follow homepage → solutions → demo → contact. Repeat delivery verification from that environment.
-9. Request final production release approval with concrete screenshots, QA report, contact outcome and exact URL. Do not equate a test URL with launch. User retains merge and deployment decisions.
-10. After authorized publication, manually set the actual link-in-bio and draft campaign links; capture source → enquiry → qualified conversation → proposal → paid deal in the existing CRM. Check accessibility and delivery after every release; rollback if the enquiry or demo path fails.
+## Owner decisions still needed
 
-Current NO-GO items: two PR approvals/integration, real contact values and delivery, host/domain/DNS choices, legal details, Safari/Firefox/real-device release QA and public-link verification. They do not block continued local development.
+- Canonical HTTPS domain/origin and www/apex preference: **UNSET**.
+- Static hosting account/provider, staging access, budget and release approver: **UNSET**.
+- Primary business email and WhatsApp Business URL: **UNSET**. Instagram is owner-confirmed `https://www.instagram.com/ncns.digital/`.
+- Legal/operating identity, necessary public contact/address, retention and host-log disclosures: **UNCONFIRMED**.
+
+Do not invent values or publish with placeholders. A domain or provider cannot be called configured until verified.
+
+## Contact configuration and actual delivery
+
+Public `contact-config.json` holds only public values, never credentials. `ownerApproved: false` keeps primary email and WhatsApp disabled. Instagram has its own `instagramApproved: true` from the latest owner instruction. Set real `email` and `whatsappUrl` only after owner confirmation; then set the appropriate approval flag (`ownerApproved` or `whatsappApproved`) deliberately. Allowed WhatsApp links are HTTPS `wa.me` paths, with no embedded credentials or custom port. Do not invent numbers or add Telegram.
+
+The email action opens a local email draft; the client must review/send in their email application. The page says it cannot confirm delivery and retains a copy fallback. Test from an independent desktop and phone: compose → send → owner confirms inbox receipt → owner replies → sender confirms reply. Repeat for the owner-approved WhatsApp and a controlled Instagram DM. Record results privately, not private message contents in git. Only mark `deliveryVerified` after actual evidence. No delivery test was performed here.
+
+## Static artifact / SEO preparation
+
+Source is plain HTML/CSS/JS. No framework build or server backend is needed. `site-config.json` deliberately leaves `canonicalOrigin` empty. Once the owner approves a real HTTPS origin, set it there and run:
+
+```sh
+python3 scripts/prepare_site.py --output /tmp/ncns-reviewed-static
+```
+
+Use a new output directory outside the repository. The script refuses an absent/invalid origin or existing output, copies a strict public allowlist, excludes `.git`, tests, internal docs/QA and marketing drafts, and writes actual canonical/og:url metadata, absolute social image URLs, robots and sitemap. It does not deploy or enable contact delivery. Includes only agency pages/assets; no Growth OS runtime required. Reserved QA-origin preparation was tested in a temporary directory, not published.
+
+Source `robots.txt` has no invented sitemap URL. Prepared production sitemap lists home and service directory; privacy/terms remain noindex until legal review. Structured data lists real service capabilities, not fake clients, ratings or completed integrations. Recheck social-card crop and absolute URL from the real host.
+
+## Staging and hosting
+
+After explicit staging authorization, deploy only the prepared artifact to the chosen static host. Publish directory is artifact root; no build command. Preserve `/solutions/` directory indexes, relative assets and real 404s; do not use an SPA catch-all. No API keys belong in public JSON. Use TLS, least-privilege deploy credentials and a rollback artifact. Disable automatic production deploy-on-push until separately approved.
+
+Use the provider's exact A/AAAA/CNAME values for the chosen hostname; no DNS values can be supplied before provider/domain decisions. Confirm propagation, TLS and one canonical redirect. Keep staging access-restricted and noindex at host level, then deliberately verify production indexing settings. Configure supported security headers (at minimum nosniff and a suitable referrer policy), and test any CSP against local fonts, images and existing inline-style motion before enforcing it.
+
+## Final release acceptance
+
+1. Review PR #14 screenshots and functional result. Growth OS PR #9 stays deferred; do not merge it as a release dependency.
+2. Repeat all five-width Chromium tests plus real Safari/iOS and Firefox checks, modest-device loading, keyboard, no-JS/font/clipboard/config failure paths and reduced motion. Verify primary contact button on actual devices; check no hidden/unavailable portfolio routes.
+3. Confirm legal details and contact delivery privately. No production-ready claim before primary inbound is verified.
+4. Open the authorized staging/public link on a separate device: home → service pillar → scope → project brief → actual contact. Verify metadata/social image/canonical/robots/sitemap and that internal docs/QA cannot be fetched from the artifact.
+5. Present exact URL, evidence and remaining risks for final release approval. Only then discuss production publication. Never equate local testing or a staging URL with a public launch.
+6. After an authorized release, verify contact delivery again and retain a rollback path. Resume portfolio and marketing production only after the owner approves the completed main site.

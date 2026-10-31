@@ -1,0 +1,74 @@
+[
+  {
+    "family": 1,
+    "name": "Websites & Web Development",
+    "pillar": "Web & Digital Products",
+    "anchor": "family-1"
+  },
+  {
+    "family": 4,
+    "name": "Interactive Digital Tools",
+    "pillar": "Web & Digital Products",
+    "anchor": "family-4"
+  },
+  {
+    "family": 2,
+    "name": "AI Agents & Intelligent Assistants",
+    "pillar": "AI & Automation",
+    "anchor": "family-2"
+  },
+  {
+    "family": 3,
+    "name": "Business Process Automation",
+    "pillar": "AI & Automation",
+    "anchor": "family-3"
+  },
+  {
+    "family": 5,
+    "name": "Branding & Visual Identity",
+    "pillar": "Branding & Creative",
+    "anchor": "family-5"
+  },
+  {
+    "family": 6,
+    "name": "AI Content & Creative Production",
+    "pillar": "Branding & Creative",
+    "anchor": "family-6"
+  },
+  {
+    "family": 7,
+    "name": "Social Media & Digital Presence",
+    "pillar": "Marketing & Growth",
+    "anchor": "family-7"
+  },
+  {
+    "family": 8,
+    "name": "SEO & Website Optimization",
+    "pillar": "Marketing & Growth",
+    "anchor": "family-8"
+  },
+  {
+    "family": 9,
+    "name": "Lead Generation & Sales Systems",
+    "pillar": "Marketing & Growth",
+    "anchor": "family-9"
+  },
+  {
+    "family": 10,
+    "name": "Analytics & Digital Strategy",
+    "pillar": "Marketing & Growth",
+    "anchor": "family-10"
+  },
+  {
+    "family": 11,
+    "name": "Integrations & Custom Solutions",
+    "pillar": "Custom Business Solutions",
+    "anchor": "family-11"
+  },
+  {
+    "family": 12,
+    "name": "Maintenance & Growth",
+    "pillar": "Custom Business Solutions",
+    "anchor": "family-12"
+  }
+]

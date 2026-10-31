@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "passed": true,
+    "service_families": 12,
+    "pillars": 5,
+    "js_errors": [],
+    "failed_resources": [],
+    "external_or_write_requests": [],
+    "overflow": false,
+    "runtime": "standalone agency; no portfolio overlay",
+    "email_delivery": "unverified / no recipient configured"
+  },
+  {
+    "width": 1024,
+    "passed": true,
+    "service_families": 12,
+    "pillars": 5,
+    "js_errors": [],
+    "failed_resources": [],
+    "external_or_write_requests": [],
+    "overflow": false,
+    "runtime": "standalone agency; no portfolio overlay",
+    "email_delivery": "unverified / no recipient configured"
+  },
+  {
+    "width": 768,
+    "passed": true,
+    "service_families": 12,
+    "pillars": 5,
+    "js_errors": [],
+    "failed_resources": [],
+    "external_or_write_requests": [],
+    "overflow": false,
+    "runtime": "standalone agency; no portfolio overlay",
+    "email_delivery": "unverified / no recipient configured"
+  },
+  {
+    "width": 390,
+    "passed": true,
+    "service_families": 12,
+    "pillars": 5,
+    "js_errors": [],
+    "failed_resources": [],
+    "external_or_write_requests": [],
+    "overflow": false,
+    "runtime": "standalone agency; no portfolio overlay",
+    "email_delivery": "unverified / no recipient configured"
+  },
+  {
+    "width": 360,
+    "passed": true,
+    "service_families": 12,
+    "pillars": 5,
+    "js_errors": [],
+    "failed_resources": [],
+    "external_or_write_requests": [],
+    "overflow": false,
+    "runtime": "standalone agency; no portfolio overlay",
+    "email_delivery": "unverified / no recipient configured"
+  }
+]

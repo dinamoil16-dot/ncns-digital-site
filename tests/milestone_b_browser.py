@@ -2,13 +2,17 @@
 import hashlib
 import io
 import json
+import os
+import shutil
 from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright, expect
 
 root = Path(__file__).resolve().parents[1]
-out = root / 'docs/qa/milestone-b'
+out = Path(os.environ.get('NCNS_QA_OUTPUT', str(root / 'docs/qa/milestone-b')))
+base_url = os.environ.get('NCNS_TEST_URL', 'http://127.0.0.1:8000')
 out.mkdir(parents=True, exist_ok=True)
+if not (out/'approved-a-1440.png').exists(): shutil.copy2(root/'docs/qa/milestone-b/approved-a-1440.png', out/'approved-a-1440.png')
 assert hashlib.sha256((root/'assets/ncns-original-logo.webp').read_bytes()).hexdigest() == '75b0a8357126199bae258710941d5b7dccdeb4492607e7a123787a59a327fd01'
 results = []
 with sync_playwright() as p:
@@ -23,7 +27,7 @@ with sync_playwright() as p:
         page.on('response', lambda r:bad.append(r.url) if r.status>=400 else None)
         page.on('request', lambda r:writes.append(r.url) if r.method!='GET' else None)
         page.add_init_script("""window.cls=0;new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.cls+=e.value}).observe({type:'layout-shift',buffered:true});""")
-        assert page.goto('http://127.0.0.1:8000', wait_until='networkidle').status == 200
+        assert page.goto(base_url, wait_until='networkidle').status == 200
         page.evaluate('document.fonts.ready')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth'), width
         assert page.locator('.emblem-wrap img').evaluate('(e)=>e.complete&&e.naturalWidth===480')
@@ -52,7 +56,7 @@ with sync_playwright() as p:
             page.locator('#primaryNavigation a[href="#services"]').tap()
             assert page.evaluate('document.activeElement.id') == 'services'
         page.locator('.service-brand').click()
-        assert page.locator('#service-brand').get_attribute('open') is not None
+        assert page.locator('#service-brand [data-family]').count() == 2
         assert page.evaluate('document.activeElement.id') == 'service-brand'
         page.locator('#phase-tab-0').focus()
         page.keyboard.press('ArrowRight')
@@ -64,7 +68,7 @@ with sync_playwright() as p:
         assert page.locator('#phase-3').is_visible()
         page.keyboard.press('Home')
         assert page.locator('#phase-0').is_visible()
-        page.locator('#labService').select_option('Website / digital product')
+        page.locator('#labService').select_option('Websites & Web Development')
         page.locator('#labNext').click()
         goal_top=page.locator('#labGoal').evaluate('(e)=>e.getBoundingClientRect().top')
         assert 0<=goal_top<height
@@ -139,7 +143,7 @@ with sync_playwright() as p:
         context.close()
     for width,height in [(1440,900),(390,844)]:
         context=browser.new_context(viewport={'width':width,'height':height},java_script_enabled=False)
-        page=context.new_page();page.goto('http://127.0.0.1:8000',wait_until='networkidle')
+        page=context.new_page();page.goto(base_url,wait_until='networkidle')
         assert page.locator('.service-web').is_visible()
         assert page.locator('#phase-3').is_visible()
         assert page.locator('#copyBrief').is_disabled()
@@ -151,13 +155,13 @@ with sync_playwright() as p:
         context.close()
         context=browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
         context.route('**/*.woff2',lambda route:route.abort())
-        page=context.new_page();page.goto('http://127.0.0.1:8000',wait_until='networkidle')
+        page=context.new_page();page.goto(base_url,wait_until='networkidle')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
         assert page.locator('h1').is_visible()
         page.screenshot(path=str(out/f'fallback-{width}.png'))
         context.close()
     normal=browser.new_context(viewport={'width':1440,'height':900},reduced_motion='no-preference')
-    page=normal.new_page();page.goto('http://127.0.0.1:8000',wait_until='networkidle')
+    page=normal.new_page();page.goto(base_url,wait_until='networkidle')
     for selector in ['#capabilities .section-heading','#experience .lab-layout','#process .process-explorer','#about .about-heading','#contact .brief']:
         element=page.locator(selector)
         element.scroll_into_view_if_needed()

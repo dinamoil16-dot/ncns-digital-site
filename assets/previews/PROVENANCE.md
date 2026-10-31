@@ -1,1 +1,0 @@
-Growth OS preview is an optimized WebP encoding of the actual Chromium `journey-1440.png` capture from PR #9, commit e4d5560. It is an illustration of the working local demo, not a background replacement for a website or a client result. Original NCNS emblem asset unchanged.

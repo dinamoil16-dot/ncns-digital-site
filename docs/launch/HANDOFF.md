@@ -1,9 +1,11 @@
-# Review handoff — 2026-10-31
+# Current handoff — agency first / Issue #13 / PR #14
 
-- Growth OS: existing draft PR #9, remote head `002378d`; runtime/QA commit `e4d5560`, then scoped performance evidence. No duplicate PR.
-- Conversion: pushed `codex/issue-13-client-ready`, based on approved main `f6d4e1a`. During work main advanced to `bb405bf` with only the owner Instagram profile/grid plan; no homepage/runtime/assets changed. That latest plan is included unchanged and applied to the new four-slide introduction/fresh nine-post editorial plan.
-- GitHub API calls to edit PR #9's description and create the separate draft conversion PR both returned `Forbidden` from `api.github.com/graphql`. Git pushes succeeded. The conversion PR **has not been opened**. Prepared body: [PR.md](PR.md). GitHub create screen: https://github.com/dinamoil16-dot/ncns-digital-site/pull/new/codex/issue-13-client-ready . Keep it draft when API access is restored; do not create another Growth OS PR.
-- Local integration uses PR #9's checked-out runtime through the documented test overlay, not a merge or copied app. Both review streams must be approved/integrated before release. Baseline hero comparison is against `f6d4e1a`; latest main's changes are documentation only.
-- Exact contact values remain empty per owner: email primary, Instagram and WhatsApp Business secondary, no Telegram. The known @ncns.digital profile in the source plan is not silently turned into a configured website contact. Delivery has not been tested; no enquiry was sent.
-- No branch was merged, no hosting/domain configured, no public version deployed, no account edited, no social posts/messages/ads sent. Other five complete demos remain deferred.
-- NO-GO for launch until actual contact values/delivery, owner acceptance/integration, hosting/domain/legal decisions and release/public-link checks. Development and local review are complete for this pass.
+This file supersedes the earlier demo-dependent launch handoff. Work continues on existing `codex/issue-13-client-ready` / PR #14. Latest approved main `bb405bf` was integrated into this feature branch; no PR was merged into main.
+
+The main site is standalone: twelve services/five pillars → scoped project discussion; Build → Operate → Grow; Experience Lab → local draft; confirmed Instagram link. `/solutions/` is a real service directory, with no missing demo URL. No app overlay is used in current QA. Growth OS PR #9 and other portfolio work remain preserved and deferred. Existing marketing materials remain drafts, not release prerequisites.
+
+Current evidence: `docs/qa/agency-site/`. Historical `docs/qa/first-clients/` overlay results are not the current acceptance result. Primary email/WhatsApp and real delivery, domain/hosting, legal operating details and final cross-browser/physical-device checks remain explicit release gates. No deployment, messages, posts or ads. Owner reviews before merge/publication.
+
+The environment previously denied `api.github.com/graphql`, while git pushes work. Source commits update PR #14; if API metadata editing remains blocked, `PR.md` contains the complete current description. Do not open a duplicate PR or treat the old PR text about demo dependencies as current execution priority.
+
+Latest metadata attempt: `gh pr edit 14 --body-file docs/launch/PR.md` returned `Forbidden` from `api.github.com/graphql`. The current title/body are prepared in that file; source pushes update the existing PR, but its older description could not be rewritten from this environment. No duplicate PR was created.

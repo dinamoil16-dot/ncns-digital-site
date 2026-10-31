@@ -1,3 +1,7 @@
+# Deferred workstream — website approval first
+
+Updated Issue #13: preserve these drafts, but do not treat social content or demo recordings as release prerequisites. Current work is the main agency site in PR #14. No new marketing production or posting in this pass.
+
 # First-week Instagram and sales pack — DRAFT / NOT POSTED OR SENT
 
 English-first, global and multi-industry. Owner manually manages accounts; NCNS-Bro automation is later and separately approved. No credentials, ads, account posts, DMs or prospect emails were sent. No growth guarantees or fabricated case studies.

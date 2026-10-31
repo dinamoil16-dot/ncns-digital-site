@@ -1,45 +1,47 @@
-# Issue #13 — first-client readiness
+# PR #14 — agency website first / updated Issue #13
 
-**Decision: NO-GO for public launch.** The review build works locally; publication and inbound delivery have not been verified. No merge or deployment performed.
+**Current priority: finish the standalone main agency website. Growth OS, portfolio, new 3D and marketing production are deferred. No PR #9 integration or portfolio approval is required for this site review.** Earlier two-worktree overlay evidence is historical, not a dependency.
 
-## Two review streams
+## What changed
 
-- Existing PR #9 / `feat/growth-os-interactive-demo`: Growth OS runtime, data-driven flow, keyboard/pipeline fixes, five-width browser QA and genuine walkthroughs.
-- `codex/issue-13-client-ready` from approved main: focused solution navigation, short qualification/contact interface, privacy disclosure, launch checklist and manual marketing pack. No Growth OS runtime copied into this branch. Its working demo link depends on PR #9 being approved/integrated first.
+- Kept the exact approved cinematic hero markup, scenery, original emblem and opening three service cards. The core `styles.css` and original logo are unchanged. Five-width pixel comparison is against current approved main `bb405bf`.
+- Added the complete twelve-family catalog under five navigable pillars. Every family explains its business problem, scoped examples, deliverable and next action; its CTA selects that exact service in the contact brief. [Coverage mapping](service-coverage.json).
+- Replaced the demo-dependent Work section with Build → Operate → Grow: one defined project, optional monthly care and measured optimization, with explicit ownership/cost boundaries. No fake case studies or ROI.
+- Finished process, about, native FAQ, footer, legal disclosures and a directory route. No unavailable Growth OS/portfolio links or unapproved preview art remain in the public site. `/solutions/` now points only to real service sections.
+- Extended Experience Lab to all twelve service families. It remains a browser-local requirements tool, not an AI agent or sent enquiry. Back, validation, reset, copy and transfer-to-brief work.
+- Confirmed Instagram `@ncns.digital` is a real public link, including no-JS fallback, following the latest Issue #13. Email remains primary but unconfigured; WhatsApp Business is unconfigured. No Telegram. Nothing is submitted or sent by the site.
+- Added an explicit ambient-motion pause control in the footer, which survives visibility changes; system reduced-motion settings remain authoritative. Existing normal hero motion is unchanged.
+- Added service structured data, updated SEO copy, an actual 1200×630 social preview using the unchanged emblem, primary-font preload, and a safe static preparation script. Canonical origin, sitemap and absolute share metadata are generated only after an owner-approved domain is supplied.
 
-## Tested client journey
+## Before → after journey
 
-Homepage `#work` → `solutions/` → `work/growth-os/` → filters / sample operator queue / scenario / JSON → return to homepage `#work` → `#experience` → three-step requirements draft → use in project review → `#contact` → copy local brief. An owner-approved email configuration will enable a mailto draft. Instagram and WhatsApp Business are secondary configurable links; **no Telegram**. No invented recipient. Opening a composer never claims delivery.
+**Before:** Work → fictional-demo directory → Growth OS route absent from this branch (real HTTP 404); only three detailed service groups; contact had no configured public link.
 
-Integration QA serves the PR #9 worktree through an explicitly documented local HTTP overlay. It does not merge branches, publish a preview or prove public availability. Plain standalone main-branch hosting cannot resolve Growth OS until that dependency is integrated. Do not release these links separately.
+**After:** Services → five pillars → any of twelve scoped offerings → preselected project brief. Or Work → Build/Operate/Grow → request review. Experience Lab → validated requirements → local brief/copy. Confirmed Instagram opens externally; email draft becomes available only when configured. No demo branch or overlay is used. [Actual before/after](../qa/agency-site/journey-before-after-1440.webp).
 
-## GO / NO-GO
+## Review and release gates
 
-| Gate | Current evidence | Decision |
-| --- | --- | --- |
-| Approved homepage/emblem preserved | Original asset untouched; five-width pixel comparison against approved main in QA | Ready for review |
-| One useful functional example | Growth OS filters, arithmetic, queue, opt-out, export and flow tested in Chromium | Ready for owner review, not yet accepted |
-| Honest second example | Experience Lab is explicitly a requirements tool, not a full case study | Ready for review |
-| Honest content | Synthetic-data labels, no real clients/ROI claims; other five demos in development | Ready for review |
-| Mobile/navigation | 1440/1024/768/390/360 Chromium; native fallback and clipboard failure paths | Tested locally |
-| Inbound contact | Owner selected email primary + Instagram + WhatsApp Business; exact values not provided | **P0 blocked: configuration and delivery test** |
-| Legal/operator disclosure | Limited browser-local disclosure implemented; legal identity/retention/provider details remain unconfirmed | **Owner input required before public collection** |
-| Working public URL | None deployed or verified; two-PR integration pending | **Blocked until review and authorized staging** |
-| Canonical/SEO/share | Title/description/favicon/relative OG present; canonical origin, absolute share URL/image, robots and sitemap need actual domain | **Launch configuration pending** |
-| Cross-browser / performance | Chromium and no-JS covered; actual Safari/iOS, Firefox and modest-device checks remain | **Release QA pending** |
-| Traffic/CTA | Draft first-week pack, manual CTA and CRM mapping prepared | Not posted/sent; link only after accessible URL exists |
-| Credentials/privacy | No new credentials, trackers or server submissions; config is public | Review before release |
+| Gate | Status |
+| --- | --- |
+| Standalone agency, no demo dependency | Complete locally; all public internal routes/anchors tested |
+| Full service coverage / commercial model | Twelve families, five pillars; Build/Operate/Grow with scope and ownership |
+| Approved hero and original emblem | Five pixel-identical hero comparisons; original SHA-256 checked |
+| Five-width Chromium / keyboard / touch | 1440, 1024, 768, 390, 360; no overflow, JS/resource errors or external/write requests |
+| Experience Lab / form / fallbacks | Validation, back/reset, selection, clipboard success/failure, no-JS native disclosure and email/config failure paths |
+| Real screenshots and videos | [Agency evidence](../qa/agency-site/README.md), desktop/mobile recordings |
+| Primary email and WhatsApp | **P0 missing owner-confirmed values** |
+| Real contact delivery | **P0 not tested**; opening mailto/Instagram does not prove receipt |
+| Canonical domain / hosting / DNS | **Unconfirmed**; no public preview/deployment claimed |
+| Legal operating details / hosting logs / retention | **Owner confirmation required before release** |
+| Firefox, Safari/iOS, modest physical device | **Not certified by local Chromium tests; release checks pending** |
+| Owner approval / merge / publication | **Pending**; no merge to main or deployment performed |
 
-## Owner-supplied contact setup
+**Decision: ready for visual and functional owner review, NO-GO for public launch until the explicit remaining gates are closed.** Portfolio is not one of those gates.
 
-Edit public `contact-config.json`: `email`, `instagramUrl` (https://www.instagram.com/...), `whatsappUrl` (https://wa.me/...), and `ownerApproved: true` only after confirming account ownership. Do not add passwords, API keys or private tokens. Leave `deliveryVerified: false` until a controlled test email from an independent sender reaches the owner and a reply reaches that sender. Also test a manual Instagram DM and WhatsApp message with permission. No test messages were sent by this work.
+## Reproduce
 
-Email is the primary brief path; Instagram and WhatsApp open the owner's confirmed account, without uploading form content. Mailto needs a configured email app. Copy/manual fallback stays available. A provider endpoint can be scoped later; no fake form backend.
+Install Python Playwright + Pillow, Node and Chromium. Current tests use system Chromium where available, otherwise Playwright's browser. Run `node --check main.js`, `node --check contact.js`, `python3 tests/agency_site_browser.py`, `python3 tests/approved_hero_regression.py`, `python3 tests/agency_before_after.py`. All serve their own local root, with no app overlay or external service. `tests/client_ready_browser.py` is a compatibility alias to the standalone agency suite.
 
-## Reproduction / evidence
+`python3 tests/render_social_preview.py` renders the committed social preview from original HTML, with the original emblem unmodified. `python3 tests/record_agency_site.py` records normal-motion desktop/mobile Chromium. Playwright video needs its normal FFmpeg install, or the documented compatible system-encoder cache used in this environment. Nothing posts, sends or deploys.
 
-`node --check main.js` and `node --check contact.js`; `python3 tests/client_ready_browser.py` (set `NCNS_GROWTH_WORKTREE` to checked-out PR #9); `python3 tests/approved_hero_regression.py` (baseline `origin/main`, Pillow + Chromium). Screenshots, contact captures, local overlay results, original-vs-current hero comparisons and an Experience Lab recording live in `docs/qa/first-clients/`.
-
-For this environment the system Chromium/FFmpeg were used. For Playwright video, either install its normal encoder with `python3 -m playwright install ffmpeg` or point `PLAYWRIGHT_BROWSERS_PATH` to a temporary cache containing `ffmpeg-1011/ffmpeg-linux` linked to the installed compatible system encoder. No production service is started by these tests.
-
-[Deployment runbook](deployment.md) · [Manual marketing pack](marketing/README.md) · [Draft PR body](PR.md)
+The GitHub Actions workflow is test/artifact-only; a local pass is not a claim that CI has run successfully. [Deployment and SEO preparation](deployment.md) · [Current handoff](HANDOFF.md). Existing marketing drafts are preserved, not a current workstream or release prerequisite.

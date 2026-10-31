@@ -3,7 +3,7 @@ import http.server,threading,tempfile,subprocess,tarfile,io,json,shutil
 from pathlib import Path
 from PIL import Image,ImageChops
 from playwright.sync_api import sync_playwright
-ROOT=Path(__file__).resolve().parents[1];QA=ROOT/'docs/qa/first-clients';QA.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];QA=ROOT/'docs/qa/agency-site';QA.mkdir(parents=True,exist_ok=True)
 def server(root):
  class H(http.server.SimpleHTTPRequestHandler):
   def __init__(self,*a,**kw):super().__init__(*a,directory=str(root),**kw)
