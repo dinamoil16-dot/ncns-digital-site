@@ -41,10 +41,10 @@ Browser tests use mock Formspree responses and never send a real enquiry. `tests
 
 ## Remaining owner tasks
 
-1. Confirm the individual/legal entity and business jurisdiction responsible for the site, and align the live privacy disclosure, form processor retention and contractual terms with applicable law. Privacy contact: `ncns.digital@gmail.com`.
+1. **Operator status confirmed:** NCNS Digital is an independent, unregistered freelance service brand operated by an individual; it is not a separate incorporated company. Privacy and Terms reflect this without inventing a country or company. **Still required:** assess the individual's actual tax/registration obligations and any mandatory legal name/address disclosures for relevant jurisdictions, plus Formspree/Gmail data retention. Privacy contact: `ncns.digital@gmail.com`.
 2. **Completed:** PR #14 integrated into `main`; production deployment from `main` confirmed with a harmless public marker that was then removed. Keep branch review, green CI and rollback checks for future releases.
-3. **Domain verified in Google Search Console**; `https://ncns.digital/sitemap.xml` submitted on 31 October 2026 (Google displayed “Sitemap sent”). At submission time its status was “Not received” / 0 indexed pages while Google had not processed it. URL Inspection requests for homepage and services were **not completed**; inspect and optionally request indexing manually. No indexed-page claim.
-4. Check actual mobile Safari, Android and Firefox; confirm delivery/replies; optionally redirect `www.ncns.digital` and `ncns-digital-site.pages.dev` to the canonical host.
+3. **Domain verified in Google Search Console**; `https://ncns.digital/sitemap.xml` submitted on 31 October 2026 (Google displayed “Sitemap sent”). At submission time its status was “Not received” / 0 indexed pages while Google had not processed it. **The owner subsequently requested indexing of both** `https://ncns.digital/` and `https://ncns.digital/solutions/` in Search Console. Actual indexing is not yet confirmed.
+4. **Owner checked Android and iPhone:** site renders and functions normally. Further optional Firefox review and Reply-To test with an external email remain; redirects for `www.ncns.digital` and `pages.dev` are optional.
 
 No fabricated portfolio, client logos, revenue claims or completed customer cases appear on the site. Portfolio concepts and marketing launch are separate future work.
 
