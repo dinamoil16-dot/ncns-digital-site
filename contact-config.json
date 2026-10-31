@@ -7,7 +7,7 @@
   "instagramApproved": true,
   "whatsappApproved": true,
   "formProvider": "formspree",
-  "formEndpoint": "",
-  "formEnabled": false,
+  "formEndpoint": "https://formspree.io/f/mjyyagao",
+  "formEnabled": true,
   "formDeliveryVerified": false
 }
