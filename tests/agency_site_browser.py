@@ -87,7 +87,7 @@ try:
   page.goto(base,wait_until='networkidle');assert page.locator('#emailBrief').is_visible();assert page.locator('#whatsappContact').is_visible()
   page.locator('#emailBrief').click();assert 'Describe your business need' in page.locator('#contactDelivery').inner_text()
   page.locator('#projectDetails').fill('A&B — multilingual: привет');assert '%26' in page.locator('#emailBrief').get_attribute('href');assert '%D0' in page.locator('#emailBrief').get_attribute('href');page.close()
-  page=browser.new_page();page.route('**/contact-config.json',lambda r:r.fulfill(status=503,body='unavailable'));page.goto(base,wait_until='networkidle');assert 'contact option is unavailable' in page.locator('#contactDelivery').inner_text();assert page.locator('#instagramContact').is_visible();page.close()
+  page=browser.new_page();page.route('**/contact-config.json',lambda r:r.fulfill(status=503,body='unavailable'));page.goto(base,wait_until='networkidle');assert 'Automatic project-email preparation is unavailable' in page.locator('#contactDelivery').inner_text();assert page.locator('#instagramContact').is_visible();page.close()
   # Normal-motion review: pause/resume state survives background synchronization.
   page=browser.new_page(reduced_motion='no-preference');page.goto(base,wait_until='networkidle');page.locator('#motionToggle').click();assert page.locator('html').evaluate('e=>e.classList.contains("motion-paused")');page.evaluate("document.dispatchEvent(new Event('visibilitychange'))");assert page.locator('#motionToggle').get_attribute('aria-pressed')=='true';page.locator('#motionToggle').click();assert not page.locator('html').evaluate('e=>e.classList.contains("motion-paused")');page.close()
   browser.close()
