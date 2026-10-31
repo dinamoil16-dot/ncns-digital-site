@@ -40,6 +40,8 @@ try:
    assert page.locator('.footer-social-link[href="https://wa.me/79063231457"]').count()==1
    assert all(x for x in page.locator('.footer-social-link').evaluate_all('(els)=>els.map(el=>el.getAttribute("aria-label"))'))
    assert page.locator('.footer-social-link').first.evaluate('(el)=>parseFloat(getComputedStyle(el).minHeight)>=40')
+   assert page.locator('.footer-social').evaluate('(el)=>getComputedStyle(el).flexDirection')=='row'
+   assert page.locator('.footer-social-link').nth(0).bounding_box()['x']<page.locator('.footer-social-link').nth(1).bounding_box()['x']<page.locator('.footer-social-link').nth(2).bounding_box()['x']
 
    assert page.locator('#emailPending').text_content().strip()=='ncns.digital@gmail.com'
    assert page.locator('#emailBrief').get_attribute('href').startswith('mailto:ncns.digital@gmail.com')
