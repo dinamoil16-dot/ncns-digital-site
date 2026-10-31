@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="NCNS Growth OS — an interactive fictional business operations and growth dashboard.">
+<link rel="icon" type="image/webp" href="../../assets/ncns-original-logo.webp">
+<title>Growth OS — NCNS Digital / Interactive Demo</title>
+<link rel="stylesheet" href="./style.css">
+<script defer src="./app.js"></script>
+</head><body>
+<noscript><div class="fallback">This interactive demo needs JavaScript. No live business data is loaded. <a href="../../index.html#contact">Return to NCNS to discuss a project</a>.</div></noscript>
+<a href="#main" class="skip">Skip to dashboard</a>
+<div class="app">
+<aside class="sidebar">
+  <div class="brandbar"><img src="../../assets/ncns-original-logo.webp" width="42" height="42" alt=""><div><strong>NCNS</strong><span>GROWTH OS</span></div></div>
+  <div class="subhead">INTERACTIVE PORTFOLIO / 01</div>
+  <nav aria-label="Demo sections" class="side-nav">
+    <a href="#overview" class="active"><span class="n">01</span> Overview</a>
+    <a href="#pipeline"><span class="n">02</span> Pipeline & follow-ups</a>
+    <a href="#scenario"><span class="n">03</span> Growth simulator</a>
+    <a href="#plan"><span class="n">04</span> Action plan</a>
+  </nav>
+  <div class="side-note"><span class="live-pip" aria-hidden="true"></span> OFFLINE DEMONSTRATION<p>All names, leads, revenue and results shown here are fictional. No messages are sent. No company data is collected.</p></div>
+  <a class="return" href="../../index.html#work">← Back to NCNS Digital</a>
+</aside>
+<main id="main">
+<header class="topline"><div><span class="eyebrow">OPERATIONS INTELLIGENCE / BUSINESS SIMULATOR</span><span class="route">Workspace / Growth Overview</span></div><span class="simulation">● SYNTHETIC DATA</span></header>
+<section class="intro">
+  <div><p class="eyebrow">DEMO 01 — GROWTH & OPERATIONS</p><h1>See the entire<br><em>growth picture.</em></h1>
+  <p class="lede">One place to understand acquisition, qualified leads, sales operations and the next move. Explore a real interactive prototype built by NCNS Digital.</p></div>
+  <div class="intro-note"><span>THE BUSINESS PROBLEM</span><p>Leads live across channels, follow-ups get missed, and teams cannot connect marketing activity to closed opportunities.</p><b>OUR SOLUTION →</b><p>For owners and revenue operations teams: a scoped dashboard, CRM workflow, measurement plan and operator handover. Optional monthly care maintains rules and integrations; optimization tests agreed hypotheses. Client retains access to their data and artifacts.</p></div>
+</section>
+<section class="journey section" aria-labelledby="journeyTitle"><p class="eyebrow">BEFORE: FRAGMENTED CHANNELS / AFTER: A REVIEWABLE NEXT ACTION</p><h2 id="journeyTitle">Follow the opportunity.</h2><p class="section-description">Select a stage to reveal its mechanism. Counts follow your reporting filters; the operator queue is a separate fictional sample.</p><div class="flow" aria-label="Inspect the growth workflow"><button type="button" data-flow="0" aria-pressed="true">01 / ACQUIRE<strong id="flowLeads">—</strong><span>Incoming leads</span></button><button type="button" data-flow="1" aria-pressed="false">02 / QUALIFY<strong id="flowQualified">—</strong><span>Qualified enquiries</span></button><button type="button" data-flow="2" aria-pressed="false">03 / SELL<strong id="flowWon">—</strong><span>Won opportunities</span></button><button type="button" data-flow="3" aria-pressed="false">04 / IMPROVE<strong>Next move</strong><span>Human-reviewed plan</span></button></div><div class="mechanism" id="flowDetail" role="status"></div><button type="button" id="pauseFlow" class="secondary">Pause flow motion</button><a id="flowTarget" class="secondary" href="#overview">Inspect acquisition</a><p class="muted">This is a data-driven local simulation, not a live customer journey or connected CRM.</p></section>
+<section id="overview" class="section" aria-labelledby="overviewTitle">
+  <div class="section-head"><div><p class="eyebrow">01 / CONTROL CENTER</p><h2 id="overviewTitle">Performance overview</h2></div>
+    <div class="filters"><label>Reporting window<select id="period"><option value="current">This month</option><option value="previous">Previous month</option><option value="quarter">This quarter</option></select></label><label>Acquisition channel<select id="channel"><option value="all">All channels</option><option value="organic">Organic search</option><option value="paid">Paid campaigns</option><option value="referral">Referrals</option><option value="outbound">B2B outreach</option></select></label></div>
+  </div>
+  <div class="metrics">
+    <article class="metric"><span>INCOMING LEADS</span><strong id="kpiLeads">—</strong><small>Sample enquiries received</small></article>
+    <article class="metric"><span>QUALIFIED LEADS</span><strong id="kpiQualified">—</strong><small id="kpiQualification">—</small></article>
+    <article class="metric"><span>CLOSED DEALS</span><strong id="kpiWon">—</strong><small id="kpiClose">—</small></article>
+    <article class="metric dark"><span>ATTRIBUTED REVENUE</span><strong id="kpiRevenue">—</strong><small>Illustrative sales, not profit</small></article>
+  </div>
+  <div class="two">
+    <article class="panel"><div class="panel-top"><div><p class="eyebrow">CONVERSION</p><h3>Where opportunities move</h3></div><span>FUNNEL</span></div><div id="funnel" class="funnel" aria-live="polite"></div><p class="muted">Conversion is calculated from the selected fictional period and acquisition channel, not fabricated client case results.</p></article>
+    <article class="panel"><div class="panel-top"><div><p class="eyebrow">DECISION SUPPORT</p><h3>What deserves attention?</h3></div><span>INSIGHTS</span></div><div id="insights" class="insights" aria-live="polite"></div><div class="source-note">Data source: embedded demonstration records. Real projects require connected, consented client data and clear attribution rules.</div></article>
+  </div>
+</section>
+<section id="pipeline" class="section" aria-labelledby="pipelineTitle"><div class="section-head"><div><p class="eyebrow">02 / OPERATOR VIEW</p><h2 id="pipelineTitle">Pipeline & follow-ups</h2><p class="section-description">A dashboard alone cannot close sales. Your team needs accountable next actions, clear ownership and safe follow-up rules.</p></div><div><span class="counter" id="followupCount">—</span><button type="button" id="resetPipeline" class="secondary">Reset sample queue</button></div><p id="pipelineStatus" class="sr-only" role="status"></p></div>
+  <div class="panel table-panel"><p class="muted">Swipe horizontally or focus this table to scroll. Stage changes do not alter the aggregate sample report.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable fictional opportunity table"><table><caption class="sr-only">Fictional opportunity management demo</caption><thead><tr><th scope="col">Opportunity</th><th scope="col">Channel</th><th scope="col">Stage</th><th scope="col">Next action</th><th scope="col">Contact policy</th></tr></thead><tbody id="leadRows"></tbody></table></div><p class="muted">Records represent illustrative opportunities, not the full aggregated funnel above. Stage changes and completion flags live only in this browser session.</p></div>
+</section>
+<section id="scenario" class="section" aria-labelledby="scenarioTitle"><div class="section-head"><div><p class="eyebrow">03 / MEASURABLE HYPOTHESES</p><h2 id="scenarioTitle">Growth scenario simulator</h2><p class="section-description">Adjust assumptions and see what a better-qualified funnel might mean for a sample business. Forecasts are arithmetic, not promises.</p></div></div>
+  <div class="scenario-grid"><div class="panel inputs"><div class="panel-top"><h3>Change the assumptions</h3><span>LIVE MODEL</span></div>
+    <label for="qualifiedRate" class="slider-label">Lead qualification rate <output id="qualifiedValue" for="qualifiedRate">30%</output></label><input type="range" id="qualifiedRate" min="5" max="65" step="1" value="30">
+    <label for="closeRate" class="slider-label">Qualified → won <output id="closeValue" for="closeRate">23%</output></label><input type="range" id="closeRate" min="5" max="60" step="1" value="23">
+    <label for="dealValue" class="slider-label">Average revenue per won deal <output id="dealValueOutput" for="dealValue">$1,590</output></label><input type="range" id="dealValue" min="500" max="10000" step="10" value="1590">
+    <label for="marginRate" class="slider-label">Assumed gross margin <output id="marginValue" for="marginRate">40%</output></label><input type="range" id="marginRate" min="10" max="80" step="5" value="40">
+    <button type="button" class="text-button" id="resetScenario">↺ Reset assumptions</button>
+  </div>
+  <div class="panel outcome"><p class="eyebrow">ILLUSTRATIVE BUSINESS CASE</p><h3 id="scenarioHeadline">Possible sales revenue</h3><div class="forecast" id="forecastRevenue">—</div><div class="scenario-pills"><div><span>EXPECTED WON DEALS</span><strong id="forecastWon">—</strong></div><div><span>GROSS CONTRIBUTION LESS MEDIA SPEND</span><strong id="forecastContribution">—</strong></div></div><p class="formula" id="scenarioFormula">—</p><p class="muted">Contribution is not net profit: labor, fulfillment, taxes, overhead, integration and other costs are excluded. Forecasts assume stable lead volume and simplified rates.</p></div></div>
+</section>
+<section id="plan" class="section last" aria-labelledby="planTitle"><div class="section-head"><div><p class="eyebrow">04 / THE DELIVERABLE</p><h2 id="planTitle">Turn insight into action</h2><p class="section-description">A useful partner does not stop at charts. NCNS can build the connected tools, help operate them and improve them over time.</p></div></div>
+  <div class="two"><article class="panel"><div class="panel-top"><h3>Recommended next moves</h3><span>RULE-BASED</span></div><ol id="actions" class="actions"></ol><div class="plan-controls"><button type="button" id="copyPlan" class="primary">Copy action plan ↗</button><button type="button" id="downloadPlan" class="secondary">Download JSON</button></div><p id="copyStatus" class="muted" role="status"></p><textarea id="manualPlan" class="manual" readonly hidden aria-label="Manually copy action plan"></textarea></article>
+  <article class="panel offer"><div class="panel-top"><span>THE NCNS PARTNERSHIP</span></div><div class="offer-step"><b>01 / BUILD</b><p>Connect real lead sources, define business rules and create the CRM and reporting workflows.</p></div><div class="offer-step"><b>02 / OPERATE</b><p>Maintain systems, monitor exceptions, oversee agreed automations and publish transparent reports.</p></div><div class="offer-step"><b>03 / GROW</b><p>Improve qualification, offers, follow-up and channel allocation through measurable experiments.</p></div><a href="../../index.html#contact" class="primary full">Discuss your real business ↗</a><p class="muted">Every commercial engagement is custom-scoped. No ROI or lead-volume guarantees.</p></article></div>
+</section>
+<footer><span>NCNS DIGITAL / GROWTH OS</span><span>INTERACTIVE CONCEPT DEMO · NO CLIENT DATA</span><a href="../../index.html#work">BACK TO NCNS ↗</a></footer>
+</main></div>
+</body></html>
