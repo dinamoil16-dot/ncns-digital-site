@@ -30,7 +30,7 @@ def build():
             cwd=ROOT, check=True
         )
         expected = {
-            "index.html", "404.html", "styles.css", "milestone-b.css", "agency.css",
+            "index.html", "404.html", "_headers", "styles.css", "milestone-b.css", "agency.css",
             "main.js", "contact.js", "contact-config.json",
             "privacy.html", "terms.html", "solutions", "assets",
             "robots.txt", "sitemap.xml"
