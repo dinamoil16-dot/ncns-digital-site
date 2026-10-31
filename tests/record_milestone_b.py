@@ -59,7 +59,7 @@ with tempfile.TemporaryDirectory(prefix='ncns-milestone-b-') as tmp, sync_playwr
     page.wait_for_timeout(850)
     page.evaluate("document.querySelector('#labForm').scrollIntoView({behavior:'smooth',block:'start'})")
     page.wait_for_timeout(600)
-    page.locator('#labService').select_option('Website / digital product')
+    page.locator('#labService').select_option('Websites & Web Development')
     page.locator('#labNext').click()
     page.locator('#labGoal').press_sequentially('A considered multilingual website for an independent studio.',delay=13)
     page.locator('#labTiming').select_option('Within 1–3 months')

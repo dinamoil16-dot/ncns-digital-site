@@ -1,0 +1,22 @@
+[
+  {
+    "width": 1440,
+    "duration_seconds": 18.68,
+    "file": "walkthrough-1440.mp4",
+    "source": "walkthrough-1440.webm",
+    "real_browser": true,
+    "js_errors": [],
+    "external_or_write_requests": [],
+    "journey": "approved hero \u2192 service pillars \u2192 automation detail \u2192 Build/Operate/Grow \u2192 Experience Lab \u2192 local brief/copy; no send"
+  },
+  {
+    "width": 390,
+    "duration_seconds": 18.36,
+    "file": "walkthrough-390.mp4",
+    "source": "walkthrough-390.webm",
+    "real_browser": true,
+    "js_errors": [],
+    "external_or_write_requests": [],
+    "journey": "approved hero \u2192 service pillars \u2192 automation detail \u2192 Build/Operate/Grow \u2192 Experience Lab \u2192 local brief/copy; no send"
+  }
+]

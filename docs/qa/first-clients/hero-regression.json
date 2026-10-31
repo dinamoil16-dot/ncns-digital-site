@@ -1,0 +1,27 @@
+[
+  {
+    "width": 1440,
+    "pixel_identical": true,
+    "baseline": "f6d4e1ab66fe1ce7dcc94ccd5af4c315c52dff76"
+  },
+  {
+    "width": 1024,
+    "pixel_identical": true,
+    "baseline": "f6d4e1ab66fe1ce7dcc94ccd5af4c315c52dff76"
+  },
+  {
+    "width": 768,
+    "pixel_identical": true,
+    "baseline": "f6d4e1ab66fe1ce7dcc94ccd5af4c315c52dff76"
+  },
+  {
+    "width": 390,
+    "pixel_identical": true,
+    "baseline": "f6d4e1ab66fe1ce7dcc94ccd5af4c315c52dff76"
+  },
+  {
+    "width": 360,
+    "pixel_identical": true,
+    "baseline": "f6d4e1ab66fe1ce7dcc94ccd5af4c315c52dff76"
+  }
+]

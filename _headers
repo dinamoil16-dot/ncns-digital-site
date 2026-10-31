@@ -1,0 +1,9 @@
+# Security defaults for public static pages.
+/*
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Do not let the Cloudflare-generated alternate hostname compete with our
+# canonical public domain in search engines.
+https://ncns-digital-site.pages.dev/*
+  X-Robots-Tag: noindex

@@ -1,0 +1,27 @@
+[
+  {
+    "width": 1440,
+    "pixel_identical": true,
+    "baseline": "bb405bf1feed8d772342e7510594a70157d9cba0"
+  },
+  {
+    "width": 1024,
+    "pixel_identical": true,
+    "baseline": "bb405bf1feed8d772342e7510594a70157d9cba0"
+  },
+  {
+    "width": 768,
+    "pixel_identical": true,
+    "baseline": "bb405bf1feed8d772342e7510594a70157d9cba0"
+  },
+  {
+    "width": 390,
+    "pixel_identical": true,
+    "baseline": "bb405bf1feed8d772342e7510594a70157d9cba0"
+  },
+  {
+    "width": 360,
+    "pixel_identical": true,
+    "baseline": "bb405bf1feed8d772342e7510594a70157d9cba0"
+  }
+]

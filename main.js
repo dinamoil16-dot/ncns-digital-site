@@ -6,7 +6,8 @@
   const hero = document.querySelector('.hero');
   const nav = $('primaryNavigation');
   const menu = $('menuToggle');
-  const canMove = () => !motion.matches && !document.hidden;
+  let userPaused = false;
+  const canMove = () => !motion.matches && !document.hidden && !userPaused;
   const setMenu = (open, restore = false) => {
     nav.classList.toggle('open', open);
     menu.setAttribute('aria-expanded', String(open));
@@ -31,6 +32,17 @@
       target.focus({preventScroll: true});
     });
   });
+
+  document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
+    $('projectType').value = link.dataset.service;
+    $('briefForm').dispatchEvent(new Event('input', {bubbles:true}));
+  }));
+  const openHash = () => {
+    let id; try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target?.matches('details')) target.open = true;
+  };
+  addEventListener('hashchange', openHash); openHash();
 
   // One frame per pointer update; only scenery moves, never the original lettering.
   let depthFrame = 0;
@@ -111,13 +123,18 @@
   addEventListener('scroll', queueScroll, {passive: true});
   addEventListener('resize', queueScroll);
   const syncMotion = () => {
-    document.documentElement.classList.toggle('motion-paused', document.hidden);
+    document.documentElement.classList.toggle('motion-paused', document.hidden || userPaused);
+    const control = $('motionToggle');
+    control.hidden = false; control.disabled = motion.matches;
+    control.textContent = motion.matches ? 'Reduced motion enabled' : userPaused ? 'Resume ambient motion' : 'Pause ambient motion';
+    control.setAttribute('aria-pressed', String(userPaused || motion.matches));
     resetDepth();
     cards.forEach(resetCard);
     if (motion.matches) reveals.forEach(element => element.classList.add('visible'));
     if (document.hidden) { cancelAnimationFrame(scrollFrame); scrollFrame = 0; }
     else queueScroll();
   };
+  $('motionToggle').addEventListener('click', () => { userPaused = !userPaused; syncMotion(); });
   motion.addEventListener('change', syncMotion);
   pointer.addEventListener('change', syncMotion);
   document.addEventListener('visibilitychange', syncMotion);
@@ -202,6 +219,7 @@
   $('useLab').addEventListener('click', () => {
     $('projectType').value = $('labService').value;
     $('projectDetails').value = buildDraft();
+    $('briefForm').dispatchEvent(new Event('input', {bubbles:true}));
     $('contact').scrollIntoView({behavior: motion.matches ? 'instant' : 'smooth'});
     $('projectDetails').focus({preventScroll: true});
     $('formStatus').textContent = 'Your planning draft is ready to edit. No message has been sent.';
@@ -215,7 +233,7 @@
       $('formStatus').textContent = 'Please describe your project first.';
       $('projectDetails').focus(); return;
     }
-    const draft = `NCNS Digital — project brief\nService: ${$('projectType').value}\nProject: ${details}\n\nDraft only — not sent.`;
+    const draft = `NCNS Digital — project brief\nService: ${$('projectType').value}\nProject: ${details}\nCurrent process: ${$('currentProcess').value.trim() || 'To discuss'}\nReply channel: ${$('replyChannel').value.trim() || 'Not supplied'}\n\nDraft only — not sent.`;
     let fallback = $('briefFallback');
     if (!fallback) {
       fallback = document.createElement('textarea'); fallback.id = 'briefFallback';
