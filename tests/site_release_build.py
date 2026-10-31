@@ -15,6 +15,8 @@ try:
     assert (dist/"assets/ncns-original-logo.webp").is_file()
     assert (dist/"assets/social/ncns-digital.png").is_file()
     assert (dist/"solutions/index.html").is_file()
+    missing=(dist/"404.html").read_text(encoding="utf-8")
+    assert "Page not found" in missing and 'content="noindex,follow"' in missing
     assert not any((dist/x).exists() for x in ["README.md","AGENTS.md","docs",".github","tests","spec","reference","scripts","site-config.json"])
     homepage=(dist/"index.html").read_text()
     assert 'href="https://ncns.digital/"' in homepage
