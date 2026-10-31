@@ -1,0 +1,29 @@
+[
+  {
+    "width": 1440,
+    "cpu_throttle": 4,
+    "filter_to_second_frame_ms": 55,
+    "local_document_dom_ready_ms": 344,
+    "observed_layout_shift_score": 0,
+    "subresource_transfer_bytes": 45788,
+    "scope": "local HTTP; no network throttling; synthetic CPU slowdown; not field CWV or real hardware"
+  },
+  {
+    "width": 390,
+    "cpu_throttle": 4,
+    "filter_to_second_frame_ms": 178.3,
+    "local_document_dom_ready_ms": 1043,
+    "observed_layout_shift_score": 0,
+    "subresource_transfer_bytes": 45788,
+    "scope": "local HTTP; no network throttling; synthetic CPU slowdown; not field CWV or real hardware"
+  },
+  {
+    "width": 360,
+    "cpu_throttle": 4,
+    "filter_to_second_frame_ms": 57.8,
+    "local_document_dom_ready_ms": 672,
+    "observed_layout_shift_score": 0,
+    "subresource_transfer_bytes": 45788,
+    "scope": "local HTTP; no network throttling; synthetic CPU slowdown; not field CWV or real hardware"
+  }
+]

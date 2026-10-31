@@ -27,3 +27,7 @@ Playwright uses installed Chromium when present, otherwise its bundled Chromium.
 For an owner/revenue operations team, the paid scope would be connected sources, agreed qualification rules, a CRM/operator workflow, measurement plan and handover. Optional Operate care covers agreed integration/rule reliability; Grow means measured experiments. Client retains data access. The local prototype demonstrates these mechanisms, not completed production integrations.
 
 NO-GO for public launch: owner must review/accept this demo; separate Issue #13 conversion integration, contact values and delivery verification, domain/hosting choices and release QA remain. No real CRM, AI, messaging, tracking, deployment or merge. The other five complete demos are deferred until MVP launch readiness.
+
+## Local rendering measurements
+
+`python3 tests/growth_os_performance.py` records [performance.json](performance.json). With a synthetic 4× CPU slowdown, measured filter-to-second-frame times were 55.0 ms (1440), 178.3 ms (390) and 57.8 ms (360); observed layout-shift score was 0 in these local samples, and subresource transfer was 45,788 bytes. These are single local HTTP lab observations with no network throttling, not field INP/CWV, a percentile benchmark or actual modest-phone certification. Real-device and cross-browser release checks remain pending.
