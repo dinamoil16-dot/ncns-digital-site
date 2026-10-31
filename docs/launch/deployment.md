@@ -1,64 +1,57 @@
-# Agency release preparation — no portfolio prerequisite
+# NCNS Digital — live operations and release checklist
+Updated 31 October 2026. **Site is already public:** https://ncns.digital/ and https://ncns-digital-site.pages.dev/
 
-No merge, publishing, hosting purchase or DNS edit is performed by this runbook or its preparation script. Owner reviews the finished main website first. Growth OS and other demos stay deferred in their own branches.
+## Confirmed production facts
+- The owner purchased `ncns.digital` via Cloudflare Registrar and connected it to Cloudflare Pages `ncns-digital-site`. The origin is served on HTTPS.
+- Cloudflare Pages Git integration builds from `dinamoil16-dot/ncns-digital-site`, currently using branch `codex/issue-13-client-ready`.
+- Framework: None; Build command: `python3 scripts/build_pages.py`; Build output directory: `dist` (repository root). Public build contains only approved site assets, pages, scripts, contact configuration, SEO and a real `404.html`; internal code-review and QA artifacts are excluded.
+- Real Formspree endpoint: `https://formspree.io/f/mjyyagao`. On 31 October 2026 a single synthetic browser submission from `https://ncns.digital/` was accepted; the matching notification reached `ncns.digital@gmail.com`. Both the earlier direct provider POST and this live-site test are documented in PR #14. This is not a guarantee of future receipt. A distinct external Reply-To test remains.
+- Google-compatible canonical origin: `https://ncns.digital/`; `robots.txt` and `sitemap.xml` are publicly accessible. `www.ncns.digital` redirect and Google Search Console verification are not yet confirmed.
+- The approved hero, logo, site sections and 12-service structure must remain unchanged unless the owner requests a change.
 
-## Owner decisions still needed
+## 1 — Legal and privacy handoff
 
-- Selected canonical origin: **`https://ncns.digital`**, configured in `site-config.json` solely for build preparation. **Domain NOT purchased or activated**; real registry availability and final purchase price are confirmed again at checkout. Prefer apex domain with optional `www` redirect.
-- Chosen hosting provider: **Cloudflare Pages (Git integration)**, pending owner's Cloudflare account registration, project configuration, authorization and final launch approval. No hosting project exists yet.
-- Owner-confirmed public contact links: email `ncns.digital@gmail.com`, Instagram `https://www.instagram.com/ncns.digital/` and WhatsApp `https://wa.me/79063231457`. **One Formspree test notification successfully reached Gmail; direct mailto and reply-to remain untested.**
-- Legal/operating identity, necessary public contact/address, retention and host-log disclosures: **UNCONFIRMED**.
+The public Privacy & Contact page now explains the live Cloudflare Pages host, Formspree submissions, Gmail notification, purpose of replies, correction/deletion contact and absence of advertising trackers. Terms explain that the website is not a binding quote or service contract.
 
-Do not invent values or publish with placeholders. A domain or provider cannot be called configured until verified.
+**Remaining owner input before asserting compliance:** identify the responsible legal person or registered company, applicable business country/jurisdiction, and whether any legally mandated registration/contact details must be published. This cannot safely be inferred from the domain registrar's address or the owner's temporary physical location. Obtain local legal advice if serving regulated markets.
 
-## Contact configuration and actual delivery
+Verify in Formspree and Gmail the actual retention/deletion settings and choose a defensible retention policy. Do not claim an automatic deletion period without implementing it. Confirm third-party policies/processor obligations where applicable.
 
-Public `contact-config.json` holds only public values, not passwords. Email/Instagram/WhatsApp have been owner-confirmed and configured. Direct form submission uses the **owner-provided Formspree endpoint** `https://formspree.io/f/mjyyagao` and is enabled in the website preview. The client-side script allows only `https://formspree.io/f/FORM_ID` URLs. Do not put a provider API key or Gmail password in browser code, GitHub or public JSON. [Owner setup and receipt test](FORM-DELIVERY.md). No Telegram.
+## 2 — Bring GitHub and Cloudflare production under one stable branch
 
-The main contact form now has a real AJAX submission workflow, mandatory name/reply email/project description/privacy acceptance, provider statuses and fallback links. A provider 2xx response confirms acceptance, **not** inbox arrival. Separately, the manual `mailto:` action opens a draft for the visitor to send. The owner supplied a Formspree endpoint, and one uniquely marked synthetic POST was accepted by Formspree and independently observed as a notification at `ncns.digital@gmail.com` (2026-10-31 16:54 UTC). `formDeliveryVerified: true` documents that **inbound notification**. The real on-site browser test after deployment and Reply-To round-trip remain outstanding (`formReplyVerified: false`). Repeat checks on the final domain and test owner-approved WhatsApp/Instagram links. Do not upload real private enquiry content to GitHub.
+1. Finish review and successful CI for PR #14. Merge the approved complete website into `main` by squash or merge commit; **do not delete the old `codex/issue-13-client-ready` branch before Cloudflare is switched**.
+2. In [Cloudflare Dashboard](https://dash.cloudflare.com/) > Workers & Pages > `ncns-digital-site` > **Settings > Builds & deployments > Production branch** (or Build > Branch control in the current UI), select **`main`** and save. Cloudflare's production branch is not changed merely by merging a PR.
+3. Use Cloudflare Deployments to confirm the expected `main` commit was deployed to production, or manually trigger a production deployment if the branch switch does not deploy immediately. Avoid a blank `main` deployment: first ensure `scripts/build_pages.py`, `site-config.json` and all assets exist there.
+4. Verify `https://ncns.digital` and the `*.pages.dev` alias, Contact and footer icons, 12 services, consent, form, and `/404-ncns-test-url` returning a genuine 404.
+5. Consider disabling automatic production deployment on pushes until the review process is established, or require reviews / CI status checks on protected main. Keep rollback capability and use PR preview deployments for later changes.
+6. Preview branches or subsequent work on separate modules must not affect this site's production.
 
-## Static artifact / SEO preparation
+Cloudflare documentation: https://developers.cloudflare.com/pages/configuration/branch-build-controls/ ; https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/
 
-Source is plain HTML/CSS/JS. No framework build or server backend is needed. `site-config.json` deliberately leaves `canonicalOrigin` empty. Once the owner approves a real HTTPS origin, set it there and run:
+## 3 — SEO / indexing / mobile
 
-```sh
-python3 scripts/prepare_site.py --output /tmp/ncns-reviewed-static
-```
+Site build already generates:
+- `https://ncns.digital/robots.txt` with reference to `https://ncns.digital/sitemap.xml`
+- Sitemap listing `https://ncns.digital/` and `https://ncns.digital/solutions/`
+- Canonical metadata, Open Graph card, service structured data and brand logo
+- A real 404 page so unknown URLs are no longer silently served the homepage by Cloudflare Pages' default SPA fallback.
 
-Use a new output directory outside the repository. The script refuses an absent/invalid origin or existing output, copies a strict public allowlist, excludes `.git`, tests, internal docs/QA and marketing drafts, and writes actual canonical/og:url metadata, absolute social image URLs, robots and sitemap. It does not deploy or enable contact delivery. Includes only agency pages/assets; no Growth OS runtime required. Reserved QA-origin preparation was tested in a temporary directory, not published.
+Owner-assisted Google Search Console:
+1. Open https://search.google.com/search-console/ and sign in to the Google account that will manage the business.
+2. **Add property > Domain**, enter `ncns.digital` (no https). Google provides a unique `google-site-verification=...` TXT token; it is **not** a password.
+3. Cloudflare Dashboard > `ncns.digital` domain > DNS > Records > Add record: **TXT**, Name `@`, Content **the exact value Google gives you**, TTL Auto. Do not modify existing CNAME records or guess a token.
+4. Back in Search Console > Verify; then **Sitemaps**, submit `https://ncns.digital/sitemap.xml` (or `sitemap.xml` if the UI prefixes the property). Use URL Inspection for homepage and service index; request indexing once if eligible.
+5. Google crawling/indexing may take days or weeks and is never guaranteed. Check reports later for actual results.
 
-Source `robots.txt` has no invented sitemap URL. Prepared production sitemap lists home and service directory; privacy/terms remain noindex until legal review. Structured data lists real service capabilities, not fake clients, ratings or completed integrations. Recheck social-card crop and absolute URL from the real host.
+Test live on iPhone Safari, Android Chrome and Firefox in addition to the automated Chromium five-width checks (1440 / 1024 / 768 / 390 / 360). Confirm keyboard navigation, contact icons, form error states, reduced-motion, and no unexpected overflow. Keep test enquiries synthetic, clearly labelled and infrequent.
 
-## Recommended Cloudflare Pages Git-based launch (after domain purchase and final approval)
+Optional tidy-up: configure a 301 `www.ncns.digital` → `https://ncns.digital` with Cloudflare redirect rule + its required DNS entry, then verify HTTPS/certificates. The canonical address is already the apex; the alias is not mandatory for current function.
 
-Cloudflare Registrar public domain search showed `ncns.digital` available as a standard registration at USD $32.20 for the first year and annual renewal (as of 2026-10-31); a definitive availability and billing check occurs in Cloudflare checkout. This repository has **not** registered the domain, created a Pages project, updated DNS, or deployed.
+## Rollback and limitations
+- The Pages output `dist` contains public site content only; never deploy the repository root or paste credentials into browser-visible JSON.
+- GitHub and Cloudflare are separate services. Updating the repository or merging a PR changes live content **only** when the configured production branch deploys successfully.
+- Production form submission was verified on 31 October 2026; a live third-party service may still reject or delay individual submissions. Check Formspree dashboard, Gmail Spam and quota if a visitor reports a problem.
+- Never promise measured ROI, real clients, integrated customer AI, or an already configured CRМ based solely on this agency website.
+- Keep privacy notice and terms accurate as account/legal details are finalized.
 
-**First purchase:** in the owner's Cloudflare account, Domains > Register domains > Search `ncns.digital` > Purchase. Choose one year, verify the final price and premium status, supply legitimate registrant contact and payment details privately, enable 2FA, and verify both Cloudflare and ICANN registrant emails. Domain auto-renew is enabled by default unless the owner changes it. No credentials are needed by the development team.
-
-**Then Git deployment:**
-1. Ensure PR #14 is up to date with latest main and all tests pass. **Do not use stale `main`**; the approved complete website and Formspree configuration currently reside in the draft PR branch `codex/issue-13-client-ready`. Merge only after the owner approves this explicit release step.
-2. Cloudflare dashboard > **Workers & Pages > Create application > Pages > Connect to Git**. Grant GitHub access narrowly to `dinamoil16-dot/ncns-digital-site`.
-3. Production branch **`main` only after the approved site is merged**. Framework preset: **None**; root directory: repository root; build command: `python3 scripts/build_pages.py`; build output directory: `dist`. No extra frontend package manager or credentials. This command creates only an allowlisted public build, with `index.html`, styles, app JS, contact configuration, assets, sitemap, privacy and terms. The source tree, docs, internal QA, Git and CI data must NOT be deployed.
-4. Before first public deployment, examine the GitHub commit and staging settings. Git integration deploys automatically by default; disable automatic production deployments as required until the owner's explicit authorization. After approval, deploy and obtain the provider-generated `*.pages.dev` URL; verify it and check no internal files such as `/docs/` or `/AGENTS.md` are available.
-5. In Pages project **Custom domains > Set up a domain**, enter `ncns.digital`. Cloudflare Registrar manages its own authoritative nameservers and Cloudflare Pages can add the required zone/CNAME. **Do not invent any A, AAAA or CNAME values** or manually add a duplicate record. Check that `https://ncns.digital` serves the expected homepage with valid TLS. Add an owner-approved `www` alias/redirect separately.
-6. Verify the domain-specific canonical/OG/robots/sitemap from the prepared build. Perform a real browser contact form submission to the owner-approved Formspree endpoint `https://formspree.io/f/mjyyagao`, independently observe the email at `ncns.digital@gmail.com`, and verify a reply to the sender. Existing one-time Formspree-to-Gmail receipt verification **does not replace production-origin testing**.
-7. Confirm legally accurate operator details and Formspree/hosting retention handling, and test desktop, iPhone Safari, Android and Firefox. Owner authorizes public launch only after those gates.
-
-The app build helper is `scripts/build_pages.py`, which invokes the strict external-temp allowlist in `scripts/prepare_site.py`. `tests/site_release_build.py` tests it and deletes the temporary local `dist` output; no network or deployment occurs. Cloudflare's `dist` directory is ignored by Git. No scripts require Gmail passwords or account tokens.
-
-Official references: https://developers.cloudflare.com/registrar/get-started/register-domain/ ; https://developers.cloudflare.com/pages/get-started/git-integration/ ; https://developers.cloudflare.com/pages/configuration/custom-domains/
-
-## Staging and hosting
-
-After explicit staging authorization, deploy only the prepared artifact to the chosen static host. Publish directory is artifact root; no build command. Preserve `/solutions/` directory indexes, relative assets and real 404s; do not use an SPA catch-all. No API keys belong in public JSON. Use TLS, least-privilege deploy credentials and a rollback artifact. Disable automatic production deploy-on-push until separately approved.
-
-Use the provider's exact A/AAAA/CNAME values for the chosen hostname; no DNS values can be supplied before provider/domain decisions. Confirm propagation, TLS and one canonical redirect. Keep staging access-restricted and noindex at host level, then deliberately verify production indexing settings. Configure supported security headers (at minimum nosniff and a suitable referrer policy), and test any CSP against local fonts, images and existing inline-style motion before enforcing it.
-
-## Final release acceptance
-
-1. Review PR #14 screenshots and functional result. Growth OS PR #9 stays deferred; do not merge it as a release dependency.
-2. Repeat all five-width Chromium tests and `python3 tests/contact_submission_browser.py` plus real Safari/iOS and Firefox checks, modest-device loading, keyboard, no-JS/font/clipboard/config failure paths and reduced motion. Browser mocks alone do NOT test inbox delivery; check no unavailable portfolio routes.
-3. Primary Formspree inbox delivery was tested once; reconfirm via live website browser on real hosting and test the Reply-To flow. Confirm legal details and provider retention before release.
-4. Open the authorized staging/public link on a separate device: home → service pillar → scope → project brief → actual contact. Verify metadata/social image/canonical/robots/sitemap and that internal docs/QA cannot be fetched from the artifact.
-5. Present exact URL, evidence and remaining risks for final release approval. Only then discuss production publication. Never equate local testing or a staging URL with a public launch.
-6. After an authorized release, verify contact delivery again and retain a rollback path. Resume portfolio and marketing production only after the owner approves the completed main site.
+Reference sources: https://support.google.com/webmasters/answer/9008080 ; https://support.google.com/webmasters/answer/7451001 ; https://developers.cloudflare.com/pages/configuration/serving-pages/ ; https://developers.cloudflare.com/pages/how-to/www-redirect/
