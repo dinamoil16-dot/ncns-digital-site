@@ -6,16 +6,16 @@ No merge, publishing, hosting purchase or DNS edit is performed by this runbook 
 
 - Canonical HTTPS domain/origin and www/apex preference: **UNSET**.
 - Static hosting account/provider, staging access, budget and release approver: **UNSET**.
-- Primary business email and WhatsApp Business URL: **UNSET**. Instagram is owner-confirmed `https://www.instagram.com/ncns.digital/`.
+- Owner-confirmed public contact links: email `ncns.digital@gmail.com`, Instagram `https://www.instagram.com/ncns.digital/` and WhatsApp `https://wa.me/79063231457`. **Actual delivery remains unverified.**
 - Legal/operating identity, necessary public contact/address, retention and host-log disclosures: **UNCONFIRMED**.
 
 Do not invent values or publish with placeholders. A domain or provider cannot be called configured until verified.
 
 ## Contact configuration and actual delivery
 
-Public `contact-config.json` holds only public values, never credentials. `ownerApproved: false` keeps primary email and WhatsApp disabled. Instagram has its own `instagramApproved: true` from the latest owner instruction. Set real `email` and `whatsappUrl` only after owner confirmation; then set the appropriate approval flag (`ownerApproved` or `whatsappApproved`) deliberately. Allowed WhatsApp links are HTTPS `wa.me` paths, with no embedded credentials or custom port. Do not invent numbers or add Telegram.
+Public `contact-config.json` holds only public values, not passwords. Email/Instagram/WhatsApp have been owner-confirmed and configured. Direct form submission uses Formspree but remains **disabled** until a verified endpoint is provided. The client-side script allows only `https://formspree.io/f/FORM_ID` URLs. Do not put a provider API key or Gmail password in browser code, GitHub or public JSON. [Owner setup and receipt test](FORM-DELIVERY.md). No Telegram.
 
-The email action opens a local email draft; the client must review/send in their email application. The page says it cannot confirm delivery and retains a copy fallback. Test from an independent desktop and phone: compose → send → owner confirms inbox receipt → owner replies → sender confirms reply. Repeat for the owner-approved WhatsApp and a controlled Instagram DM. Record results privately, not private message contents in git. Only mark `deliveryVerified` after actual evidence. No delivery test was performed here.
+The main contact form now has a real AJAX submission workflow, mandatory name/reply email/project description/privacy acceptance, provider statuses and fallback links. A provider 2xx response confirms acceptance, **not** inbox arrival. Separately, the manual `mailto:` action opens a draft for the visitor to send. When the owner gives a Formspree endpoint, set `formEnabled: true`, then run a genuine submission from staging and verify the Formspree dashboard plus receipt and reply in `ncns.digital@gmail.com`. Only mark `formDeliveryVerified` after independent proof; repeat checks on the final domain and test the owner-confirmed WhatsApp/Instagram links. Do not upload real private enquiry content to GitHub.
 
 ## Static artifact / SEO preparation
 
@@ -38,7 +38,7 @@ Use the provider's exact A/AAAA/CNAME values for the chosen hostname; no DNS val
 ## Final release acceptance
 
 1. Review PR #14 screenshots and functional result. Growth OS PR #9 stays deferred; do not merge it as a release dependency.
-2. Repeat all five-width Chromium tests plus real Safari/iOS and Firefox checks, modest-device loading, keyboard, no-JS/font/clipboard/config failure paths and reduced motion. Verify primary contact button on actual devices; check no hidden/unavailable portfolio routes.
+2. Repeat all five-width Chromium tests and `python3 tests/contact_submission_browser.py` plus real Safari/iOS and Firefox checks, modest-device loading, keyboard, no-JS/font/clipboard/config failure paths and reduced motion. Browser mocks alone do NOT test inbox delivery; check no unavailable portfolio routes.
 3. Confirm legal details and contact delivery privately. No production-ready claim before primary inbound is verified.
 4. Open the authorized staging/public link on a separate device: home → service pillar → scope → project brief → actual contact. Verify metadata/social image/canonical/robots/sitemap and that internal docs/QA cannot be fetched from the artifact.
 5. Present exact URL, evidence and remaining risks for final release approval. Only then discuss production publication. Never equate local testing or a staging URL with a public launch.
