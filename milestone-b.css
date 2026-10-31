@@ -49,3 +49,13 @@
 .brief .form-send-status[data-state="error"]{color:#f1c3b8}
 .brief .field-trap{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:520px){.brief-contact-fields{grid-template-columns:1fr;gap:0}.brief .submit-request{min-height:53px}}
+
+
+/* Footer: understated standalone contact icons, matching Contact without oversized cards. */
+.footer .footer-social{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap}
+.footer .footer-social-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 43px;width:43px;height:43px;min-width:43px;min-height:43px;padding:0;color:#dbe9f3;border:1px solid rgba(160,193,220,.34);border-radius:50%;background:rgba(42,66,83,.2);text-decoration:none;transition:color .24s ease,border-color .24s ease,background .24s ease,transform .24s ease}
+.footer .footer-social-link:hover{color:#fff;border-color:rgba(207,230,246,.8);background:rgba(102,148,174,.18);transform:translateY(-2px)}
+.footer .footer-social-link:focus-visible{outline:2px solid #d6e8f5;outline-offset:4px}
+.footer .footer-social-svg{display:block;width:21px;height:21px}
+@media(max-width:800px){.footer .footer-social{gap:11px}}
+@media(prefers-reduced-motion:reduce){.footer .footer-social-link{transition:none!important}.footer .footer-social-link:hover{transform:none}}
