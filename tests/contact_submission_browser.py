@@ -59,14 +59,18 @@ try:
             context = browser.new_context(viewport={"width": width, "height": height})
             page = context.new_page()
             assert page.goto(origin, wait_until="networkidle").ok
-            assert page.locator("#submitEnquiry").is_disabled()
+            # Owner-provided endpoint is active, but this path never sends externally.
+            assert page.locator("#submitEnquiry").is_enabled()
+            assert config["formEndpoint"] == "https://formspree.io/f/mjyyagao"
+            assert config["formEnabled"] is True
+            assert config["formDeliveryVerified"] is False
             assert page.locator("#emailContact").get_attribute("href") == "mailto:ncns.digital@gmail.com"
             assert page.locator("#instagramContact").get_attribute("href") == "https://www.instagram.com/ncns.digital/"
             assert page.locator("#whatsappContact").get_attribute("href") == "https://wa.me/79063231457"
             assert not page.evaluate("document.documentElement.scrollWidth > innerWidth")
-            assert "not connected" in page.locator("#sendStatus").inner_text()
+            assert "processed by Formspree" in page.locator("#sendStatus").inner_text()
             assert page.locator("#copyBrief").is_enabled()
-            results.append({"width": width, "disabled_without_endpoint": True, "no_overflow": True})
+            results.append({"width": width, "owner_endpoint_enabled": True, "inbox_delivery_unverified": True, "no_overflow": True})
             context.close()
 
         # Realistic configured path with a mocked provider, inspected multipart fields.
@@ -121,6 +125,17 @@ try:
         assert len(counter) == 2
         context.close()
         results.append({"status": "mocked_429_then_200", "retries": len(counter)})
+
+        # A disabled feature flag must override a valid endpoint, even when one is
+        # configured. This never submits to the real owner-provided endpoint.
+        context = browser.new_context()
+        page = context.new_page()
+        configured(page, formEnabled=False)
+        page.goto(origin, wait_until="networkidle")
+        assert page.locator("#submitEnquiry").is_disabled()
+        assert "not connected" in page.locator("#sendStatus").inner_text()
+        context.close()
+        results.append({"status": "valid_endpoint_but_disabled_flag", "disabled": True})
 
         # Unsafe and missing endpoints are never called.
         for invalid in ["", "http://formspree.io/f/xncnsdemo1", "https://evil.example/collect",
