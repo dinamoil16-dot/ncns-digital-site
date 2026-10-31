@@ -32,6 +32,9 @@ assert "one synthetic formspree notification" not in terms.lower()
 assert '<meta name="robots" content="noindex,follow"' in not_found
 assert "Page not found" in not_found and 'href="/"' in not_found
 assert "404.html" in read("scripts/prepare_site.py")
+assert "_headers" in read("scripts/prepare_site.py")
+assert "X-Robots-Tag: noindex" in read("_headers")
+assert "https://ncns-digital-site.pages.dev/*" in read("_headers")
 assert "404.html" in read("scripts/build_pages.py")
 assert "404.html" in read("tests/site_release_build.py")
 assert 'href="./privacy.html"' in home
