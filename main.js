@@ -215,7 +215,7 @@
       $('formStatus').textContent = 'Please describe your project first.';
       $('projectDetails').focus(); return;
     }
-    const draft = `NCNS Digital — project brief\nService: ${$('projectType').value}\nProject: ${details}\n\nDraft only — not sent.`;
+    const draft = `NCNS Digital — project brief\nService: ${$('projectType').value}\nProject: ${details}\nCurrent process: ${$('currentProcess').value.trim() || 'To discuss'}\nReply channel: ${$('replyChannel').value.trim() || 'Not supplied'}\n\nDraft only — not sent.`;
     let fallback = $('briefFallback');
     if (!fallback) {
       fallback = document.createElement('textarea'); fallback.id = 'briefFallback';

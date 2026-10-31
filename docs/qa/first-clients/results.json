@@ -1,0 +1,47 @@
+[
+  {
+    "width": 1440,
+    "passed": true,
+    "errors": [],
+    "bad_resources": [],
+    "external_or_write_requests": [],
+    "integration": "PR9 worktree overlay; not merged",
+    "contact_delivery": "unconfigured, not tested"
+  },
+  {
+    "width": 1024,
+    "passed": true,
+    "errors": [],
+    "bad_resources": [],
+    "external_or_write_requests": [],
+    "integration": "PR9 worktree overlay; not merged",
+    "contact_delivery": "unconfigured, not tested"
+  },
+  {
+    "width": 768,
+    "passed": true,
+    "errors": [],
+    "bad_resources": [],
+    "external_or_write_requests": [],
+    "integration": "PR9 worktree overlay; not merged",
+    "contact_delivery": "unconfigured, not tested"
+  },
+  {
+    "width": 390,
+    "passed": true,
+    "errors": [],
+    "bad_resources": [],
+    "external_or_write_requests": [],
+    "integration": "PR9 worktree overlay; not merged",
+    "contact_delivery": "unconfigured, not tested"
+  },
+  {
+    "width": 360,
+    "passed": true,
+    "errors": [],
+    "bad_resources": [],
+    "external_or_write_requests": [],
+    "integration": "PR9 worktree overlay; not merged",
+    "contact_delivery": "unconfigured, not tested"
+  }
+]

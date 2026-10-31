@@ -1,0 +1,7 @@
+Issue #13 prioritizes a credible first-client path over finishing all six demos. This focused branch from approved main adds an Explore Solutions index, honestly distinguishes Growth OS from the Experience Lab requirements tool, and prepares a short project-review interface with public email/Instagram/WhatsApp configuration. No Telegram or invented contacts.
+
+Growth OS development stays in existing PR #9. The conversion branch does not duplicate its runtime: integration QA serves that worktree locally, and release depends on PR #9 approval/integration. There is no public deployment or verified inbound delivery; launch is explicitly NO-GO until real contact values, delivery tests, domain/hosting/legal decisions and final release QA are complete.
+
+Includes a review-first deployment runbook, GO/NO-GO checklist, privacy/contact disclosure, three scoped commercial packages, unsent outreach drafts, first-week Instagram copy, original carousel artwork and real browser recording sources. No messages sent, accounts posted, ads, merge or deployment.
+
+Validation and real screenshots: `docs/qa/first-clients/`. Chromium at 1440/1024/768/390/360 verifies solutions → Growth OS → return → Experience Lab → brief/copy, contact configuration and no-JS fallback. Approved hero is compared pixel-for-pixel against main. Source scripts: `tests/client_ready_browser.py` and `tests/approved_hero_regression.py`. Owner review required before integration/publication.

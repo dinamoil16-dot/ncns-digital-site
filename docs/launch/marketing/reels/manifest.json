@@ -1,0 +1,26 @@
+[
+  {
+    "file": "growth-os.mp4",
+    "source": "docs/qa/milestone-c2/growth-os/walkthrough-390.webm",
+    "source_sha256": "05dfda31194928dbe4d92bec292020d67bc4181ed49019247e21e5ccb63d6de2",
+    "duration_seconds": 16.48,
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "status": "DRAFT for manual owner review; not posted",
+    "processing": "scale/pad only; constant truthful labels; original actions and timing retained; silent"
+  },
+  {
+    "file": "experience-lab.mp4",
+    "source": "docs/qa/first-clients/experience-lab-mobile.webm",
+    "source_sha256": "5156e54f821bb6535eb6d7d0f95ac10bcf869c69a40cae143b0b4a63aa9418ac",
+    "duration_seconds": 10.88,
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "status": "DRAFT for manual owner review; not posted",
+    "processing": "scale/pad only; constant truthful labels; original actions and timing retained; silent"
+  }
+]
