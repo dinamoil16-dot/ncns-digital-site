@@ -1,36 +1,51 @@
-# NCNS Digital
+# NCNS Digital — agency website
 
-Independent static agency website in the approved Cinematic Luxury × Premium Minimalism direction. Milestone A was approved and merged in PR #2; its squash commit `87e8de3` is the visual baseline. Milestone B completes the agency sections and local interactive tools for owner review.
+**Live website:** https://ncns.digital/
 
-## Run locally
+An independent, international-facing AI and digital agency website. The owner approved the cinematic dark/chrome hero and its original NCNS emblem. The site contains 12 service families in five pillars, Build → Operate → Grow, a browser-only Experience Lab, a project enquiry form and public contact links.
+
+## Hosting and delivery
+
+- Hosting: **Cloudflare Pages**, project `ncns-digital-site`; secondary URL https://ncns-digital-site.pages.dev/
+- GitHub: `dinamoil16-dot/ncns-digital-site`. The original Pages production branch is `codex/issue-13-client-ready`, pending owner-controlled transition to `main`. Do **not** assume production follows `main` until Pages settings are changed.
+- Build command: `python3 scripts/build_pages.py`, output directory `dist`, no framework.
+- `scripts/prepare_site.py` generates the safe public allowlist, canonical metadata `https://ncns.digital/`, `robots.txt`, `sitemap.xml` and a branded `404.html`; source docs, CI files and internal tests must never be included in the deployment directory.
+- Cloudflare Pages automatically deploys selected production-branch commits when Git integration is enabled. Review the build result after each intended deployment.
+
+## Enquiries
+
+The live contact form submits via Formspree `https://formspree.io/f/mjyyagao` to `ncns.digital@gmail.com`. A controlled browser submission **from the live `ncns.digital` site** was accepted and the corresponding notification appeared in that Gmail inbox on 31 October 2026. This verifies one end-to-end inbound message; it is not a guarantee of universal delivery. The Reply-To round-trip is still to be checked with a distinct test sender.
+
+Contact icons in both Contact and footer link to email, Instagram `@ncns.digital` and WhatsApp. The Experience Lab is a local draft builder, **not an AI agent, CRM or a submitted enquiry**.
+
+## Development and checks
+
+Run locally from repository root:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-No frontend installation or build is needed. All fonts and imagery are local. The original `assets/ncns-original-logo.webp` is unchanged. `styles.css` retains the approved opening-frame design; `milestone-b.css` extends the site below it and adds restrained, accessible interactions.
-
-## Current experience
-
-- Original cinematic hero and three service images, with a single composite halo and shallow scenery depth. Pointer movement does not transform the logo lettering.
-- Detailed websites, branding and AI/workflow capabilities; native accessible detail panels.
-- Three-step local requirements builder, honest copyable draft, clipboard fallback and transfer to an editable project brief.
-- Keyboard-accessible Discover → Design → Build → Improve timeline, standalone About, explicit coming-next work section and complete footer navigation.
-- Reduced-motion support, paused motion in hidden tabs, useful content/navigation without JavaScript and local font fallbacks.
-
-The builder assembles user choices locally. It is not an AI service or price quotation. The contact section only copies a brief; it sends no enquiry, email, payment or booking. No analytics, tracking, backend, portfolio cases or deployment are enabled.
-
-## Validation and review
+On Windows double-click `REVIEW-SITE-WINDOWS.bat` (requires Python). Neither method makes a production deployment.
 
 ```sh
-node --check main.js
-python3 tests/milestone_b_browser.py
-python3 tests/record_milestone_b.py
-python3 tests/record_milestone_b.py --mobile
+node --check main.js && node --check contact.js
+python3 tests/site_release_build.py
+python3 tests/agency_site_browser.py
+python3 tests/contact_submission_browser.py
+python3 tests/approved_hero_regression.py
+python3 tests/agency_before_after.py
 ```
 
-QA tools require Python Playwright, Pillow, system Chromium (`/usr/bin/chromium`) and FFmpeg for recordings. The server must be running. `python3 tests/browser_smoke.py` remains a compatibility entry point for the current acceptance suite.
+Browser tests use mock Formspree responses and never send a real enquiry. `tests/site_release_build.py` builds a temporary release and verifies only public files are included. Do not publish the repo root.
 
-[Milestone B QA, screenshots, videos and limitations](docs/qa/milestone-b/README.md) · [Exact approved reference](reference/README.md) · [Asset provenance and licenses](assets/scenery/README.md)
+## Remaining owner tasks
 
-Historical Milestone A evidence remains under `docs/qa/issue-1-rework/`. Milestone B requires a new draft PR targeting main and owner visual approval before any merge or publication. Portfolio cases are a separate later milestone.
+1. Confirm the individual/legal entity and business jurisdiction responsible for the site, and align the live privacy disclosure, form processor retention and contractual terms with applicable law. Privacy contact: `ncns.digital@gmail.com`.
+2. After GitHub PR #14 is integrated into `main`, change Cloudflare Pages **production branch** to `main`, verify deployment and monitor its status. Keep tests before releases. GitHub merger alone does not switch the Pages branch.
+3. Configure Google Search Console for Domain property `ncns.digital` via Cloudflare DNS TXT verification. Submit `https://ncns.digital/sitemap.xml`, inspect `https://ncns.digital/` and `https://ncns.digital/solutions/`.
+4. Check actual mobile Safari, Android and Firefox; confirm delivery/replies; optionally redirect `www.ncns.digital` and `ncns-digital-site.pages.dev` to the canonical host.
+
+No fabricated portfolio, client logos, revenue claims or completed customer cases appear on the site. Portfolio concepts and marketing launch are separate future work.
+
+Full operational detail: [deployment runbook](docs/launch/deployment.md) · [contact delivery QA](docs/launch/FORM-DELIVERY.md).
