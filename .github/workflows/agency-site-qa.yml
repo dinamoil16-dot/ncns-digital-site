@@ -9,6 +9,7 @@ on:
       - 'assets/**'
       - 'solutions/**'
       - 'tests/agency_*.py'
+      - 'tests/contact_submission_browser.py'
       - 'tests/approved_hero_regression.py'
       - '.github/workflows/agency-site-qa.yml'
   workflow_dispatch:
@@ -29,6 +30,7 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - run: node --check main.js && node --check contact.js
       - run: python tests/agency_site_browser.py
+      - run: python tests/contact_submission_browser.py
       - run: python tests/approved_hero_regression.py
       - run: python tests/agency_before_after.py
       - uses: actions/upload-artifact@v4
