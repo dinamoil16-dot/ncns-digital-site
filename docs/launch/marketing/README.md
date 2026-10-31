@@ -4,7 +4,7 @@ English-first, global and multi-industry. Owner manually manages accounts; NCNS-
 
 ## Profile / pinned posts
 
-Display name: **NCNS Digital | AI & Growth Systems**
+Display name proposal: **NCNS Digital | AI & Growth** (latest owner plan)
 
 Bio draft: `Web experiences • AI • Automation
 Digital systems for better business workflows.
@@ -33,3 +33,9 @@ Reel sources: real Growth OS desktop/mobile videos in PR #9 `docs/qa/milestone-c
 Manually record campaign/source and permission → acknowledge a real inbound message → ask business, costly process, existing tools, desired outcome and decision timing → agree a limited diagnosis → scope Build deliverables and acceptance → optional Operate/Grow. Log proposals and paid deals only when they actually occur. Existing NCNS-Bro CRM remains the system to coordinate with; the CSV is a field mapping, not a new CRM or populated lead list. Do not import or send without separate access and approval.
 
 Prepared MP4 review drafts: [Growth OS](reels/growth-os.mp4) and [Experience Lab](reels/experience-lab.mp4), 1080×1920 with constant truthful labels. [Encoding/source manifest](reels/manifest.json). They preserve actual source timing/actions and add no fake UI activity. Reproduce with `python3 tests/encode_launch_reels.py` from the repository root (system FFmpeg).
+
+## Latest main handoff — fresh grid
+
+Source: [owner-confirmed profile plan](../../marketing/instagram/PROFILE-LAUNCH-PLAN.md) from main `bb405bf`. The account is **@ncns.digital**, the previous three posts are deleted and the launch grid is empty. No removed content was reused. Profile visibility/public contact setup still needs owner verification; this known handle is not silently enabled as a contact destination.
+
+The nine-post owner plan is the editorial source of truth; the week table above is a production backlog, not a replacement publication schedule. Follow its approval/public-link gates. Prepared now: post 1 four-slide introduction; post 2 genuine Growth OS Reel; post 3 five-slide enquiry carousel; post 6 genuine Experience Lab Reel. Economics is a reserve educational carousel, not a claim that it replaces one of the nine posts. Posts 4/5/7/8/9 remain outlined in the source plan; do not imply the unopened product interaction exists. No complete second demo was built for these posts. Owner chooses the final manual order and confirms name/bio limits in the app.

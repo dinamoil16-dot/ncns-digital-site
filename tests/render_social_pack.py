@@ -15,4 +15,4 @@ try:
    page.locator('#'+slug).screenshot(path=str(out/f'{slug}.png'))
   b.close()
 finally:s.shutdown()
-print('Rendered eleven original draft social cards at 1080×1350.')
+print('Rendered fourteen original draft social cards at 1080×1350.')
