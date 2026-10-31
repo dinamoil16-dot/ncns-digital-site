@@ -33,6 +33,37 @@ jobs:
       - run: python tests/contact_submission_browser.py
       - run: python tests/approved_hero_regression.py
       - run: python tests/agency_before_after.py
+      # ONE-TIME NCNS FORMSPREE DELIVERY PROBE — owner-confirmed destination; remove after this run.
+      # Sends exactly one entirely synthetic test submission; no customer data.
+      - name: ONE-TIME NCNS FORMSPREE DELIVERY PROBE
+        run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,json
+          marker="NCNS-SITE-DELIVERY-QA-20261031-A"
+          fields={
+            "name":"NCNS Digital QA",
+            "email":"ncns.digital@gmail.com",
+            "service":"Website contact form delivery test",
+            "message":"TEST ONLY: This is one owner-authorized synthetic end-to-end Formspree notification check. Marker: "+marker+". No customer enquiry.",
+            "existing_process":"None; synthetic form test",
+            "preferred_reply":"No reply needed",
+            "contact_permission":"Agreed to processing for this controlled test",
+            "_subject":"NCNS Digital — form delivery QA "+marker,
+            "_gotcha":""
+          }
+          req=urllib.request.Request("https://formspree.io/f/mjyyagao",
+                  data=urllib.parse.urlencode(fields).encode(),
+                  headers={"Accept":"application/json","Content-Type":"application/x-www-form-urlencoded","User-Agent":"NCNS-Digital-QA/1.0"},
+                  method="POST")
+          try:
+            with urllib.request.urlopen(req,timeout=25) as r:
+              body=r.read(2000).decode("utf-8","replace")
+              print("One-time form submission HTTP status:",r.status)
+              print("Provider response:",body[:700])
+          except urllib.error.HTTPError as err:
+            print("Form submission HTTP error:",err.code,err.read(700).decode("utf-8","replace"))
+            raise
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
