@@ -1,12 +1,14 @@
 # @ncns.digital — Instagram profile audit and manual-first launch plan
-**Source:** owner-shared profile screenshot, 31 October 2026. Owner will post manually; NCNS-Bro automation only later after approval.
+**Source:** owner-shared profile screenshot and explicit subsequent owner update, 31 October 2026. Owner will post manually; NCNS-Bro automation only later after approval.
+
+**CURRENT OWNER-CONFIRMED STATE:** The owner deleted all three old posts. Treat the Instagram grid as **empty** and make an original premium launch grid from scratch. Do not ask for screenshots of the removed posts, resurrect any removed content, or use the old three-post counter as current status.
 
 ## What is actually visible
 - Handle: **@ncns.digital**. Retain — short and brand-aligned.
 - Displayed name: **NCNS Digital | AI & Digital Agency**. Suggest shortening to a benefit/outcome-oriented name, e.g. **NCNS Digital | AI & Growth**.
 - Logo: NCNS chrome emblem against dark background. Visually on brand; minor text is too small on mobile circle, so test high-contrast simplified crop before replacing.
 - Current bio: `AI Automation • Web & App Development\nBranding • Marketing • Digital Solutions\nWe build smarter businesses.\n📩 DM us to get started`.
-- Profile counters on screenshot: **3 publications, 3 followers, 3 following**. **The contents of these three posts are not visible** so do not claim they are poor, empty or published by us.
+- Earlier screenshot counters: **3 publications, 3 followers, 3 following**. **Subsequent owner confirmation: all three previous posts were deleted.** Post count is now understood to be zero; other account metrics may have changed and require checking in the app.
 - Highlight/story history and live public contact link not confirmed from screenshot. Do not invent them or mark configured.
 
 ## Suggested name and bio (owner review before editing)
@@ -29,7 +31,7 @@ Verify name/bio character limits in the app before saving. Profile editor action
 6. First three pinned posts: **Why NCNS** / **What we build — interactive demo** / **Build → Operate → Grow — work with us**. Pin the demo only once it is actually functioning; label early concept motion `Concept animation`.
 7. No posting, DMs, account changes or paid ads are authorized by this document.
 
-## Nine launch-grid post ideas (editorial order, not claim of already-published content)
+## Nine NEW launch-grid post ideas — all previous posts removed by owner (editorial order, not claim of already-published content)
 | # | Format | Hook (English) | Business angle / truthful content | CTA |
 |---|---|---|---|---|
 | 1 | 4-slide carousel | `Your business doesn't need just another website.` | Introduce NCNS as Build → Operate → Grow partner, 5 service pillars and real problem solving | DM for a project review |
