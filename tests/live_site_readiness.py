@@ -20,6 +20,11 @@ assert config["formEnabled"] is True
 assert config["formDeliveryVerified"] is True
 assert "ncns.digital@gmail.com" in privacy
 assert "Cloudflare Pages" in privacy
+assert "independent freelance digital-services provider" in privacy
+assert "not a separately incorporated company" in privacy
+assert "country of incorporation" in privacy
+assert "independent freelance digital-services provider" in terms
+assert "not a separately incorporated company" in terms
 assert "Formspree" in privacy and "Gmail" in privacy
 assert "deletion" in privacy.lower()
 assert "under owner review" not in privacy.lower()
