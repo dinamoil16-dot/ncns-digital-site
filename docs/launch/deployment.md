@@ -3,7 +3,7 @@ Updated 31 October 2026. **Site is already public:** https://ncns.digital/ and h
 
 ## Confirmed production facts
 - The owner purchased `ncns.digital` via Cloudflare Registrar and connected it to Cloudflare Pages `ncns-digital-site`. The origin is served on HTTPS.
-- Cloudflare Pages Git integration builds from `dinamoil16-dot/ncns-digital-site`, currently using branch `codex/issue-13-client-ready`.
+- Cloudflare Pages Git integration builds from `dinamoil16-dot/ncns-digital-site`, currently deploying branch `codex/issue-13-client-ready` although the approved code was merged into `main` as `0be2f474`.
 - Framework: None; Build command: `python3 scripts/build_pages.py`; Build output directory: `dist` (repository root). Public build contains only approved site assets, pages, scripts, contact configuration, SEO and a real `404.html`; internal code-review and QA artifacts are excluded.
 - Real Formspree endpoint: `https://formspree.io/f/mjyyagao`. On 31 October 2026 a single synthetic browser submission from `https://ncns.digital/` was accepted; the matching notification reached `ncns.digital@gmail.com`. Both the earlier direct provider POST and this live-site test are documented in PR #14. This is not a guarantee of future receipt. A distinct external Reply-To test remains.
 - Google-compatible canonical origin: `https://ncns.digital/`; `robots.txt` and `sitemap.xml` are publicly accessible. `www.ncns.digital` redirect and Google Search Console verification are not yet confirmed.
@@ -19,7 +19,7 @@ Verify in Formspree and Gmail the actual retention/deletion settings and choose 
 
 ## 2 — Bring GitHub and Cloudflare production under one stable branch
 
-1. Finish review and successful CI for PR #14. Merge the approved complete website into `main` by squash or merge commit; **do not delete the old `codex/issue-13-client-ready` branch before Cloudflare is switched**.
+1. **Completed:** PR #14 passed CI and was merged into `main` as `0be2f474`. **Do not delete the old `codex/issue-13-client-ready` branch before Cloudflare is switched**.
 2. In [Cloudflare Dashboard](https://dash.cloudflare.com/) > Workers & Pages > `ncns-digital-site` > **Settings > Builds & deployments > Production branch** (or Build > Branch control in the current UI), select **`main`** and save. Cloudflare's production branch is not changed merely by merging a PR.
 3. Use Cloudflare Deployments to confirm the expected `main` commit was deployed to production, or manually trigger a production deployment if the branch switch does not deploy immediately. Avoid a blank `main` deployment: first ensure `scripts/build_pages.py`, `site-config.json` and all assets exist there.
 4. Verify `https://ncns.digital` and the `*.pages.dev` alias, Contact and footer icons, 12 services, consent, form, and `/404-ncns-test-url` returning a genuine 404.
