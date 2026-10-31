@@ -1,6 +1,6 @@
 # NCNS Digital — automatic project enquiries into the business inbox
 
-**Status as of 2026-10-31:** The owner supplied an active Formspree endpoint, `https://formspree.io/f/mjyyagao`, now configured with `formEnabled: true` in draft website PR #14. **Code and endpoint are connected; actual notification receipt at `ncns.digital@gmail.com` is NOT yet verified (`formDeliveryVerified: false`).** No custom domain bought, website PR merged or public deployment performed.
+**Status as of 2026-10-31:** The owner supplied `https://formspree.io/f/mjyyagao`; `formEnabled: true`. **Real Formspree-to-Gmail delivery is VERIFIED.** Exactly one synthetic test POST from CI returned **HTTP 200** and `{"next":"/thanks","ok":true}`. Its uniquely marked Formspree notification reached the connected **`ncns.digital@gmail.com`** mailbox at **2026-10-31 16:54 UTC**. The temporary real-send CI step was immediately removed and is not included in subsequent tests. `formDeliveryVerified: true`, `formReplyVerified: false` (the reply-to flow was not independently tested). This verifies **form processing and inbox arrival**, not Safari/production domain behavior or ongoing guaranteed delivery. **No domain purchased, PR merged or site published.**
 
 ## What is already implemented
 - A form on the agency Contact section with name, required reply email, selected service, project description, optional existing workflow and preferred reply method.
@@ -19,12 +19,13 @@
      "formProvider": "formspree",
      "formEndpoint": "https://formspree.io/f/mjyyagao",
      "formEnabled": true,
-     "formDeliveryVerified": false
+     "formDeliveryVerified": true,
+    "formReplyVerified": false
    }
    ```
    This URL is public routing metadata, not a secret API key. Never paste a Gmail password, API key, session cookie, OAuth token or 2FA code into GitHub or this chat.
-3. Make one **controlled real test submission** using the local preview with the genuine `contact-config.json`. Fill name, reply email, service and business need, check consent and press **Send Project Request**. Check the provider response; then inspect the Formspree submissions dashboard and confirm an actual notification arrived at **`ncns.digital@gmail.com`** (also look in Spam).
-4. Test an actual reply to the reply address and confirm it arrives. Only after this complete round trip may `formDeliveryVerified` be set to true. Until then successful mocked CI is not a deliverability guarantee.
+3. **Completed one provider delivery test:** the verified owner endpoint accepted a synthetic POST and the Formspree notification arrived in Gmail. The code path was called directly from temporary CI (not a deployed page). The on-site browser form still has mocked integration QA only. After domain/staging are available, perform a real browser submission from the final site and reconfirm receipt.
+4. **Still outstanding:** verify the reply-to path with an external test sender, and retest a real browser submission once a staging/production origin exists. Mark `formReplyVerified: true` only after checking the reply arrives. The current `formDeliveryVerified: true` documents the confirmed incoming notification, not the untested reply.
 5. After final domain approval and publication, confirm allowed origins, spam controls, policy/retention and real end-to-end mail delivery on desktop and mobile again. No host deployment, PR merge, or domain purchase is authorized at this stage.
 
 ### Provider facts and trade-offs
@@ -51,4 +52,4 @@ node --check contact.js
 python3 tests/contact_submission_browser.py
 python3 tests/agency_site_browser.py
 ```
-Browser tests mock the third-party endpoint and never submit a real message. The enabled production form ID is only read from local configuration in QA; it is not contacted by tests. A green browser test is **not** proof that an email landed in the owner's inbox.
+Normal browser tests mock the third-party endpoint and never submit a real message. One temporary **separately identified** synthetic POST was sent for actual delivery verification and then removed from CI. Ordinary tests must never contact the real endpoint. A green browser test is **not** proof that an email landed in the owner's inbox.
