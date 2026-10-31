@@ -10,14 +10,14 @@ As of 31 October 2026.
 - `https://ncns.digital/sitemap.xml`, `robots.txt`, canonical and OG metadata exist.
 
 ## GitHub release workflow
-- PR #14 contains the approved site. Its production deployment branch currently is `codex/issue-13-client-ready`, which must be moved to `main` in Cloudflare **after** a reviewed merge. Merging alone will not change the Pages production branch.
+- PR #14 was reviewed, passed CI and **merged** as `0be2f474` into `main`. Cloudflare Pages must still switch production from `codex/issue-13-client-ready` to `main` manually. Merging alone will not change the Pages production branch.
 - A GitHub Actions green check tests build and browser behavior; it does **not** verify actual iOS Safari, Firefox or live client email reply-to handling.
 - `scripts/build_pages.py` builds public `dist` from the source without deploying internal documentation.
 - Prior draft text claiming 'no domain' or 'no active form' is historical and superseded by this live release status.
 
 ## Incomplete tasks
 1. Owner must confirm responsible business/legal identity and jurisdiction, plus any locally required disclosures. Current Privacy/Terms describe technology and contact transparently but are not a substitute for legal review. Check Formspree/Gmail retention.
-2. Merge PR #14 to `main` after CI, switch Pages Production branch to `main`, verify new production deployment and rollback ability.
+2. PR #14 merged into `main`; switch Pages Production branch to `main`, verify new production deployment and rollback ability.
 3. Register and verify `ncns.digital` in [Google Search Console](https://search.google.com/search-console/) using a unique Google DNS TXT record, submit `https://ncns.digital/sitemap.xml`, request indexing for homepage and services. Actual Google indexing is not instantaneous.
 4. Manually check the live site on iPhone Safari, Android Chrome and Firefox and perform a Reply-To round trip with a distinct address.
 5. Optionally forward `www.ncns.digital` and `ncns-digital-site.pages.dev` to the canonical `https://ncns.digital`.
