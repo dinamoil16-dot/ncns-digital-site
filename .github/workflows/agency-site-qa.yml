@@ -8,6 +8,9 @@ on:
       - '*-config.json'
       - 'assets/**'
       - 'solutions/**'
+      - 'scripts/**'
+      - 'site-config.json'
+      - 'tests/site_release_build.py'
       - 'tests/agency_*.py'
       - 'tests/contact_submission_browser.py'
       - 'tests/approved_hero_regression.py'
@@ -29,6 +32,7 @@ jobs:
       - run: python -m pip install playwright pillow
       - run: python -m playwright install --with-deps chromium
       - run: node --check main.js && node --check contact.js
+      - run: python tests/site_release_build.py
       - run: python tests/agency_site_browser.py
       - run: python tests/contact_submission_browser.py
       - run: python tests/approved_hero_regression.py
