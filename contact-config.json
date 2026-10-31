@@ -9,5 +9,6 @@
   "formProvider": "formspree",
   "formEndpoint": "https://formspree.io/f/mjyyagao",
   "formEnabled": true,
-  "formDeliveryVerified": false
+  "formDeliveryVerified": true,
+  "formReplyVerified": false
 }
