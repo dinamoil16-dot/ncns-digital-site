@@ -52,7 +52,7 @@
 
 
 /* Footer: understated standalone contact icons, matching Contact without oversized cards. */
-.footer .footer-social{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap}
+.footer .footer-social{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap}
 .footer .footer-social-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 43px;width:43px;height:43px;min-width:43px;min-height:43px;padding:0;color:#dbe9f3;border:1px solid rgba(160,193,220,.34);border-radius:50%;background:rgba(42,66,83,.2);text-decoration:none;transition:color .24s ease,border-color .24s ease,background .24s ease,transform .24s ease}
 .footer .footer-social-link:hover{color:#fff;border-color:rgba(207,230,246,.8);background:rgba(102,148,174,.18);transform:translateY(-2px)}
 .footer .footer-social-link:focus-visible{outline:2px solid #d6e8f5;outline-offset:4px}
