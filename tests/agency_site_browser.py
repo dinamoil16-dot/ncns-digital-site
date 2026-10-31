@@ -30,7 +30,10 @@ try:
    assert page.locator('#instagramContact').get_attribute('href')=='https://www.instagram.com/ncns.digital/'
    assert page.locator('#emailBrief').is_visible() and page.locator('#whatsappContact').is_visible()
    assert page.locator('#whatsappContact').get_attribute('href')=='https://wa.me/79063231457'
-   assert page.locator('#emailPending').inner_text().strip()=='ncns.digital@gmail.com'
+   assert page.locator('.contact-channels .channel-icon-link').count()==3
+   assert page.locator('.contact-channels .channel-icon-svg').count()==3
+   assert page.locator('.contact-channels .channel-card').count()==0
+   assert page.locator('#emailPending').text_content().strip()=='ncns.digital@gmail.com'
    assert page.locator('#emailBrief').get_attribute('href').startswith('mailto:ncns.digital@gmail.com')
    assert 'delivery has not been verified' in page.locator('#contactDelivery').inner_text()
    assert page.locator('#motionToggle').is_disabled()
