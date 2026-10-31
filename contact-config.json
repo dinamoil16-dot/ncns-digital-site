@@ -5,5 +5,9 @@
   "instagramUrl": "https://www.instagram.com/ncns.digital/",
   "whatsappUrl": "https://wa.me/79063231457",
   "instagramApproved": true,
-  "whatsappApproved": true
+  "whatsappApproved": true,
+  "formProvider": "formspree",
+  "formEndpoint": "",
+  "formEnabled": false,
+  "formDeliveryVerified": false
 }
