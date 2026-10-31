@@ -33,6 +33,14 @@ try:
    assert page.locator('.contact-channels .channel-icon-link').count()==3
    assert page.locator('.contact-channels .channel-icon-svg').count()==3
    assert page.locator('.contact-channels .channel-card').count()==0
+   assert page.locator('.footer .footer-social-link').count()==3
+   assert page.locator('.footer .footer-social-svg').count()==3
+   assert page.locator('.footer-social-link[href="mailto:ncns.digital@gmail.com"]').count()==1
+   assert page.locator('.footer-social-link[href="https://www.instagram.com/ncns.digital/"]').count()==1
+   assert page.locator('.footer-social-link[href="https://wa.me/79063231457"]').count()==1
+   assert all(x for x in page.locator('.footer-social-link').evaluate_all('(els)=>els.map(el=>el.getAttribute("aria-label"))'))
+   assert page.locator('.footer-social-link').first.evaluate('(el)=>parseFloat(getComputedStyle(el).minHeight)>=40')
+
    assert page.locator('#emailPending').text_content().strip()=='ncns.digital@gmail.com'
    assert page.locator('#emailBrief').get_attribute('href').startswith('mailto:ncns.digital@gmail.com')
    assert 'delivery has not been verified' in page.locator('#contactDelivery').inner_text()
@@ -84,7 +92,7 @@ try:
   context=browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844});page=context.new_page();page.goto(base)
   assert page.locator('#primaryNavigation').is_visible();assert not page.locator('.process-controls').is_visible()
   page.locator('#family-11 summary').click();assert page.locator('#family-11').get_attribute('open') is not None
-  assert page.locator('#instagramContact').is_visible();assert page.locator('#emailBrief').is_hidden();page.screenshot(path=str(QA/'no-js.png'),full_page=True);context.close()
+  assert page.locator('#instagramContact').is_visible();assert page.locator('#emailBrief').is_hidden();assert page.locator('.footer .footer-social-link').count()==3;page.screenshot(path=str(QA/'no-js.png'),full_page=True);context.close()
   # Realistic configured email/WhatsApp are test-only fixtures; no message or external page is opened.
   page=browser.new_page();page.route('**/contact-config.json',lambda r:r.fulfill(json={'email':'qa@example.test','ownerApproved':True,'deliveryVerified':False,'whatsappUrl':'https://wa.me/10000000000','instagramUrl':'https://www.instagram.com/ncns.digital/'}))
   page.goto(base,wait_until='networkidle');assert page.locator('#emailBrief').is_visible();assert page.locator('#whatsappContact').is_visible()
