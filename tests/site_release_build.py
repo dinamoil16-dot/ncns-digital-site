@@ -8,7 +8,7 @@ assert not dist.exists(), "dist should be absent in a clean checkout"
 try:
     subprocess.run([sys.executable,str(ROOT/"scripts/build_pages.py")],cwd=ROOT,check=True)
     assert dist.is_dir()
-    expected={"index.html","404.html","styles.css","milestone-b.css","agency.css","main.js",
+    expected={"index.html","404.html","_headers","styles.css","milestone-b.css","agency.css","main.js",
       "contact.js","contact-config.json","privacy.html","terms.html","solutions",
       "assets","robots.txt","sitemap.xml"}
     assert {p.name for p in dist.iterdir()}==expected
