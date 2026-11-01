@@ -30,7 +30,18 @@ try:
     c=json.loads((dist/"contact-config.json").read_text())
     assert c["formEndpoint"]=="https://formspree.io/f/mjyyagao"
     assert c["formEnabled"] and c["formDeliveryVerified"]
-    print("Cloudflare release bundle PASSED: canonical, safe allowlist, site services and Formspree config. Nothing deployed.")
+    # Search discovery: unique, descriptive pages and crawlable internal navigation.
+    assert "<title>Web Development &amp; AI Automation Agency | NCNS Digital</title>" in homepage
+    assert 'name="description" content="NCNS Digital builds custom websites' in homepage
+    assert '<nav class="footer-links" aria-label="Footer"><a href="./solutions/">Services</a>' in homepage
+    services = (dist / "solutions/index.html").read_text(encoding="utf-8")
+    assert "<title>Websites, AI Agents &amp; Business Automation | NCNS Digital</title>" in services
+    assert 'name="description" content="Explore web development, e-commerce, AI agents' in services
+    assert "AI agents, website chatbots" in services and "SEO, website optimization" in services
+    assert 'href="https://ncns.digital/solutions/"' in services
+    assert 'content="https://ncns.digital/solutions/"' in services
+    assert "https://ncns.digital/solutions/" in (dist / "sitemap.xml").read_text()
+    print("Cloudflare release bundle PASSED: canonical, SEO titles/descriptions, safe allowlist, services and Formspree config. Nothing deployed.")
 finally:
     if dist.is_dir() and not dist.is_symlink():
         shutil.rmtree(dist)
